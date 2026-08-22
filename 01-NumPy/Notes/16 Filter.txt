@@ -1,5 +1,5 @@
 ╔════════════════════════════════════╗
-║  		               💻FILTER ARRAY	⚡     		        ║
+║        💻FILTER ARRAY⚡     	     ║
 ╚════════════════════════════════════╝
 
 
@@ -58,9 +58,9 @@ Eligible Age: [45 29 72 31]
 
 🔔 Recommended
 
-╭────────────────────────────────────╮
-│ 🌟 Filtering Directly Without Creating Boolean Array 🌟 	│
-╰────────────────────────────────────╯
+╭────────────────────────────────────────────────────────────────╮
+│ 🌟 Filtering Directly Without Creating Boolean Array 🌟 	    │
+╰────────────────────────────────────────────────────────────────╯
 
 We can also write the condition directly inside the array index.
 
@@ -88,9 +88,9 @@ Eligible Age: [45 29 72 31]
 
 
 
-╭──────────────────────────────╮
-│ 	🌟 Multiple Conditions in Filtering 🌟 		│
-╰──────────────────────────────╯
+╭──────────────────────────────────────────────────╮
+│ 	🌟 Multiple Conditions in Filtering 🌟 	  │
+╰──────────────────────────────────────────────────╯
 
 🔗 Multiple Conditions in Filtering ------------
 
@@ -121,7 +121,7 @@ print(result)
 
 
 ---------------------------------------------------------------
-✅ Example : Using OR Condition
+            ✅ Example : Using OR Condition
 ---------------------------------------------------------------
 
 Find numbers less than 20 or greater than 50.

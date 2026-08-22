@@ -29,7 +29,7 @@ Without NumPy, numerical operation in python use standard lists, which is slower
 
 
 ╭──────────────────────────╮
-│	   🌟WHAT NUMPY OFFERS🌟       │
+│🌟WHAT NUMPY OFFERS🌟    │
 ╰──────────────────────────╯
 
 

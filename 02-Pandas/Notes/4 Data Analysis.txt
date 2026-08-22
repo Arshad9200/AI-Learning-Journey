@@ -1,44 +1,284 @@
 =========================
-	   DATA ANALYSIS
+📊 DATA ANALYSIS
 =========================
 
-
-
-🧠 Real-World Example
-
+Once the DataFrame is created, we can analyze the employee data to understand salary, age, experience, departments, and overall employee patterns.
 
 
 
-Imagine an employee dataset:
+1️⃣ 🔍 View Basic Information
+
+print(df.info())
 
 
-
-import pandas as pd
-
-emp_data = {
-    "Name": ["Arshad", "Aatif", "Abhijeet", "Ashu"],
-    "Age": [26, 23, 24, 25],
-    "Salary": [24000, 28000, 18000, 16000],
-    "Department": ["Support", "AI Developer", "Networking", "Cloud"],
-    "Experience": [1.4, 2, 1.2, 1]
-}
-
-df = pd.DataFrame(emp_data)
-
-print(df)
+What it tells us:
+    Number of rows and columns
+    Column names
+    Data types
+    Non-null values
+    Memory usage
 
 
 
 
+2️⃣ 📐 Find Number of Employees
+
+print("Total Employees:", len(df))
+Output:
+Total Employees: 4
 
 
-📌Output:
 
-       Name  	Age  	Salary    		Department  		Experience
 
-0    Arshad   	 26   		24000       	   Support         		    1.4
-1     Aatif   	 23   		28000    	  	  AI Developer             2.0
-2  Abhijeet   	 24   		18000   		  Networking         	    1.2
-3      Ashu   	 25   		16000         	 Cloud         		    1.0
 
-Now you can perform analysis.
+3️⃣ 💰 Find Average Salary
+
+print("Average Salary:", df["Salary"].mean())
+Output:
+Average Salary: 21500.0
+
+👉 This tells us that the average employee salary is ₹21,500.
+
+
+
+
+
+
+4️⃣ 💰 Find Highest Salary
+
+print("Highest Salary:", df["Salary"].max())
+Output:
+Highest Salary: 28000
+
+
+
+
+
+5️⃣ 💰 Find Lowest Salary
+
+print("Lowest Salary:", df["Salary"].min())
+Output:
+Lowest Salary: 16000
+
+
+
+
+
+
+6️⃣ 👤 Find Employee With Highest Salary
+
+highest_salary = df.loc[df["Salary"].idxmax()]
+
+print(highest_salary)
+
+Output:
+Name                 Aatif
+Age                    23
+Salary              28000
+Department     AI Developer
+Experience              2.0
+
+
+👉 idxmax() finds the index of the maximum value.
+
+
+
+
+
+
+7️⃣ 👤 Find Employee With Lowest Salary
+
+lowest_salary = df.loc[df["Salary"].idxmin()]
+
+print(lowest_salary)
+
+Output:
+Name                 Ashu
+Age                    25
+Salary              16000
+Department          Cloud
+Experience             1.0
+
+👉 idxmin() finds the index of the minimum value.
+
+
+
+
+
+8️⃣ 📊 Analyze Age
+
+Average Age
+print("Average Age:", df["Age"].mean())
+Output:
+Average Age: 24.5
+Youngest Employee
+print("Youngest Age:", df["Age"].min())
+Oldest Employee
+print("Oldest Age:", df["Age"].max())
+
+
+
+
+
+
+
+9️⃣ 💼 Analyze Experience
+
+Average Experience
+print("Average Experience:", df["Experience"].mean())
+Output:
+Average Experience: 1.4
+
+👉 On average, employees have 1.4 years of experience.
+
+
+
+
+
+
+
+🔟 💰 Find Employees Earning More Than ₹20,000
+
+high_salary = df[df["Salary"] > 20000]
+
+print(high_salary)
+Output:
+     Name  Age  Salary    Department  Experience
+0  Arshad   26   24000     Support       1.4
+1   Aatif   23   28000     AI Developer  2.0
+
+👉 This is an example of filtering data based on a condition.
+
+
+
+
+
+
+
+1️⃣1️⃣ 👨‍💻 Find Employees With More Than 1 Year Experience
+
+experienced = df[df["Experience"] > 1]
+
+print(experienced)
+Output:
+       Name  Age  Salary    Department  Experience
+0    Arshad   26   24000     Support       1.4
+1     Aatif   23   28000     AI Developer  2.0
+2  Abhijeet   24   18000     Networking    1.2
+
+
+
+
+
+
+
+1️⃣2️⃣ 🏢 Count Employees by Department
+
+print(df["Department"].value_counts())
+Output:
+Support         1
+AI Developer    1
+Networking      1
+Cloud           1
+
+👉 value_counts() tells us how many times each value occurs.
+
+
+
+
+
+
+
+1️⃣3️⃣ 📊 Get Statistical Summary
+
+print(df.describe())
+
+This provides:
+
+count
+mean
+std
+min
+25%
+50%
+75%
+max
+
+for numerical columns.
+
+For example:
+
+              Age       Salary    Experience
+count       4.0       4.0          4.0
+mean       24.5   21500.0          1.4
+
+👉 describe() is one of the most useful functions for initial data analysis.
+
+🧠 What Did We Actually Analyze?
+
+From this small dataset, we were able to answer questions like:
+
+❓ How many employees are there?
+        ↓
+   4 employees
+
+
+❓ What is the average salary?
+        ↓
+   ₹21,500
+
+
+❓ What is the highest salary?
+        ↓
+   ₹28,000
+
+
+❓ What is the lowest salary?
+        ↓
+   ₹16,000
+
+
+❓ What is the average age?
+        ↓
+   24.5 years
+
+
+❓ What is the average experience?
+        ↓
+   1.4 years
+
+
+❓ Who earns more than ₹20,000?
+        ↓
+   Arshad and Aatif
+
+
+❓ Which employee earns the most?
+        ↓
+   Aatif
+
+
+
+
+
+
+🎯 Key Concept
+
+Data Analysis = Asking questions about data and using data to find answers.
+
+The general process is:
+
+📥 Collect Data
+      ↓
+🧹 Clean Data
+      ↓
+🔍 Explore Data
+      ↓
+📊 Analyze Data
+      ↓
+📈 Visualize Data
+      ↓
+💡 Find Insights
+      ↓
+🎯 Make Decisions
+
