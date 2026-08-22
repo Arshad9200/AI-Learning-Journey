@@ -1,0 +1,836 @@
+
+
+╔════════════════════════════════════╗
+║  💻 INDEXING & SLICING IN NUMPY ARRAY⚡     ║
+╚════════════════════════════════════╝
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 			🌟 INDEXING 🌟 			│
+╰──────────────────────────────╯
+
+
+
+
+📌 What is Indexing?
+
+Indexing is the process of accessing (retrieving) a specific element from a NumPy array using its position (index).
+
+In simple words,
+
+Indexing is used to access a single element from an array.
+
+
+
+
+
+
+════════════════════
+	📘 1-D ARRAY
+═════════════════════
+
+
+📚 Index Always Starts from 0 ───────
+
+Consider the following array:
+
+Example:
+
+import numpy as np
+arr = np.array([10, 20, 30, 40, 50])
+print(arr)
+
+Output: 
+[10 20 30 40 50]
+
+
+Element	10	20	30	40	50
+		 ↑      ↑	 ↑      ↑	 ↑
+Index	 0	 1	 2	 3	 4
+
+
+
+
+
+
+✨ Access the element of the Array based on Index --------------
+
+🔖 Example
+# Create Numpy Array
+import numpy as np
+arr1 = np.array([10, 20, 30, 40, 50])
+print(arr1)
+
+# Access the element of the array
+first_element = arr1[0]
+last_element = arr1[-1]
+print("First Element:",first_element)
+print("Last Element:",last_element)
+
+
+🔔Output:
+
+[10 20 30 40 50]
+First Element: 10
+Last Element: 50
+
+
+
+
+
+✨ Negative Indexing  --------------
+
+Negative indexing starts from the end of the array.
+
+Element		10	20	30	40	50
+Negative Index	-5	-4	-3	-2	-1
+
+
+
+
+
+
+
+
+
+════════════════════
+	📘 2-D ARRAY
+════════════════════
+
+
+
+✨ Indexing in a 2-D Array ----------------
+
+A 2-D array has rows and columns.
+
+
+🔔 Example
+
+import numpy as np
+arr2 = np.array([[10, 20, 30],
+                 [34, 40, 50]])
+print(arr2)
+print("Dimension:",arr2.ndim)
+print("Shape:",arr2.shape)
+
+# Access the element of 2-D array
+fir_row = arr2[0,-1]
+sec_row = arr2[1, 0]
+print("first row:",fir_row)
+print("Sec row:",sec_row)
+
+
+📌 Output
+
+[[10 20 30]
+ [34 40 50]]
+
+Dimension: 2
+
+Shape: (2, 3)
+
+first row: 30
+Sec row: 34
+
+
+
+
+
+⚠️ Important Points ------------
+
+
+first_row_last_element = arr2[0, -1]      # Output: 30
+
+first_row_last_element = arr2[0][-1]      # Output: 30
+
+Both statements return the same output, but the way they access the element is different.
+
+
+
+✅ Preferred Method
+
+arr2[0, -1]    →  Single Indexing
+
+
+Why?
+
+🔹 NumPy treats 0 as the row index and -1 as the column index.
+🔹 It directly accesses the required element in a single indexing operation.
+🔹 This is the recommended and standard NumPy syntax.
+
+
+
+
+
+
+❌ Less Preferred Method     →  Double Indexing
+
+arr2[row][column]
+
+Why?
+🔹Step 1: Select the first row.   arr2[0]   output: [10 20 30]
+🔹Step 2: Access the last element of that row.  [10 20 30][-1]  output: 30
+🔹Since it first retrieves the entire row and then accesses the required element, it requires two indexing operations instead of one.
+
+
+
+
+
+
+
+
+
+
+
+
+
+════════════════════
+	📘 3-D ARRAY
+════════════════════
+
+
+
+✨ Indexing in a 3-D Array ----------------
+
+
+A 3-D array has
+
+Blocks
+Rows
+Columns
+
+
+
+📚 Syntax
+array[block, row, column]
+
+
+
+
+🔔 Example: 
+
+import numpy as np
+arr3 = np.array([
+    [
+        [1,2,3],
+        [4,5,6]
+    ],
+    [
+        [7,8,9],
+        [10,11,12]
+    ]
+])
+print(arr3)
+print("Dimension:",arr3.ndim)
+print("Shape:",arr3.shape)
+
+# Access the element of the array
+# Target= 40
+fir_row_element = arr3[0,1,1]
+
+# Target= 3
+sec_row_element = arr3[1, 0, -1]
+print("First row Element:",fir_row_element)
+print("Sec row Element:",sec_row_element)
+
+
+
+📌 Output:
+
+[[[10 20 30]
+  [34 40 50]]
+
+ [[ 1  2  3]
+  [ 4  5  6]]]
+
+Dimension: 3
+Shape: (2, 2, 3)
+First row Element: 40
+Sec row Element: 3
+
+
+
+
+📍 Explanation:
+
+🔺Shape (2, 2, 3)
+
+2 Blocks
+2 Rows
+3 Columns
+
+
+▫️arr3[1, 0, -1]
+
+Meaning
+
+Block = 1 	→ Second block
+Row = 0 		→ First row
+Column = 2 / -1     → Third/last column
+
+
+
+
+
+
+
+
+
+📚 Quick Summary
+
+Array Type				Syntax				Example
+
+1-D	(Use 1 index)			arr[index]				arr[2]
+2-D	(Use 2 index)			arr[row, column]		arr[1,2]
+3-D	(Use 3 index)			arr[block, row, column]	arr[1,0,2]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 			🌟 SLICING 🌟				│
+╰──────────────────────────────╯
+
+
+
+📌 What is Slicing?
+
+Slicing is the process of accessing multiple (a range of) elements from a NumPy array.
+
+In simple words,
+
+Indexing retrieves a single element, whereas slicing retrieves multiple elements.
+
+
+
+
+
+
+
+📚 Syntax	:	array[start : stop : step]
+
+Parameter					Description
+
+start						Starting index (included)
+stop						Ending index (excluded)
+step						Number of positions to skip (Default = 1)
+
+
+
+
+
+🎯 Easy Trick to Remember
+
+array[start : 	stop : 	step]
+       ↑       	      	   ↑      	  ↑
+    Include  	Exclude  	Skip
+
+✅ Start is included.
+❌ Stop is excluded.
+✅ Step specifies how many positions to move.
+
+
+
+
+
+
+
+
+════════════════════
+	📘 1-D ARRAY
+═════════════════════
+
+📌Example:
+
+import numpy as np
+arr1 = np.array([1, 2, 3, 4, 5])
+print(arr1)
+print("Dimension:",arr1.ndim)
+print("Shape:",arr1.shape)
+
+fetch_2_to_5_element = arr1[1:5:1]
+print("Fetch 2 to 5 elments:", fetch_2_to_5_element)
+
+
+📍📌Output:
+
+[1 2 3 4 5]
+Dimension: 1
+Shape: (5,)
+Fetch 2 to 5 elments: [2 3 4 5]
+
+
+
+
+
+
+
+✨ Slicing with Start Only ------------
+
+📍Example
+
+import numpy as np
+arr1 = np.array([1, 2, 3, 4, 5])
+print(arr1)
+print("Dimension:",arr1.ndim)
+print("Shape:",arr1.shape)
+
+# Slicing with Start Only
+fetch_all_from_3 = arr1[2:]
+print("3 to all:", fetch_all_from_3)
+
+
+📌 Output:
+
+[1 2 3 4 5]
+Dimension: 1
+Shape: (5,)
+
+3 to all: [3 4 5]
+
+
+▫️Explanation
+
+Start from index 2 and go till the end.
+
+
+
+
+
+
+
+
+
+✨ Slicing with Stop Only ----------------
+
+
+📍Example
+
+import numpy as np
+arr1 = np.array([1, 2, 3, 4, 5])
+print(arr1)
+print("Dimension:",arr1.ndim)
+print("Shape:",arr1.shape)
+
+# Slicing with Stop Only
+stop_on_4 = arr1[:4]
+print("stop on 4:", stop_on_4)
+
+
+📌 Output:
+
+[1 2 3 4 5]
+Dimension: 1
+Shape: (5,)
+
+stop on 4: [1 2 3 4]
+
+
+▫️Explanation
+
+Start from the beginning and stop before index 4.
+
+
+
+
+
+
+
+
+
+✨ Slicing the Entire Array -------------------
+
+
+📍Example
+
+import numpy as np
+arr1 = np.array([1, 2, 3, 4, 5])
+print(arr1)
+print("Dimension:",arr1.ndim)
+print("Shape:",arr1.shape)
+
+# Slicing the entire array
+entire_array = arr1[:]
+print("Entire Array:", entire_array)
+
+
+
+📌 Output:
+
+[1 2 3 4 5]
+Dimension: 1
+Shape: (5,)
+
+Entire Array: [1 2 3 4 5]
+
+
+▫️Explanation
+
+Returns all elements.
+
+
+
+
+
+
+
+
+
+
+✨ Slicing with Step ----------------
+
+
+
+📍Example
+
+import numpy as np
+arr1 = np.array([1, 2, 3, 4, 5])
+print(arr1)
+print("Dimension:",arr1.ndim)
+print("Shape:",arr1.shape)
+
+# Slicing with steps
+alternate_elements = arr1[::2]
+print("Alternate Elements:", alternate_elements)
+
+
+
+📌 Output:
+
+[1 2 3 4 5]
+Dimension: 1
+Shape: (5,)
+
+Alternate Elements: [1 3 5]
+
+
+💡 Explanation
+
+Index
+
+0   1   2   3   4   5
+10 20 30 40 50 60
+↑         ↑       ↑
+
+Step = 2 → Move two positions at a time.
+
+
+
+
+
+
+
+
+
+
+
+✨ Negative Slicing ------------------------
+
+
+
+📍Example
+
+import numpy as np
+arr1 = np.array([1, 2, 3, 4, 5])
+print(arr1)
+print("Dimension:",arr1.ndim)
+print("Shape:",arr1.shape)
+
+
+# Negetive slicing
+negetive_slicing = arr1[-4:-1]
+print("Negetive Slicing:", negetive_slicing)
+
+
+
+📌 Output:
+
+[1 2 3 4 5]
+Dimension: 1
+Shape: (5,)
+
+Negetive Slicing: [2 3 4]
+
+
+
+
+💡 Explanation
+
+Negative Index
+
+1 	2 	3 	4 	5 	6
+-6 	-5 	-4 	-3 	-2 	-1
+
+Start = -4 (3)
+
+Stop = -1 (6 is excluded)
+
+Result
+
+3   4   5
+
+
+
+
+
+
+
+
+
+
+✨ Reverse an Array ----------
+
+
+
+📍Example
+
+import numpy as np
+arr1 = np.array([1, 2, 3, 4, 5])
+print(arr1)
+print("Dimension:",arr1.ndim)
+print("Shape:",arr1.shape)
+
+# Reverse Array
+reverse_array = arr1[::-1]
+print("Reverse Array:", reverse_array)
+
+
+
+📌 Output:
+
+[1 2 3 4 5]
+Dimension: 1
+Shape: (5,)
+
+Reverse Array: [5 4 3 2 1]
+
+
+
+
+💡 Explanation
+
+Start = Beginning (default)
+Stop = End (default)
+Step = -1
+
+A negative step traverses the array in reverse order.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+════════════════════
+	📘 2-D ARRAY
+═════════════════════
+
+
+📚 Syntax
+array[row_slice, column_slice]
+
+
+
+
+
+ 📌Example
+
+import numpy as np
+arr2 = np.array([[10, 20, 30],
+                 [40, 50, 60],
+                [70, 80, 90]])
+print(arr2)
+print("Dimension:",arr2.ndim)
+print("Shape:",arr2.shape)
+
+
+📍Output:
+
+[[10 20 30]
+ [40 50 60]
+ [70 80 90]]
+Dimension: 2
+Shape: (3, 3)
+
+
+
+
+
+✨  Get the First Row -------------
+
+
+ 📌Example
+
+first_row = arr2[0, :]
+print("First Row:", first_row)
+
+📍Output:
+First Row: [10 20 30]
+
+
+🔔 Explanation
+
+arr2[0, :]
+
+0 → It takes the first row
+: →  It return the entire elements of first row
+
+
+
+
+
+
+
+
+
+✨  Get the First Column -------------
+
+
+ 📌Example
+
+last_column = arr2[:, 2]
+print("Last Column:", last_column)
+
+📍Output:
+Last Column: [30 60 90]
+
+
+🔔 Explanation
+
+arr2[ : , 2]
+
+: → Selects all rows
+2 → Selects the third column (Python indexing starts from 0)
+
+
+
+
+
+
+
+✨  Get the Specific Elements of Specific Rows -------------
+
+
+ 📌Example
+
+sec_arr_elements = arr2[1, 1:3]
+print("Second Row Elements:", sec_arr_elements)
+
+
+📍Output:
+Second Row Elements: [50 60]
+
+🔔 Explanation
+
+arr2[1, 1:3]
+
+1 (Row) → Selects the second row .
+1:3 (Columns) → Selects columns with index 1 and 2 (the stop index 3 is excluded).
+
+
+
+
+
+
+
+✨  Get Last Elements from the second & Third Columns ----------
+
+
+ 📌Example
+
+sec_third_col_elements = arr2[1:3, 2:3]
+print("Second Third Specific Elements:")
+print(sec_third_col_elements)
+
+
+📍Output
+
+Second Third Specific Elements:
+[[60]
+ [90]]
+
+🔔 Explanation
+
+arr2[1:3, 2:3]
+
+1:3 (Rows) → Selects rows with index 1 and 2 (the stop index 3 is excluded) means select second & third rows.
+
+2:3 (Columns) → Selects only the third column (column index 2) of second & third rows. 
+
+
+
+
+
+
+
+
+
+
+✨  Get a Subarray ------------------
+
+
+ 📌Example
+
+sub_array_50_60_70_80 = arr2[1:3, 1:3]
+print("Sub Array:", sub_array_50_60_70_80)
+
+📍Output:
+Sub Array:
+[[50 60]
+ [80 90]]
+
+
+
+🔔 Explanation
+
+arr2[1:3, 1:3]
+
+Rows: 1 to 3 (3 excluded)
+Columns: 1 to 3 (3 excluded)
+
+
+🔹1:3 (Rows) → Selects rows with index 1 and 2 (the stop index 3 is excluded) means it select second and third rows.
+
+🔹1:3 (Columns) → Selects columns with index 1 and 2 (the stop index 3 is excluded) means it select second and third columns.

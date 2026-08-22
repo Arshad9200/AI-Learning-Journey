@@ -1,0 +1,629 @@
+╔════════════════════════════════════╗
+║ 		     💻MATRIX VS NUMPY ARRAY⚡     		║
+╚════════════════════════════════════╝
+
+
+📌 What is a Matrix?
+
+A Matrix is a 2-D (two-dimensional) array that consists of rows and columns.
+
+In simple words,
+
+A matrix is a rectangular arrangement of data in the form of rows and columns.
+
+
+
+
+
+❓ Why Do We Need a Matrix?
+
+──────────────────────
+Matrices are widely used in:
+
+✅ Mathematics
+✅ Machine Learning
+✅ Artificial Intelligence
+✅ Computer Graphics
+✅ Data Science
+✅ Image Processing
+
+
+
+
+
+
+📌 Example of a Matrix
+
+        	  Columns
+        	    0   1   2
+      		┌───────┐
+Row 0 	│ 10  20  30  │
+Row 1 	│ 40  50  60  │
+Row 2 	│ 70  80  90  │
+      		└───────┘
+
+Number of Rows = 3
+Number of Columns = 3
+Shape = (3, 3)
+
+
+
+
+
+
+✨ Creating a Matrix
+
+There are two ways to create a matrix in NumPy.
+
+
+╭────────────────────────────────────╮
+│    🌟 Method 1: Using np.array()  (Recommended)🌟 	│
+╰────────────────────────────────────╯
+
+
+This is the most commonly used method.
+
+📝 Example
+
+import numpy as np
+
+matrix = np.array([
+    [10, 20, 30],
+    [40, 50, 60]
+])
+
+print(matrix)
+
+
+📌 Output
+
+[[10 20 30]
+ [40 50 60]]
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────╮
+│ 		🌟 Method 2: Using np.matrix()🌟 		        │
+╰────────────────────────────────────╯
+
+
+
+📝 Example
+
+import numpy as np
+
+matrix1 = np.matrix([
+    [1, 2, 3],
+    [4, 5, 6]
+])
+
+print(matrix1)
+
+print("Dimension:", matrix1.ndim, "| Shape:", matrix1.shape)
+
+print("Type:", type(matrix1))
+
+
+📌 Output
+
+[[1 2 3]
+ [4 5 6]]
+
+Dimension: 2 | Shape: (2, 3)
+
+Type: <class 'numpy.matrix'>
+
+
+
+
+
+
+
+⚠️ Which Method Should You Use ---------------------
+
+✅ Use np.array()
+
+❌ Avoid using np.matrix()
+
+
+Why we should avoid Matrix ?
+
+🔸 np.array() is the recommended and modern NumPy data structure.
+🔸 np.matrix() is an older class and is no longer recommended for new projects.
+🔸 Most NumPy functions, AI libraries, and ML frameworks are designed to work with ndarray (np.array).
+
+
+
+
+
+
+
+
+╭────────────────────────────────────────────╮
+│ 		🌟 MATRIX VS NUMPY ARRAY (ndarray) 🌟 		              │
+╰────────────────────────────────────────────╯
+
+
+🔹Although both NumPy Array and NumPy Matrix can store data in rows and columns, but they are not the same. 
+
+🔹The NumPy Array (ndarray) is the modern and recommended data structure, while NumPy Matrix (matrix) is an older class kept mainly for backward compatibility.
+
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+              🟢 NumPy Array (ndarray)
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+
+🔸NumPy Array is a general-purpose N-dimensional array.
+🔸It can represent 0-D, 1-D, 2-D, 3-D, ... N-D data.
+🔸This is the recommended data structure in NumPy.
+
+
+📝 Example
+
+import numpy as np
+arr = np.array([
+    [1, 2, 3, 4],
+    [5, 6, 7, 8]
+])
+print(arr)
+print("Types:", type(arr))
+
+
+📌 Output
+
+[[1 2 3 4]
+ [5 6 7 8]]
+Types: <class 'numpy.ndarray'>
+
+
+
+
+
+
+
+▓▒░ 💻 Dimensions Supported ░▒▓
+
+
+Supports all dimensions.
+
+# 1-D
+np.array([1,2,3])
+
+# 2-D
+np.array([[1,2],[3,4]])
+
+# 3-D
+np.array([[[1,2],[3,4]]])
+
+
+
+
+
+
+
+▓▒░ 💻 Recommended or Not ░▒▓
+
+
+✅ Recommended
+
+Used in:
+
+🔹Machine Learning
+🔹Deep Learning
+🔹Data Science
+🔹Artificial Intelligence
+🔹Image Processing
+
+
+
+
+
+
+
+▓▒░ 💻 Arithmetic Multiplication (*)  ░▒▓
+
+
+
+💡 For Arithmetic operations, Addition & Subtraction both work same in NumPy Array & Matrix
+
+
+In NumPy Array , multiplication (*) performs element-wise multiplication.
+
+
+📝 Example
+
+import numpy as np
+
+A = np.array([
+		[1,2],
+                [3,4]
+])
+
+B = np.array([
+		[5,6],
+                [7,8]
+])
+
+print(A * B)
+
+
+
+📌 Output
+
+[[ 5 12]
+ [21 32]]
+
+
+→  Each element is multiplied with the corresponding element.
+
+
+
+
+
+
+
+
+▓▒░ 💻 Matrix Multiplication in Numpy Array (*)  ░▒▓
+
+
+🔷════════════════════════════════════🔷
+	 Matrix Multiplication in NumPy Array [ @ operator ]
+🔷════════════════════════════════════🔷
+
+
+
+
+📝 Example
+
+import numpy as np
+matrix11 = np.array([
+    [10, 20],
+    [50, 60]
+])
+matrix12 = np.array([
+    [1, 2],
+    [5, 6]
+])
+
+add_res2 = matrix11 @ matrix12
+
+print(add_res2)
+
+
+📌 Output
+
+
+[[110 140]
+ [350 460]]
+
+
+
+
+
+
+🔷═════════════════════════════════════════🔷
+	 Matrix Multiplication in NumPy Array [ matmul() Function ]
+🔷═════════════════════════════════════════🔷
+
+
+
+📝 Example
+
+import numpy as np
+matrix11 = np.array([
+    [10, 20],
+    [50, 60]
+])
+matrix12 = np.array([
+    [1, 2],
+    [5, 6]
+])
+
+add_res2 = np.matmul(matrix11, matrix12)
+
+print(add_res2)
+
+
+📌 Output
+
+
+[[110 140]
+ [350 460]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+              🔵 NumPy Matrix (matrix)
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+
+🔸Numpy Matrix is a special 2-D array designed for mathematical matrix operations.
+
+🔸It can represent only 2-D data.
+
+🔸It is considered legacy and is not recommended for new projects.
+
+
+
+
+📝 Example
+
+import numpy as np
+matrix = np.matrix([
+    [1, 2, 3, 4],
+    [5, 6, 7, 8]
+])
+print(matrix)
+print("Types:", type(matrix))
+
+
+📌 Output
+
+[[1 2 3 4]
+ [5 6 7 8]]
+Types: <class 'numpy.matrix'>
+
+
+
+
+
+
+▓▒░ 💻 Dimensions Supported ░▒▓
+
+
+NumPy Matrix supports only 2-D.
+
+np.matrix([[1,2],
+           [3,4]])
+
+→ Trying to create a 3-D matrix raises an error.
+
+
+
+
+
+
+▓▒░ 💻 Recommended or Not ░▒▓
+
+
+❌ Not Recommended
+
+🔹Old class
+🔹Kept mainly for backward compatibility
+🔹Avoid in new projects
+
+
+
+
+
+
+
+▓▒░ 💻 Arithmetic : Matrix Multiplication ░▒▓
+
+
+💡 In Arithmetic operations, Addition & Subtraction both work same in NumPy Array & Matrix
+
+
+
+
+
+
+🔷══════════════════════════════🔷
+	 Matrix Multiplication using * Operator
+🔷══════════════════════════════🔷
+
+
+
+In NumPy Matrix aestric (*) performs matrix multiplication.
+
+
+📝 Example
+
+import numpy as np
+matrix1 = np.matrix([
+    [10, 20],
+    [50, 60]
+])
+matrix2 = np.matrix([
+    [1, 2, 3, 4],
+    [5, 6, 7, 8]
+])
+
+add_res = matrix1 * matrix2
+
+print(add_res)
+
+
+
+📌 Output
+
+[[110 140 170 200]
+ [350 460 570 680]]
+
+
+
+
+
+
+
+
+
+
+
+
+🔷══════════════════════════════🔷
+	 Matrix Multiplication using Dot Function
+🔷══════════════════════════════🔷
+
+
+
+In NumPy Matrix dot function also performs matrix multiplication.
+
+
+📝 Example
+
+import numpy as np
+matrix1 = np.matrix([
+    [10, 20],
+    [50, 60]
+])
+matrix2 = np.matrix([
+    [1, 2, 3, 4],
+    [5, 6, 7, 8]
+])
+
+dot_add_res = matrix1.dot(matrix2)        ←	Dot Function
+
+print(dot_add_res)
+
+
+
+📌 Output
+
+[[110 140 170 200]
+ [350 460 570 680]]
+
+
+
+
+
+
+
+			 Important Points
+🔥🔥🔥════════════════════🔥🔥🔥
+
+
+📌 Rules of Matrix Multiplication
+
+Columns of the first matrix = Rows of the second matrix
+
+
+🔹Your matrices have these shapes:
+
+matrix1: 2 × 4
+matrix2: 2 × 4
+
+For matrix multiplication (A * B), the number of columns in the first matrix must equal the number of rows in the second matrix.
+
+
+
+
+📍  Rule to Remember
+
+To multiply two matrices:
+
+The number of columns in the first matrix must be equal to the number of rows in the second matrix.
+
+(m × n) × (n × p) = (m × p)
+
+For example:
+
+2 × 3   ×   3 × 4   =   2 × 4   ✓
+
+But,
+
+2 × 4   ×   2 × 4   ✗
+
+because the inner dimensions (4 and 2) are not equal.
+
+
+
+
+
+
+
+
+
+
+
+🔖 HOW MATRIX MULTIPLICATION WORKS🔖
+
+
+
+🎯 How Matrix Multiplication Works
+
+Each element in the result matrix is obtained by:
+
+🔸Taking one row from the first matrix.
+🔸Taking one column from the second matrix.
+🔸Multiplying the corresponding elements.
+🔸Adding the products.
+
+
+
+Matrix A:
+
+[1	2	3]
+[4	5	6]
+
+
+
+Matrix B:
+
+[7	  8]
+[9	10]
+[11	12]
+
+
+
+Example
+
+🔸First matrix (2 × 3)
+
+A =
+[1 2 3]
+[4 5 6]
+
+
+🔸Second matrix (3 × 2)
+
+B =
+[7  8 ]
+[9 10]
+[11 12]
+
+
+Find the first element of the result:
+
+(1×7) + (2×9) + (3×11)
+= 7 + 18 + 33
+= 58
+
+Find the second element:
+
+(1×8) + (2×10) + (3×12)
+= 8 + 20 + 36
+= 64
+
+The complete result is:
+
+[ 58   64 ]
+[139  154 ]

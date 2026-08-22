@@ -1,0 +1,853 @@
+
+╭────────────────────────────╮
+│ 			🌟 SERIES🌟	    			   │
+╰────────────────────────────╯
+
+
+A Series is a one-dimensional data structure capable of holding data of any type (integers, floats, strings, booleans, objects, etc.) along with an index.
+
+It stores data in a single column where each value has an associated index (label).
+
+
+It contains:
+
+🔸Values
+🔸Index
+
+
+
+
+
+📦 Creating a Series
+
+Pandas allows creating a Series from many different data sources.
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+       		1️⃣	Series from a List
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+
+Example
+
+import pandas as pd
+
+s = pd.Series([10,20,30,40])
+
+print(s)
+
+
+📌 Output
+
+0    10
+1    20
+2    30
+3    40
+dtype: int64
+
+
+
+Explanation
+
+🔸Values are taken from the list.
+🔸Since no index is provided, Pandas automatically assigns 0, 1, 2, 3.
+🔸Data type is automatically detected.
+
+
+
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+       	2️⃣ Series with Custom Index
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+
+
+📍 Example:
+
+import pandas as pd
+
+marks = pd.Series([78, 68, 91, 40], index=['Arshad', 'Bobby', 'Chris', 'Dokowich'])
+
+print(marks)
+
+
+
+📌 Output
+
+Bobby       68
+Chris       91
+Dokowich    40
+dtype: int64
+
+
+
+
+💡Explanation
+
+→ Instead of numeric indexes,
+0
+1
+2
+3
+
+→ we now have
+Arshad
+Bobby
+Chris
+Dokowich
+
+These labels can be used to access values.
+
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+       	3️⃣ Series from a Dictionary
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+Example:
+
+import pandas as pd
+
+import pandas as pd
+marks = {
+    "Arshad": 91,
+    "Aatif": 89,
+    "Abhi": 77
+}
+print(marks)
+print(type(marks))
+
+s1 = pd.Series(marks)
+print(s1)
+print(type(s1))
+
+
+📌 Output
+
+{'Arshad': 91, 'Aatif': 89, 'Abhi': 77}
+<class 'dict'>
+
+Arshad    91
+Aatif       89
+Abhi       77
+dtype: int64
+<class 'pandas.core.series.Series'>
+
+
+
+
+💡 Explanation
+
+🔸Dictionary keys become indexes.
+🔸Dictionary values become Series values.
+
+
+
+📍Dictionary
+
+Arshad : 91
+Aatif : 89
+
+↓
+
+📍Series
+
+Arshad   91
+Aatif       89
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+       	4️⃣ Series from a NumPy Array
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+📍Example
+
+import numpy as np
+import pandas as pd
+
+arr = np.array([10, 20, 30, 40])
+
+print(arr)
+print(type(arr))
+print()
+
+s1 = pd.Series(arr)
+
+print(s1)
+print(type(s1))
+
+
+
+📌Output
+
+[10 20 30 40]
+<class 'numpy.ndarray'>
+
+0    10
+1    20
+2    30
+3    40
+dtype: int32
+<class 'pandas.core.series.Series'>
+
+
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+       	5️⃣ Series from a Scalar Value
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+A scalar means a single value.
+
+
+📌 Example
+
+import pandas as pd
+
+s = pd.Series(100, index=["A","B","C","D"])
+
+print(s)
+
+📌Output
+
+A    100
+B    100
+C    100
+D    100
+dtype: int64
+
+The value 100 is repeated for every index.
+
+
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+       		6️⃣ Naming a Series
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+
+📌Example:
+
+import pandas as pd
+
+marks = pd.Series([60, 80, 55, 77], name = "Students Marks")
+
+print(marks)
+print("List Name:",marks.name)
+
+📍Output
+
+0    60
+1    80
+2    55
+3    77
+Name: Students Marks, dtype: int64
+
+List Name: Students Marks
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+       	7️⃣ Naming a Series with index
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+📌 Example:
+
+import pandas as pd
+
+marks = pd.Series([60, 80, 55, 77], 
+			index=["Arshad", "Aatif", "Abhi", "Ashu"], 
+			name = "Students Marks"
+		)
+
+print(marks)
+print("List Name:",marks.name)
+
+
+
+📍Output:
+
+Arshad    60
+Aatif     80
+Abhi      55
+Ashu      77
+Name: Students Marks, dtype: int64
+
+List Name: Students Marks
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────╮
+│ 	     🌟 ACCESSING DATA🌟	    	   │
+╰────────────────────────────╯
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+       		By Position
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+
+
+📍Example
+
+import pandas as pd
+
+naming_series = pd.Series([98, 89, 78, 97])
+
+print(naming_series)
+
+print("First Marks:", naming_series[0])
+
+print("Second Marks:", naming_series[1])
+
+print("Last Marks:", naming_series[len(naming_series)-1])
+
+
+
+📍Output
+
+
+0    98
+1    89
+2    78
+3    97
+dtype: int64
+First Marks: 98
+Second Marks: 89
+Last Marks: 97
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+       		By Label (Index)
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+
+
+
+📍Example:
+
+import pandas as pd
+
+marks = pd.Series(
+    [85,90,78],
+    index=["Ali","Sara","John"]
+)
+
+print(marks["Sara"])
+
+
+
+
+📌 Output
+
+90
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+       	✂️ Slicing a Series
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+
+
+ 📌Example:
+
+import pandas as pd
+
+marks = pd.Series([10,20,30,40,50])
+
+print(marks[1:4])
+
+
+📍Output
+
+1    20
+2    30
+3    40
+dtype: int64
+
+
+
+
+
+
+
+
+
+╭────────────────────────────╮
+│ 	🌟 	Checking Properties of a Series🌟	   │
+╰────────────────────────────╯
+
+
+📍Example
+
+import pandas as pd
+
+marks = pd.Series([85,90,78,95])
+
+print("Size :", marks.size)
+print("Shape :", marks.shape)
+print("Dimension :", marks.ndim)
+print("Data Type :", marks.dtype)
+print("Name :", marks.name)
+print("Indexes :", marks.index)
+print("Values :", marks.values)
+
+
+
+📌Output
+
+Size : 4
+Shape : (4,)
+Dimension : 1
+Data Type : int64
+Name : None
+Indexes : RangeIndex(start=0, stop=4, step=1)
+Values : [85 90 78 95]
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────╮
+│ 🌟  Performing Mathematical Operations🌟  │
+╰────────────────────────────╯
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  ✦
+     🔂Mathematical Operation by single element
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+
+
+📍Example:
+
+import pandas as pd
+
+series_data = pd.Series([12, 34, 43], name = "Marks of students")
+
+# Addition single number in each
+print("Add 5.5 in each numbers\n", series_data + 5.5)
+
+# Subtract single number in each
+print("Subtract 1 from each numbers\n", series_data - 1)
+
+#  Multiply number in each
+print("Multiply by 2 in each numbers\n", series_data * 2)
+
+# Divide single number in each
+print("Divide by 5 in each numbers\n", series_data / 5)
+
+
+
+📌 Output
+
+Add 5.5 in each numbers
+ 0    17.5
+1    39.5
+2    48.5
+Name: Marks of students, dtype: float64
+
+Subtract 1 from each numbers
+ 0    11
+1    33
+2    42
+Name: Marks of students, dtype: int64
+
+Multiply by 2 in each numbers
+ 0    24
+1    68
+2    86
+Name: Marks of students, dtype: int64
+
+Divide by 5 in each numbers
+ 0    2.4
+1    6.8
+2    8.6
+Name: Marks of students, dtype: float64
+
+
+
+→ Pandas automatically performs the operation on every element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  ✦
+     	   🔂Mathematical Operation between Two Series
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+
+
+📍Example:
+
+
+# Apply Mathematical opertaion between two series
+
+import pandas as pd
+
+data1 = pd.Series([12, 34, 43])
+
+data2 = pd.Series([12, 34, 43])
+
+
+# Addition single number in each
+print("Add both series\n", data1 + data2)
+
+
+# Subtract single number in each
+print("Subtract  both series\n", data1 - data2)
+
+
+#  Multiply number in each
+print("Multiply  both series\n", data1 * data2)
+
+
+# Divide single number in each
+print("Divide  both series\n", data1 / data2)
+
+
+
+
+
+📌 Output
+
+
+Add both series
+0    24
+1    68
+2    86
+dtype: int64
+
+Subtract  both series
+0    0
+1    0
+2    0
+dtype: int64
+
+Multiply  both series
+0     144
+1    1156
+2    1849
+dtype: int64
+
+Divide  both series
+0    1.0
+1    1.0
+2    1.0
+dtype: float64
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────╮
+│ 🌟 USEFUL STATISTICAL METHODS🌟│
+╰────────────────────────────╯
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+       		SUM METHOD
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+
+📍Example
+
+import pandas as pd
+
+s1 = pd.Series([3, 1, 7, 9])
+
+print("Sum:",s1.sum())
+
+
+📍Output:
+
+Sum: 20
+
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+     MEAN METHOD (Average value)
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+📍Example
+
+import pandas as pd
+
+s1 = pd.Series([3, 1, 7, 10])
+
+print("Mean(Average):",s1.mean())
+
+
+📍Output:
+
+Mean(Average): 5.25
+
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+       	MIN / MAX METHOD
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+
+📍Example
+
+import pandas as pd
+
+s1 = pd.Series([3, 1, 7, 10])
+
+print("Min:",s1.min())
+
+print("Max:",s1.max())
+
+
+📍Output:
+
+Min: 1
+Max: 10
+
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+       		COUNT METHOD
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+
+📍Example
+
+import pandas as pd
+
+s1 = pd.Series([3, 1, 7, 10])
+
+print("Count:",s1.count())
+
+
+📍Output:
+
+Count: 4
+
+
+
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+       		STD METHOD
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+
+STD: Standard deviation tells you how spread out the values are from the mean.
+
+💡Explanation:
+Think of standard deviation (std) as a measure of how far the values are generally spread from the mean.
+
+🔸It means: 	"How much do the salary values generally vary around their average salary?"
+
+
+
+
+📍Example
+
+import pandas as pd
+
+s1 = pd.Series([3, 1, 7, 10])
+
+print("Std:",s1.std())
+
+
+📍Output:
+
+Std: 4.031128874149275
+
+
+
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+       	MEDIAN METHOD
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+
+Median :  Middle value after sorting the data.
+
+👉 If there are even numbers of values, Pandas takes the average of the two middle values.
+
+
+📍Example
+
+import pandas as pd
+
+s1 = pd.Series([3, 1, 7, 10])
+
+print("Median:",s1.median())
+
+
+📍Output:
+
+Median: 5.0
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────╮
+│ 		🌟 Checking Missing Values🌟	   │
+╰────────────────────────────╯
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+       	    ISNULL Method
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+
+📍Example:
+
+import pandas as pd
+import numpy as np
+
+s1 = pd.Series([3, 1, np.nan, 10])
+print(s1.isnull())
+
+
+Output:
+
+0    False
+1    False
+2     True
+3    False
+dtype: bool
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+       	    NOTNULL Method
+✦ ━━━━━━━━━━━━━━━━━━━━━ ✦
+
+📍Example:
+
+import pandas as pd
+import numpy as np
+
+s1 = pd.Series([3, 1, np.nan, 10])
+print(s1.notnull())
+
+
+
+📌Output:
+
+0     True
+1     True
+2    False
+3     True
+dtype: bool
+
+
+
+
+
+
+
+⏱️ 10: 06:00

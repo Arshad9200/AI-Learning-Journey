@@ -1,0 +1,842 @@
+
+
+╔══════════════════════════════════════════╗
+║    					 💻NUMPY⚡   					  	║
+╚══════════════════════════════════════════╝
+
+
+╭──────────────────────────╮
+│	   🌟WHAT IS NUMPY🌟 		      │
+╰──────────────────────────╯
+
+
+NumPy is the python library that provides fast and efficient way to work with arrays, multi- dimensional arrays, matrices and mathematical operations.
+
+
+
+
+
+
+╭──────────────────────────╮
+│	   🌟WHY NUMPY USED🌟 	      │
+╰──────────────────────────╯
+
+Without NumPy, numerical operation in python use standard lists, which is slower and less efficient for large dataset.
+
+
+
+
+
+
+╭──────────────────────────╮
+│	   🌟WHAT NUMPY OFFERS🌟       │
+╰──────────────────────────╯
+
+
+• High-Speed Numerical Calculation
+• Multi-dimensional arrays
+• Mathematical and statistical functions
+• Linear algebra operations
+• Random Number generation
+• Efficient memory usage
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────╮
+│			🌟ARRAY🌟 		      │
+╰──────────────────────────╯
+
+
+
+Array is the collection of similar type of data which is stored in the memory.
+
+Example: 
+num = [3, 5, 11, 89]
+
+
+
+
+
+╭──────────────────────────╮
+│	   🌟NUMPY ARRAY🌟 		      │
+╰──────────────────────────╯
+
+
+NumPy array is like a array but it is optimized for numerical calculations.
+
+NumPy array is the grid of the values and it contains information about the row data, how to locate an element, and how to interpret an element.
+
+To use NumPy array , we have to import the numpy with alias
+
+Example:
+
+import numpy as np
+num = np.array([ 3, 5, 11, 89 ])
+
+
+
+
+
+
+💡 TYPES OF NUMPY ARRAYS ••••••••••••••
+
+
+
+       1. Scalar (0-D Array)
+🔸--------------------------------------🔸
+
+A scalar is a single value with no dimensions.
+
+Example:
+import numpy as np
+arr = np.array(10)
+
+print(arr)
+print(arr.ndim)      ← Returns the dimension of the array
+
+Output:
+10
+Dimention: 0
+
+
+
+
+          2. One-Dimensional Array (1-D)
+🔸-------------------------------------------------------------🔸
+
+A 1D array contains elements in a single row.
+
+Example:
+import numpy as np
+
+arr = np.array([10, 20, 30, 40])
+
+print(arr)
+print(arr.ndim)
+
+Output:
+[10 20 30 40]
+1
+
+
+
+
+
+
+	3. Two-Dimensional Array (2-D)
+🔸-------------------------------------------------------------🔸
+
+A 2D array consists of rows and columns (a matrix).
+
+Example:
+import numpy as np
+arr = np.array([
+    [1, 2, 3],
+    [4, 5, 6]
+])
+
+print(arr)
+print(arr.ndim)
+
+Output:
+[[1 2 3]
+ [4 5 6]]
+2
+
+
+
+
+
+
+	4. Three-Dimensional Array (3-D)
+🔸-------------------------------------------------------------🔸
+
+A 3D array is a collection of multiple 2D arrays.
+
+Example:
+import numpy as np
+
+arr = np.array([
+    [
+        [1,2,3],
+        [4,5,6]
+    ],
+    [
+        [7,8,9],
+        [10,11,12]
+    ]
+])
+
+print(arr)
+print(arr.ndim)
+
+Output:
+
+[[[ 1  2  3]
+  [ 4  5  6]]
+
+ [[ 7  8  9]
+  [10 11 12]]]
+3
+
+
+
+
+
+
+	   5. N-Dimensional Array (N-D)
+🔸-------------------------------------------------------------🔸
+
+NumPy supports arrays with any number of dimensions.
+
+Example:
+import numpy as np
+
+arr = np.array([1,2,3], ndmin=5)
+
+print(arr)
+print(arr.ndim)
+
+Output:
+[[[[[1 2 3]]]]]
+5
+
+
+
+
+
+
+
+
+
+    WHY NUMPY ARRAYS IS FASTER THAN PYTHON LISTS
+🔷═══════════════════════════════════════🔷
+
+      Python Lists
+🔸----------------------🔸
+
+•  It stores different data types of data
+•  It requires more memories
+•  Slower for calculations
+•  List is comma separated
+•  Example: num = [2, 5, 8, 9]
+
+
+         NumPy Array
+🔸-------------------------------🔸
+
+•  It store data of similar types
+•  Faster for calculation
+•  It consume less memories.
+•  List is comma separated
+•  Example: num = [2 5 8 9]
+
+
+
+
+
+
+
+
+
+
+	INSTALLATION & IMPORT OF NUMPY
+🔷═════════════════════════════🔷
+
+🎯We are using JUPITER NOTEBOOK Platform to practise Python Packages
+
+
+
+For Installation of NumPy (in cmd) ------------
+pip install numpy
+
+
+For Import NumPy-------------
+import numpy as np
+
+
+How to verify NumPy is installed ------------------
+Open cmd 
+enter: python -c "import numpy; print(numpy.__version__)"
+It return : 2.5.1
+
+
+
+
+📂 All Code & Practise Files:
+
+🔹 Codes: 
+http://localhost:8888/notebooks/NumPy_for_Machine_Learning.ipynb
+
+🔸Practise Code:
+http://localhost:8888/notebooks/Practise-NumPy_for_ML.ipynb
+
+
+
+
+
+
+
+
+
+
+╭─────────────────────────────────╮
+│    🌟HOW TO CREATE NUMPY ARRAY🌟 		│
+╰─────────────────────────────────╯
+
+
+
+Open Jupiter Notebook  →  Create a file (Numpy_for_ML.ipynb)
+→  Open this file
+
+	*******
+import numpy as np
+
+x = np.array([1,  2, 3, 4])
+print(x)
+print(type(x))
+
+Output: [1 2 3 4]        (Without comma)
+	     <class 'numpy.ndarray'>
+	*******
+
+
+List:
+-------
+
+x = [1,  2, 3, 4]
+print(x)
+print(type(x))
+
+Output: [1, 2, 3, 4]        (comma separated)
+	     <class 'list'>
+
+	*******
+
+
+
+
+
+
+
+
+      📘 Difference Between Python List and NumPy Array
+🔸══════════════════════════════════🔸
+
+
+	1. Data Storage
+🔹-------------------------------🔹
+
+Python List:
+
+Can store different data types in the same list.
+Example: Integers, floats, strings, booleans, etc.
+Example:
+my_list = [10, 20.5, "Python", True]
+
+NumPy Array:
+
+Stores elements of the same data type (homogeneous).
+If different data types are provided, NumPy converts them to a common compatible type.
+Example:
+import numpy as np
+arr = np.array([10, 20, 30])
+
+
+
+
+
+	2. Import Requirement
+🔹------------------------------------------🔹
+
+
+Python List:
+
+Lists are built into Python.
+No import is required.
+
+NumPy Array:
+
+NumPy is an external library.
+It must be imported before use.
+import numpy as np
+
+
+
+
+
+
+	3. Numerical Operations
+🔹----------------------------------------------🔹
+
+
+Python List:
+
+Supports basic operations.
+Mathematical operations on large datasets are slower and less efficient.
+
+NumPy Array:
+
+Designed for fast mathematical and numerical computations.
+Supports vectorized operations without writing loops.
+Widely used in Data Science, Machine Learning, and AI.
+
+
+
+
+
+
+
+	4. Memory Consumption
+🔹----------------------------------------------🔹
+
+
+Python List:
+
+Consumes more memory because each element is stored as a separate Python object.
+
+NumPy Array:
+
+Consumes less memory because all elements are stored in a contiguous block of memory with the same data type.
+
+
+
+
+
+
+
+	5. Performance
+🔹-------------------------------🔹
+
+
+Python List:  Slower for numerical computations on large datasets.
+
+NumPy Array:  Much faster because operations are implemented in optimized C code and use vectorization.
+
+
+
+
+
+
+	6. Ease of Use for Data Processing
+🔹-------------------------------------------------------------🔹
+
+
+Python List:
+
+Suitable for general-purpose programming.
+Less convenient for mathematical and data analysis tasks.
+
+NumPy Array:
+
+More convenient for data analysis, scientific computing, Machine Learning, and AI.
+
+
+
+
+
+
+	7. Multidimensional Support
+🔹------------------------------------------------------🔹
+
+
+Python List:
+
+Can create nested lists, but working with them becomes complicated.
+
+NumPy Array:
+
+Easily supports 1D, 2D, 3D, and higher-dimensional arrays with built-in functions.
+
+
+
+
+
+
+
+
+	  HOW TO CHECK NUMPY ARRAY IS FASTER THAN LIST
+🔸-------------------------------------------------------------------------------------------------------------🔸
+
+
+
+◤━━━━━━━━━━━━◥
+           %timeit
+◣━━━━━━━━━━━━◢
+
+%timeit is an Python magic command used to measure the execution time of a Python statement or code snippet. 
+It automatically runs the code multiple times and reports the average execution time.
+
+
+
+
+LIST --------
+
+%timeit [j**4 for j in range(1, 111)]
+
+Output: 9.94 µs ± 601 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+
+
+
+NUMPY ARRAY -----------
+
+import numpy as np
+%timeit np.arange(1, 111)**4
+
+Output: 2.58 µs ± 268 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+
+
+Here, NumPy Array is talking less time (2.58 ms) but List is taking more time (9.94 ms) 
+So, NumPy Array is faster than List for mathematical operations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔥══════════════════════════════════🔥
+      		HOW TO CREATE NUMPY ARRAY
+🔥══════════════════════════════════🔥
+
+To create NumPy array, we can use the function np.array()
+
+np  →  np is the alias of imported numpy
+
+
+		Step 1: Import NumPy 
+🧠━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🧠
+
+import numpy as np
+
+
+       Step 2: Create array and store in variable
+🧠━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🧠
+
+a = np.array([1, 2, 3, 4])
+
+Output: [1 2 3 4]
+
+
+Example:
+
+import numpy as np
+arr1 = [2, 56, 21, 90, 98]
+x = np.array(arr1)
+print(x)
+
+Output: [2, 56, 21, 90, 98]
+
+
+
+
+
+
+✨ Displaying a direct Variable in Jupyter Notebook
+───────────────────────────────────
+
+In Jupyter Notebook, if a variable is the last line of a cell, its value is displayed automatically without using print(). This feature is specific to Jupyter Notebook (and IPython).
+
+Example:
+
+import numpy as np
+arr1 = [2, 56, 21, 90, 98]
+x = np.array(arr1)
+x
+
+Output: array([2, 56, 21, 90, 98])
+
+
+
+
+
+
+
+✨ How to Check the type of the variable
+────────────────────────────
+
+📌 type() Method
+
+The type() is a built-in python function is used to identify the data type (class) of any variable or object
+
+📝 Example
+import numpy as np
+
+arr1 = [2, 56, 21, 90, 98]
+x = np.array(arr1)
+
+print(type(x))
+
+📌 Output
+<class 'numpy.ndarray'>
+
+
+
+
+
+
+
+✨ Take Data from user, add into a empty list & convert in NumPy Array
+──────────────────────────────────────────────
+l = []
+for i in range(1, 5):
+    data = int(input("Enter the number: "))
+    l.append(data)
+x = np.array(l)
+print(x)
+
+📌 Output
+Enter the number:  12
+Enter the number:  34
+Enter the number:  56
+Enter the number:  78
+[12 34 56 78]
+
+
+
+
+
+
+
+
+
+
+
+╔═════════════════════════════════════════╗
+║  💻 TYPES OF NUMPY ARRAY (BASED ON DIMENSION)⚡║
+╚═════════════════════════════════════════╝
+
+
+
+
+	  0-D Arrays (Scalar Array)
+🔷════════════════════🔷
+
+📌 Definition
+
+A 0-D (Zero-Dimensional) Array contains only one element. It is also known as a Scalar Array because it represents a single value.
+
+📝 Example
+import numpy as np
+
+arr = np.array(10)
+
+print(arr)
+print(arr.ndim)
+
+
+📌Output:
+1
+Dimension:  0
+
+
+
+
+
+	  1-D Arrays (Vector)
+🔷════════════════🔷
+📌 Definition
+
+A 1-D Array contains elements in a single row. It is the simplest and most commonly used type of NumPy array.
+
+Example:
+import numpy as np
+x = np.array([1, 2, 3])
+print(x)
+print("Dimension: ", x.ndim)
+
+📌Output:
+[1 2 3]
+Dimension:  1
+
+
+Note: 1-D array is like a list in python.
+
+
+
+
+
+
+	  2-D Arrays (Matrix)
+🔷════════════════🔷
+
+📌 Definition
+
+A 2-D Array consists of rows and columns. It is commonly referred to as a matrix.
+
+📝 Example
+
+import numpy as np
+x = np.array([
+    [1, 2, 3], 
+    [11, 22, 33]
+])
+print(x)
+print("Dimension: ", x.ndim)
+
+📌Output:
+[[ 1  2  3]
+ [11 22 33]]
+Dimension:  2
+
+Note: Contains rows and columns.
+
+
+
+
+
+⚠️ Important Note
+
+In a 2-D array and all higher-dimensional arrays (3-D, 4-D, N-D), each nested list must contain the same number of elements. 
+
+Otherwise, NumPy cannot create a regular multidimensional array and raises a ValueError.
+
+❌ Incorrect Example (2-D Array)
+import numpy as np
+
+arr = np.array([
+    [1, 2, 3],
+    [4, 5, 6, 7]
+])
+
+📌 Output:
+ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+
+
+
+
+
+
+
+	  3-D Arrays
+🔷════════════🔷
+
+📌 Definition
+
+A 3-D Array is a collection of multiple 2-D arrays stacked together.
+
+📝 Example
+
+import numpy as np
+x = np.array([[[1, 2, 3]]])
+
+print(x)
+print("Dimension: ", x.ndim)
+
+📌Output:
+[[[1 2 3]]]
+Dimension:  3
+
+
+
+
+
+ 🎯Another example
+
+import numpy as np
+x = np.array([[[1, 2, 3],
+              [4, 5, 6],
+              [7, 8, 9]]])
+
+print(x)
+print("Dimension: ", x.ndim)
+
+📌Output:
+[[[1 2 3]
+  [4 5 6]
+  [7 8 9]]]
+Dimension:  3
+
+
+
+
+
+
+
+
+	  N-D Arrays (Multidimensional Array)
+🔷═══════════════════════════🔷
+
+
+📌 Definition
+
+An N-D Array is a NumPy array with more than three dimensions. Here, N represents any number of dimensions (4-D, 5-D, 6-D, and so on).
+
+📝 Example
+
+import numpy as np
+x = np.array([1, 2, 3], ndmin=5)
+
+print(x)
+print("Dimension: ", x.ndim)
+
+
+📌 Output
+[[[[[1 2 3]]]]]
+Dimension:  5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+💡 Trick to Identify the Dimension of a NumPy Array
+══════════════════════════════════════
+📌 Rule
+
+Count the number of opening square brackets ([) on one side of the array.
+
+The number of opening brackets represents the number of dimensions (ndim) of the NumPy array.
+
+
+📊 Quick Reference
+
+Opening Brackets ([)	         		     Dimension
+
+• No bracket						0-D
+• 1 Bracket ([ ])						1-D
+• 2 Brackets ([[ ]])					2-D
+• 3 Brackets ([[[ ]] ])					3-D
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,281 @@
+╔════════════════════════════════════╗
+║  				  💻SPLIT ⚡     					║
+╚════════════════════════════════════╝
+
+
+📌 Definition
+
+Splitting is the process of dividing one NumPy array into multiple smaller arrays.
+
+
+
+📌 Functions Used for Splitting
+
+
+Function					Purpose
+
+split()					Splits into equal parts only
+array_split()				Splits into equal or unequal parts
+hsplit()					Splits horizontally (column-wise)
+vsplit()					Splits vertically (row-wise)
+dsplit()					Splits along the third dimension
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	     		    🌟 SPLIT()🌟 		  		 │
+╰──────────────────────────────╯
+
+📌 Definition
+
+split() divides an array into equal parts.
+
+
+
+📝 Example
+
+import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+print(np.split(arr, 3))
+
+
+📌 Output
+
+[array([1, 2, 3]), array([4, 5, 6]), array([7, 8, 9])]
+
+
+
+⚠️ Important
+
+The array must be divisible equally.
+
+if we give like : np.split(arr, 4)
+
+❌ Error
+
+ValueError: array split does not result in an equal division
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	         🌟 ARRAY_SPLIT() 🌟 		              │
+╰──────────────────────────────╯
+
+
+1 D ARRAY
+==========
+
+📌 Definition
+
+array_split() divides an array into equal or unequal parts.
+
+
+
+📝 Example
+
+
+import numpy as np
+
+arr1 = np.array([1, 2, 3, 4, 5, 6, 7])
+
+print(np.array_split(arr, 3))
+
+
+
+📌 Output
+
+[array([1, 2]), array([3, 4]), array([5, 6]), array([7])]
+
+
+
+
+💡 Explanation
+
+Since 7 elements cannot be divided equally into 3 parts, NumPy automatically distributes the extra element to the first split.
+
+
+
+
+
+2 D ARRAY
+==========
+
+
+📝 Example
+
+
+import numpy as np
+
+arr2d = np.array([
+    [1, 2, 3], 
+    [4, 5, 6]
+])
+
+split_arr2d = np.array_split(arr2d, 4)
+
+print(split_arr2d)
+
+
+
+📌 Output
+
+[array([[1, 2, 3]]), array([[4, 5, 6]]), array([], shape=(0, 3), dtype=int32), array([], shape=(0, 3), dtype=int32)]
+
+
+
+
+
+
+
+
+
+
+
+🔖 INDEXING -  FETCH THE SPECIFIC ARRAY FROM THE OUTPUT 🔖
+
+
+📝 Example
+
+import numpy as np
+arr1 = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+split_arr = np.split(arr1, 3)
+print(split_arr)
+print(split_arr [0])
+
+
+📌Output: 
+
+split_arr = [array([1, 2, 3]), array([4, 5, 6]), array([7, 8, 9])]
+
+first index array = [1, 2, 3]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	         	🌟 HSPLIT() 🌟 		          	      │
+╰──────────────────────────────╯
+
+
+📌 Definition
+
+hsplit() splits a 2-D array column-wise (horizontally).
+
+
+📝 Example
+
+import numpy as np
+
+arr = np.array([[10, 20, 30, 40],
+                [50, 60, 70, 80]])
+
+print(np.hsplit(arr, 2))
+
+
+📌 Output
+
+[array([[10, 20],
+        [50, 60]]),
+
+ array([[30, 40],
+        [70, 80]])]
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	         	🌟 VSPLIT() 🌟 		          	      │
+╰──────────────────────────────╯
+
+
+
+📌 Definition
+
+vsplit() splits a 2-D array row-wise (vertically).
+
+
+📝 Example
+
+import numpy as np
+
+arr = np.array([[10, 20],
+                [30, 40],
+                [50, 60],
+                [70, 80]])
+
+print(np.vsplit(arr, 2))
+
+
+
+📌 Output
+
+[array([[10, 20],
+        [30, 40]]),
+
+ array([[50, 60],
+        [70, 80]])]
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	         	🌟 DSPLIT() 🌟 		          	      │
+╰──────────────────────────────╯
+
+
+📌 Definition
+
+dsplit() splits a 3-D array along the depth (third dimension).
+
+
+
+
+📝 Example
+
+import numpy as np
+
+arr = np.dstack(([10, 20], [30, 40]))
+
+print(np.dsplit(arr, 2))
+
+
+

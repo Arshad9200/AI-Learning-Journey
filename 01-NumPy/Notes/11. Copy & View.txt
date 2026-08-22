@@ -1,0 +1,196 @@
+╔════════════════════════════════════╗
+║  				  💻COPY & VIEW⚡     				║
+╚════════════════════════════════════╝
+
+
+📌 Why Do We Need copy() and view()?
+
+Sometimes we want to create another array from an existing array.
+
+NumPy provides two ways to do this:
+
+✅ copy() → Creates a completely new and independent array.
+
+✅ view() → Creates a new reference to the same array (shares the same data).
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 		🌟 COPY FUNCTION🌟 			       │
+╰──────────────────────────────╯
+
+
+📌 Definition
+
+The copy() function creates a completely new array with a separate memory location.
+
+Any changes made to the copied array do not affect the original array.
+
+
+
+📝 Example
+
+import numpy as np
+arr = np.array([10, 20, 30, 40])
+copy_arr = arr.copy()
+copy_arr[0] = 100
+print("Original Array:", arr)
+print("Copied Array :", copy_arr)
+
+
+
+📌 Output
+
+Original Array: [10 20 30 40]
+Copied Array : [100  20  30  40]
+
+
+💡 Explanation
+copy_arr is an independent array.
+Changing copy_arr does not change arr.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 		🌟 VIEW  FUNCTION🌟 			│
+╰──────────────────────────────╯
+
+
+
+📌 Definition
+
+The view() function creates a new view (reference) of the original array.
+
+Both arrays share the same memory location.
+
+Any changes made to one array are also reflected in the other array.
+
+
+
+
+
+📝 Example
+
+import numpy as np
+arr = np.array([10, 20, 30, 40])
+view_arr = arr.view()
+view_arr[0] = 100
+print("Original Array:", arr)
+print("View Array     :", view_arr)
+
+
+📌 Output
+
+Original Array: [100  20  30  40]
+View Array     : [100  20  30  40]
+
+
+
+💡 Explanation
+
+view_arr shares the same memory as arr .
+both variable point to the same memory location.
+Changing view_arr also changes arr.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭─────────────────────────────────────╮
+│ 	     🌟 How to Check Whether Memory is Shared?🌟 	   │
+╰─────────────────────────────────────╯
+
+
+🔹===============🔹
+       Use the base attribute
+🔹===============🔹
+
+📌 What is base?
+
+The base attribute tells you whether a NumPy array owns its own memory or shares memory with another array.
+
+
+
+
+
+🎯 Case 1: copy() Function ----------
+
+
+
+import numpy as np
+arr = np.array([10, 20, 30])
+copy_arr = arr.copy()
+print(copy_arr.base)
+
+
+📌 Output
+None
+
+
+
+💡 Why None?
+
+Because copy_arr has its own separate memory.
+
+Since it is not using the original array's memory, its base is:  None
+
+Think of it as:
+
+"I am an independent array. I don't depend on any other array."
+
+
+
+
+
+
+
+
+🎯 Case 2: view() Function  ----------
+
+
+import numpy as np
+arr = np.array([10, 20, 30])
+view_arr = arr.view()
+print(view_arr.base)
+
+
+📌 Output
+
+[10 20 30]
+
+
+
+💡Explanation:
+
+The output is the original array because view_arr shares its memory with arr.
+
+So view_arr.base points to the original array.
+
+It is saying:
+
+"I don't have my own memory. My data comes from this array."

@@ -1,0 +1,330 @@
+Booleans 
+
+
+╔══════════════════════════════════════════╗
+║    			 💻DATA TYPE IN NUMPY ARRAYS⚡           	║
+╚══════════════════════════════════════════╝
+
+
+📌 Definition
+
+A data type (dtype) specifies the type of data that can be stored in a NumPy array.
+
+Unlike Python lists, all elements in a NumPy array must have the same data type.
+
+
+
+TYPES OF DATA TYPES ---------------------
+
+
+╭──────────────────────────╮
+│			🌟Boolean🌟 			      │
+╰──────────────────────────╯
+
+
+
+We can store the value in the form of True and False.
+
+📝 Example
+
+import numpy as np
+x = np.array([True, False, False, True, True])
+print(x)
+print("Data Type:",x.dtype)
+
+📌 Output
+[ True False False  True  True]
+Data Type: bool
+
+
+
+
+
+
+╭──────────────────────────╮
+│			🌟INTEGER 🌟			      │
+╰──────────────────────────╯
+
+
+
+We can store the Integer value.
+
+📝 Example
+import numpy as np
+x = np.array([2, 4, 6, 8, 10])
+print(x)
+print("Data Type:",x.dtype)
+
+📌 Output
+[ 2  4  6  8 10]
+Data Type: int32
+
+
+
+
+
+
+
+
+╭──────────────────────────╮
+│			🌟 STRINGS  🌟		      │
+╰──────────────────────────╯
+
+
+We can store the value in form of string.
+
+📝 Example
+
+import numpy as np
+x = np.array(["Arshad", "Gauhar", "Sanu"])
+print(x)
+print("Data Type:",x.dtype)
+
+📌 Output
+['Arshad' 'Gauhar' 'Tannu']
+Data Type: <U6
+
+💡 Explanation
+🔹U stands for Unicode String.
+🔹6 indicates the maximum string length between all given strings("Arshad" has 6 characters).
+
+
+
+
+
+
+
+
+
+╭──────────────────────────╮
+│			🌟COMPLEX🌟 		     │
+╰──────────────────────────╯
+
+
+
+We can store the complex values which are in form of i and j like 3+4j.
+
+📝 Example
+
+import numpy as np
+x = np.array([3+4j, 5+6j, 6])
+print(x)
+print("Data Type:",x.dtype)
+
+📌 Output
+
+[3.+4.j 5.+6.j 6.+0.j]
+Data Type: complex128
+
+💡 Explanation
+If we provide only integer number (6) than it consider the value of j is 0 
+(like 6+0j)
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────╮
+│			🌟FLOAT🌟 			      │
+╰──────────────────────────╯
+
+
+We can store the decimal values.
+
+📝 Example
+
+import numpy as np
+x = np.array([2.44, 5.66, 7])
+print(x)
+print("Data Type:",x.dtype)
+
+📌 Output
+
+[2.44 	5.66 		7.  ]
+Data Type: float64
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────╮
+│	🌟DATA-TYPE CONVERSION🌟    │
+╰──────────────────────────╯
+
+
+
+
+✨Data Type Conversion ( Specify the Data Type While Creating an Array )
+──────────────────────────────────────────────
+
+We can specify the data type using the dtype parameter.
+
+
+📝 Example (Float to Integer)
+
+import numpy as np
+x = np.array([2.44, 5.66, 7], dtype=int)
+print(x)
+print("Data Type:",x.dtype)
+
+📌 Output
+
+[2 5 7]
+Data Type: int32
+
+
+
+
+
+📝 Example ( Integer to Float)
+
+import numpy as np
+x = np.array([3, 5, 7, 9], dtype=float)
+print(x)
+print("Data Type:",x.dtype)
+
+📌 Output
+
+[3. 5. 7. 9.]
+Data Type: float64
+
+
+
+
+
+⚠️ V.V.Important
+
+
+📚 Difference Between dtype=float and dtype="f"
+═════════════════════════════════
+
+Method 1: Using the Data Type Name ---------
+
+
+import numpy as np
+x = np.array([3, 5, 7, 9], dtype=float)
+print(x)
+print("Data Type: ",x.dtype)
+
+Output:
+
+[3. 5. 7. 9.]
+Data Type: float64
+
+💡 Explanation
+🔹float is Python's built-in floating-point data type.
+🔹NumPy converts it to its default floating-point type, which is usually float64.
+🔹Usually creates a float64 array.
+🔹Uses 8 bytes per element.
+
+
+
+
+
+
+Method 2: Using the Data Type Code -------------
+
+import numpy as np
+x = np.array([3, 5, 7, 9], dtype="f")
+print(x)
+print(x.dtype)
+
+Output:
+
+[3. 5. 7. 9.]
+float32
+
+💡 Explanation
+🔹"f" is the NumPy data type code for float32.
+🔹It stores each number using 32 bits (4 bytes).
+🔹Usually creates a float32 array.
+🔹Uses 4 bytes per element.
+
+
+
+
+
+
+
+📚 How to use Data Type as a Function
+═════════════════════════
+
+📝 Example
+
+x = np.array([2, 4, 6, 8])
+new = np.float32(x)
+print(x)
+print(new)
+print(x.dtype)
+print(new.dtype)
+
+📌 Output
+
+[2 4 6 8]
+[2. 4. 6. 8.]
+int32
+float32
+
+⚠️ Note: 
+Here we are using float32 data type as function and passing x array as a arguments like functions do.
+
+
+
+
+
+
+
+
+
+
+✨ astype() Function in NumPy
+═══════════════════════
+
+📌 Definition
+
+The astype() function is used to convert the data type (dtype) of an existing NumPy array into another data type.
+
+It does not modify the original array. Instead, it returns a new array with the specified data type.
+
+Syntax:
+
+array_name.astype(new_data_type)
+
+📝 Example
+
+import numpy as np
+arr = np.array([10, 20, 30, 40])
+new_arr = arr.astype(float)
+print(arr)
+print(new_arr)
+print(new_arr.dtype)
+
+📌 Output
+
+[10 20 30 40]
+[10. 20. 30. 40.]
+float64
+
+
+💡 Explanation
+Original array → int
+New array → float64
+Original array remains unchanged.
+
+
+
+
+
+
+
+

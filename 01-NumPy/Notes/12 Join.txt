@@ -1,0 +1,476 @@
+╔════════════════════════════════════╗
+║  				  💻 JOIN ⚡     						║
+╚════════════════════════════════════╝
+
+
+📌 Why Do We Need Joining and Splitting?
+
+While working with data, sometimes we need to:
+
+✅ Combine multiple arrays into a single array.
+✅ Divide one large array into multiple smaller arrays.
+
+NumPy provides different functions to perform these operations efficiently.
+
+🔸Joining → Combines two or more arrays into a single array.
+🔹Splitting → Divides one array into multiple smaller arrays.
+
+
+
+
+
+
+
+🌟 JOIN NUMPY ARRAY🌟 	
+	      
+
+📌 Definition
+
+Joining is the process of combining two or more NumPy arrays into a single array.
+
+Number of elements of both numpy arrays should be same.
+
+
+
+
+
+📌 Functions Used for Joining
+
+Function							Purpose
+
+concatenate()					Joins arrays along an existing axis
+stack()						Joins arrays by creating a new axis
+hstack()						Joins arrays horizontally
+vstack()						Joins arrays vertically
+dstack()						Joins arrays along the third dimension (depth)
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	  🌟 1. CONCATENATE() Function🌟 	       │
+╰──────────────────────────────╯
+
+
+📌 Definition
+
+concatenate() joins arrays along an existing axis.
+
+
+
+📌 Key Points
+
+✔ All input arrays must have the same number of dimensions.
+✔ Except for the concatenation axis, the size of all other dimensions must be the same.
+✔ The resulting array retains the same number of dimensions as the input arrays.
+
+
+📍 Example
+
+• Concatenating two 1D arrays → Result is a 1D array.
+• Concatenating two 2D arrays → Result is a 2D array.
+• Concatenating two 3D arrays → Result is a 3D array.
+
+
+
+
+📚 Syntax
+np.concatenate((arr1, arr2), axis=0)
+
+
+
+
+
+📝 Example (1-D Array)
+
+import numpy as np
+
+arr1 = np.array([10, 20, 30])
+arr2 = np.array([40, 50, 60])
+
+result = np.concatenate((arr1, arr2))
+print(result)
+
+
+📌 Output
+[10 20 30 40 50 60]
+
+
+
+
+
+
+
+🎯 Easy Trick
+
+axis = 0  → Join Columns (Vertical)
+
+axis = 1  → Join Rows (Horizontal)
+
+
+
+
+
+🔷═══════════════════🔷
+      COLUMNS WISE (AXIS=0)
+🔷═══════════════════🔷
+
+
+📝 Example (2-D Array)
+
+
+import numpy as np
+arr1 = np.array(
+    [
+        [1, 2], 
+        [3, 4]
+    ]
+)
+print(arr1)
+print("Dimension:",arr1.ndim)
+
+arr2 = np.array(
+    [
+        [11, 12], 
+        [13, 14]
+    ]
+)
+print(arr2)
+print("Dimension:",arr2.ndim)
+
+new_arr = np.concatenate((arr1, arr2), axis=0)
+print(new_arr)
+print("Dimension:",new_arr.ndim)
+
+
+
+📌 Output
+
+[[1 2]
+ [3 4]]
+Dimension: 2
+
+[[11 12]
+ [13 14]]
+Dimension: 2
+
+[[ 1  2]
+ [ 3  4]
+ [11 12]
+ [13 14]]
+Dimension: 2
+
+
+
+
+💡Explanation:
+
+If axis=0, it takes the first column of first array (2*1 → 2 rows, 1 columns)  
+take first column of second array   (2*1 → 2 rows, 1 columns)  
+Concatenate/combine both columns , it becomes   (4*1 → 4 rows, 1 columns)  
+
+We do repeat for second columns and others
+
+
+
+
+
+
+
+
+
+
+
+🔷═══════════════════🔷
+             ROW WISE (AXIS=1)
+🔷═══════════════════🔷
+
+📝 Example (2-D Array)
+
+
+arr3 = np.array(
+    [
+        [1, 2], 
+        [3, 4]
+    ]
+)
+print(arr3)
+print("Dimension:",arr3.ndim)
+
+arr4 = np.array(
+    [
+        [11, 12], 
+        [13, 14]
+    ]
+)
+print(arr4)
+print("Dimension:",arr4.ndim)
+
+new_arr1 = np.concatenate((arr3, arr4), axis=1)
+print(new_arr1)
+print("Dimension:",new_arr1.ndim)
+
+
+
+📌 Output
+
+[[1 2]
+ [3 4]]
+Dimension: 2
+
+[[11 12]
+ [13 14]]
+Dimension: 2
+
+[[ 1  2 11 12]
+ [ 3  4 13 14]]
+Dimension: 2
+
+
+
+💡 Explanation:
+
+If axis=1, it takes the first row of first array (1*2 → 1 rows, 2 columns)  
+take first row of second array   (1*2 → 1 rows, 2 columns)  
+Concatenate/combine both columns , it becomes   (1*4 → 1 rows, 4 columns)  
+
+We do repeat for second row and others
+
+
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	     🌟  2. STACK() Function🌟 		              │
+╰──────────────────────────────╯
+
+
+
+
+📌 Definition
+
+The `stack()` function is used to join two or more NumPy arrays by creating a **new axis (dimension)**.
+
+Unlike `concatenate()`, which joins arrays along an existing axis, `stack()` adds a new dimension to the resulting array.
+
+
+📌 Key Points
+
+✔ All input arrays must have the same shape (same dimensions and size).
+✔ A new axis is created in the output array.
+✔ The resulting array has one more dimension than the input arrays.
+
+
+📍 Example
+
+• Stacking two 1D arrays → Result is a 2D array.
+• Stacking two 2D arrays → Result is a 3D array.
+• Stacking two 3D arrays → Result is a 4D array.
+
+
+
+
+
+📌 Common Stack Functions
+
+• `np.stack()`       → Stacks arrays along a new axis.
+• `np.vstack()`     → Stacks arrays vertically (row-wise).
+• `np.hstack()`     → Stacks arrays horizontally (column-wise).
+• `np.dstack()`     → Stacks arrays depth-wise (along the third axis).
+
+
+
+
+
+
+📝 Example (1-D Array)
+
+
+import numpy as np
+arr1 = np.array([1, 2, 3, 4])
+print(arr1)
+print("Dimension:",arr1.ndim)
+
+arr2 = np.array([5, 6, 7, 8])
+print(arr2)
+print("Dimension:",arr1.ndim)
+
+new_arr = np.stack((arr1, arr2))
+print(new_arr)
+print("Dimension:",new_arr.ndim)
+print()
+
+
+
+📌 Output
+
+[1 2 3 4]
+Dimension: 1
+
+[5 6 7 8]
+Dimension: 1
+
+[[1 2 3 4]
+ [5 6 7 8]]
+Dimension: 2
+
+
+
+
+
+
+	        USING AXIS IN STACK
+📌🔖===================📌🔖
+
+AXIS=0
+-------------
+
+new_arr = np.stack((arr1, arr2), axis=0)
+
+Output:
+
+[[1 2 3 4]
+ [5 6 7 8]]
+Dimension: 2
+
+
+
+
+AXIS=1
+-------------
+new_arr = np.stack((arr1, arr2), axis=1)
+
+[[1 5]
+ [2 6]
+ [3 7]
+ [4 8]]
+
+Output:
+Dimension: 2
+
+
+💡 Explanation:
+
+Resultant array will be the 1 greater dimension of input array
+If input array dimension = 1   ⁓  output array dimension = 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	     🌟 3. HSTACK() Function🌟 		      │
+╰──────────────────────────────╯
+
+
+
+📌 Definition
+
+hstack() joins arrays horizontally.
+
+📝 Example
+
+import numpy as np
+
+arr1 = np.array([10, 20, 30])
+arr2 = np.array([40, 50, 60])
+
+print(np.hstack((arr1, arr2)))
+
+
+📌 Output
+
+
+[10 20 30 40 50 60]
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	     🌟  4. VSTACK() Function🌟 		      │
+╰──────────────────────────────╯
+
+
+
+📌 Definition
+
+vstack() joins arrays vertically.
+
+
+📝 Example
+
+import numpy as np
+arr1 = np.array([1, 2, 3, 4])
+
+arr2 = np.array([5, 6, 7, 8])
+
+new_arr = np.vstack((arr1, arr2))
+print(new_arr)
+print("Dimension:",new_arr.ndim)
+
+
+
+📌 Output
+
+
+[[1 2 3 4]
+ [5 6 7 8]]
+
+Dimension: 2
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	     🌟  4. DSTACK() Function🌟 		      │
+╰──────────────────────────────╯
+
+
+📌 Definition
+
+dstack() joins arrays along the third dimension (depth).
+
+
+
+📝 Example
+
+import numpy as np
+
+arr1 = np.array([10, 20, 30])
+arr2 = np.array([40, 50, 60])
+
+print(np.dstack((arr1, arr2)))
+
+
+📌 Output
+
+[[[10 40]
+  [20 50]
+  [30 60]]]

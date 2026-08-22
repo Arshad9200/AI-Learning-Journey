@@ -1,0 +1,584 @@
+
+
+╭────────────────────────────────────╮
+│ 				🌟📈LINE CHART🌟	    	 	 	│
+╰────────────────────────────────────╯
+
+
+👉Example:
+
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y = [10, 20, 30, 40, 50]
+
+plt.plot(x, y)
+
+plt.show()
+
+
+
+🧠 What happens?
+
+x → values on the X-axis
+
+y → values on the Y-axis
+
+x = [1, 2, 3, 4, 5]
+y = [10, 20, 30, 40, 50]
+
+Matplotlib connects the points:
+
+(1,10)
+(2,20)
+(3,30)
+(4,40)
+(5,50)
+
+
+
+
+----------------------------------------------
+        💫  plt.show() 💫
+----------------------------------------------
+
+After applying all the visualization components, use `plt.show()` to display the created graph based on the given data.
+
+👉 `plt.show()` displays the figure/graph on the screen.
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+        	    🏷️ ADD TITLE
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+👉Example;
+
+
+x = [1, 2, 3, 4, 5]
+
+y = [10, 20, 30, 40, 50]
+
+plt.plot(x, y)
+
+plt.title("Sales Report")
+
+plt.show()
+
+
+
+👉Output: It add a title just top of the graph  "Sales Report"
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       🏷️ ADD X-AXIS & Y-AXIS LABLES
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+👉Example:
+
+import matplotlib.pyplot as plt
+
+month = [1, 2, 3, 4, 5]
+sales = [100, 200, 100, 300, 200]
+
+plt.plot(month, sales)
+
+plt.title("Monthly Sales Report")
+
+plt.xlabel("Months")
+
+plt.ylabel("Sales")
+
+plt.show()
+
+
+
+
+👉Output:
+
+It shows "Months" at X-Axis and "Sales" at Y-Axis
+
+		
+		|
+		|
+Sales		|
+		|
+		|
+		 ------------------------------------------------------
+					Months
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       		  CUSTOMIZE CHART
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+For customize chart we can use multiple components like
+🔸color
+🔸marker
+🔸linestyle
+🔸linewidth
+🔸markersize
+
+
+Example:
+
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y = [10, 20, 30, 40, 50]
+
+plt.plot(x, y, color='green', marker='o', linestyle='dashed', linewidth=2, markersize=12)
+plt.show()
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       🎨CHANGE THE LINE COLOR
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+Use the color parameter for line color
+
+
+👉Example:
+
+
+import matplotlib.pyplot as plt
+month = [1, 2, 3, 4, 5]
+sales = [100, 200, 100, 300, 200]
+plt.plot(month, sales, color="Blue")
+plt.show()
+
+
+
+👉Output:
+
+It change the color of the graph line
+
+
+
+
+📍Common colors:
+
+"red"
+"blue"
+"green"
+"black"
+"orange"
+"purple"
+
+🔂You can also use short forms:
+
+"r" → red
+"b" → blue
+"g" → green
+"k" → black
+
+
+💡Remember:
+
+color → changes the color of the line.
+
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       		  🔵 ADD MARKER
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+Marker shows the symbol at each data points where x & y value intercepts.
+It means , in this chart 'o' is the marker
+
+
+👉Example:
+
+import matplotlib.pyplot as plt
+
+month = [1, 2, 3, 4, 5]
+sales = [100, 200, 100, 300, 200]
+
+plt.plot(month, sales, marker="o")
+plt.show()
+
+
+
+👉Output:
+
+It shows the little circle at the point where x and y value intercepts
+
+
+
+
+
+💡Common markers:
+
+"o" → Circle
+"*" → Star
+"s" → Square
+"^" → Triangle
+"x" → X
+"+" → Plus
+"." → Point
+
+
+
+💡Remember:
+
+marker → shows a symbol at each data point.
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       		  🔵 ADD GRID
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+
+
+👉Example:
+
+import matplotlib.pyplot as plt
+
+month = [1, 2, 3, 4, 5]
+sales = [100, 200, 100, 300, 200]
+
+plt.plot(month, sales)
+
+plt.grid()
+
+plt.show()
+
+
+
+
+🔂Output:
+
+It add the Horizontal & Vertical lines in the graph which makes the graph easy to understand 
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       		  🔵 ADD LINESTYLE
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+Linestyle controls how the line looks.
+
+
+👉🏻Example:
+
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y = [10, 20, 30, 40, 50]
+
+plt.plot(x, y, linestyle="--")
+
+plt.show()
+
+
+
+
+
+📍Common styles:
+
+"-"   → Solid line
+"--"  → Dashed line
+":"   → Dotted line
+"-."  → Dash-dot line
+
+
+
+
+💡Remember:
+
+linestyle → changes the pattern/style of the line.
+
+
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       		  ♎ ADD LINEWIDTH
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+linewidth controls the thickness of the line.
+
+
+
+👉🏻Example:
+
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y = [10, 20, 30, 40, 50]
+
+plt.plot(x, y, linewidth=3)
+
+plt.show()
+
+
+
+
+📍For example:
+
+linewidth=1 → Thin
+linewidth=2 → Medium
+linewidth=3 → Thick
+
+
+
+💡Remember:
+
+linewidth → controls line thickness.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       		  ♎ ADD MARKERSIZE
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+markersize controls the size of the marker.
+
+
+
+
+👉🏻Example:
+
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y = [10, 20, 30, 40, 50]
+
+plt.plot(x, y, markersize=10)
+
+plt.show()
+
+
+
+
+
+📍For example:
+
+markersize=5  → Small marker
+markersize=10 → Large marker
+
+
+
+💡Remember:
+
+markersize → controls the size of the data-point marker.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       		  📐 FIG SIZE
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+figsize is used to control the size of the chart/figure.
+
+
+🔹 Syntax
+plt.figure(figsize=(width, height))
+
+→  The values are measured in inches.
+
+
+
+
+ 👉Example
+
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4]
+y = [10, 20, 15, 25]
+
+plt.figure(figsize=(8, 5))
+
+plt.plot(x, y)
+plt.show()
+
+
+
+💡Here:
+
+figsize=(8, 5)
+
+8 → Width
+5 → Height
+
+So the chart will be 8 inches wide and 5 inches tall.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────╮
+│ 		🌟📈ADVANCED LINE CHART🌟	    	 	│
+╰────────────────────────────────────╯
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+     			♎ LABEL & LEGEND
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+----------------------
+  🔸Label🔸
+-----------------------
+
+Label is used to give a name to each plotted line just like blue line 
+It means 2025 Sales Data & Red line means 2026 Sales Data & both labels are associate in the graph.
+
+
+👉Example:
+
+plt.plot(x, sales2025, label="2025 Sales Data")
+plt.plot(x, sales2026, label="2026 Sales Data")
+
+
+
+
+
+
+
+--------------------------
+ 🔸 Legend 🔸
+--------------------------
+
+The labels are later displayed using legend.
+
+👉Example:
+
+plt.legend()
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+     ♎ ADD MULTIPLE LINE GRAPH/CHART
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+👉Example:
+
+import matplotlib.pyplot as plt
+x = ["Jan", "Feb", "Mar", "Apr", "May", "June"]
+
+sales2025 = [100, 700, 500, 200, 300, 750]
+sales2026 = [150, 600, 500, 300, 450, 650]
+
+plt.plot(x, sales2025, label="2025 Sales Data")
+plt.plot(x, sales2026, label="2026 Sales Data")
+
+plt.title("Year on Year Sales Data")
+
+plt.xlabel("Months")
+
+plt.ylabel("Sales")
+
+plt.legend()
+
+plt.show()
+
+
+
+
+👉Output: 
+
+It create a graph in the form of Line Graph
+X-axis → Months
+Y-axis → Two lines are there 
+		(i) sales2025 data
+		(ii) sales2026 data
+Which helps to easily compare the sales of both years
+

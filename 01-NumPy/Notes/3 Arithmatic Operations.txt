@@ -1,0 +1,636 @@
+
+
+╔══════════════════════════════════════════╗
+║     💻ARITHMATIC OPERATIONS IN NUMPY ARRAYS⚡     	║
+╚══════════════════════════════════════════╝
+
+📌 Definition
+
+NumPy allows you to perform arithmetic operations directly on arrays without using loops.
+
+These operations are performed element-wise, meaning each element in one array is operated on with the corresponding element in the other array.
+
+
+
+
+
+✨ Types of Arithmetic Operations
+──────────────────────
+
+➕ Addition
+➖ Subtraction
+✖️ Multiplication
+➗ Division
+🟰 Modulus (Remainder)
+🔼 Power (Exponentiation)
+
+
+
+
+
+
+
+
+
+
+
+=================
+1-DIMENSION ARRAY
+=================
+
+
+
+
+╭────────────────────────────────────────╮
+│				🌟 1. Addition (+) 🌟 					  │
+╰────────────────────────────────────────╯
+
+
+▫️Add Single Number of the each element of the Array ---------------
+
+📝 Example
+
+import numpy as np
+var1 = np.array([2, 4, 6, 8])
+var2 = var1 + 10      or    res_var = np.add(var1, 4)
+print("var1:", var1)
+print("var2:", var2)
+
+📌 Output
+
+var1: [2 4 6 8]
+var2: [12 14 16 18]
+
+
+Note: 
+This method is used when we have to add same number to each element
+
+
+
+▫️Add Array with another Array ---------------
+
+📝 Example
+
+import numpy as np
+var3 = np.array([2, 4, 6, 8])
+var4 = np.array([10, 10, 10, 10])
+sum_res = var3 + var4     or    res_var = np.add(var3, var4)
+print("Addition:", sum_res)
+
+📌 Output
+
+Addition: [12 14 16 18]
+
+
+Note: 
+This method is used when we have to add different number to each element
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────────╮
+│				🌟  2. Subtraction (-)🌟 					  │
+╰────────────────────────────────────────╯
+
+
+
+▫️Subtracts Single Number of the each element of the Array ---------------
+
+📝 Example
+
+import numpy as np
+var1 = np.array([20, 40, 60, 80])
+var_res = var1 - 10     or    res_var = np.subtract(var3, 10)
+print("var_res:", var_res)
+
+📌 Output
+
+var_res: [10 30 50 70]
+
+
+Note: 
+This method is used when we have to subtract same number to each element
+
+
+
+▫️Subtracts Array with another Array ---------------
+
+📝 Example
+
+import numpy as np
+var3 = np.array([20, 40, 60, 80])
+var4 = np.array([10, 20, 30, 40])
+sub_res = var3 - var4       or    res_var = np.subtract(var3, var4)
+print("Subtraction:", sub_res)
+
+📌 Output
+
+Subtraction: [10 20 30 40]
+
+
+Note: 
+This method is used when we have to subtract different number to each element
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────────╮
+│				🌟  3. Multiplication (*) 🌟 				  │
+╰────────────────────────────────────────╯
+
+
+▫️Multiply Array with another Array ---------------
+
+
+📝 Example
+
+import numpy as np
+var1 = np.array([20, 40, 60, 80])
+mul_res = var1 * 10    or    res_var = np.multiply(var1, 10)
+print("Multiplication:", mul_res)
+
+📌 Output
+
+mul_res: [200 400 600 800]
+
+
+Note: 
+This method is used when we have to multiply the array with same number 
+
+
+
+
+▫️Multiply Array with another Array ---------------
+
+📝 Example
+
+import numpy as np
+var3 = np.array([20, 40, 60, 80])
+var4 = np.array([10, 20, 30, 40])
+mul_res = var3 * var4    or    res_var = np.multiply(var3, var4)
+print("Multiplication:", mul_res)
+
+📌 Output
+
+Multiplication: [ 200  800 1800 3200]
+
+
+
+Note: 
+This method is used when we have to multiply different number to each element
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────────╮
+│				🌟  4. Division (/) 🌟 					  │
+╰────────────────────────────────────────╯
+
+
+
+▫️Divide Array with another Array ---------------
+
+
+📝 Example
+
+import numpy as np
+var1 = np.array([20, 40, 60, 80])
+div_res = var1 / 10     or    res_var = np.divide(var1, 10)
+print("Division:", div_res)
+
+📌 Output
+
+Division: [2. 4. 6. 8.]
+
+
+Note: 
+This method is used when we have to multiply the array with same number 
+
+
+
+
+▫️Divide Array with another Array ---------------
+
+📝 Example
+
+import numpy as np
+var3 = np.array([20, 40, 60, 80])
+var4 = np.array([10, 20, 30, 40])
+div_res = var3 / var4    or    res_var = np.divide(var3, var4)
+print("Division:", div_res)
+
+📌 Output
+
+Division: [2. 2. 2. 2.]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────────╮
+│			🌟5.  Modulus (Remainder) (%) 🌟 			  │
+╰────────────────────────────────────────╯
+
+
+▫️Find Modulus of the Array ---------------
+
+
+📝 Example
+
+import numpy as np
+var1 = np.array([22, 44, 66, 88])
+mod_res = var1 % 10     or    res_var = np.mod(var1, 10)
+print("Modulus:", mod_res)
+
+📌 Output
+
+Modulus: [2 4 6 8]
+
+
+Note: 
+This method is used when we have to find modulus the array with same number 
+
+
+
+
+▫️Find Modulus of one Array with another Array ---------------
+
+📝 Example
+
+import numpy as np
+var3 = np.array([23, 42, 61, 85])
+var4 = np.array([10, 20, 30, 40])
+mod_res = var3 % var4      or    res_var = np.mod(var3, var4)
+print("Modulus:", mod_res)
+
+📌 Output
+
+Modulus: [3 2 1 5]
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────────╮
+│			🌟 6. Exponential (Power) (^)🌟 			 	  │
+╰────────────────────────────────────────╯
+
+
+
+▫️Find Exponential (Power) of the each element of the Array ---------------
+
+📝 Example
+
+import numpy as np
+var1 = np.array([2, 4, 6, 8])
+exp_res = var1 ** 2        or    res_var = np.power(var1, 2)
+print("Exponential:", exp_res)
+
+📌 Output
+
+Exponential: [ 4 16 36 64]
+
+Note: 
+This method is used when we have to find the exponential value of each element of the array  
+
+
+
+
+▫️Find Exponential (Power) of an Array with another Array ---------------
+
+📝 Example
+
+import numpy as np
+var3 = np.array([1, 2, 3, 4])
+var4 = np.array([1, 2, 3, 4])
+exp_res = var3 ** var4         or    res_var = np.power(var3, var4)
+print("Exponential:", exp_res)
+
+
+📌 Output
+
+Exponential: [  1   4  27 256]
+
+
+Note: 
+This method is used when we have to add different number to each element
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────────╮
+│				🌟7. Reciprocal (1/a) 🌟 				  │
+╰────────────────────────────────────────╯
+
+
+
+▫️Find Exponential (Power) of the each element of the Array ---------------
+
+📝 Example
+
+import numpy as np
+var1 = np.array([2, 4, 6, 8])
+rec_res = 1/var1                    or rec_res = np.reciprocal(var1)
+print("Reciprocal:", rec_res)
+
+
+📌 Output
+
+Reciprocal: [0.5        0.25       0.16666667 0.125     ]
+
+
+
+Method  
+rec_res = np.reciprocal(var1)
+
+📌 Output
+Reciprocal: [0 0 0 0]
+⚠️ Why is the output [0 0 0 0]?
+
+var1 is an integer array, so np.reciprocal() performs integer reciprocal:
+
+1/2 = 0.5 → stored as 0
+1/4 = 0.25 → stored as 0
+1/6 ≈ 0.166 → stored as 0
+1/8 = 0.125 → stored as 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================
+2-DIMENSION ARRAY
+=================
+
+
+
+
+
+╭────────────────────────────────────────╮
+│				🌟 1. Addition (+) 🌟 					  │
+╰────────────────────────────────────────╯
+
+📝 Example
+
+import numpy as np
+var1 = np.array([[2, 4, 6, 8],
+                 [3, 5, 7, 9]])
+var2 = np.array([[10, 10, 10, 10],
+                 [2, 4, 6, 8]])
+sum_res = var1 + var2
+print(sum_res)
+
+
+📌 Output
+
+[[12 14 16 18]
+ [ 5  9 13 17]]
+
+
+
+
+
+
+
+
+╭────────────────────────────────────────╮
+│				🌟  2. Subtraction (-)🌟 					  │
+╰────────────────────────────────────────╯
+
+
+
+📝 Example
+
+import numpy as np
+var1 = np.array([[2, 4, 6, 8],
+                 [3, 5, 7, 9]])
+var2 = np.array([[1, 1, 1, 1],
+                 [2, 4, 6, 8]])
+sub_res = var1 - var2
+print(sub_res)
+
+
+📌 Output
+
+[[1 3 5 7]
+ [1 1 1 1]]
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────────╮
+│				🌟  3. Multiplication (*) 🌟 				  │
+╰────────────────────────────────────────╯
+
+📝 Example
+
+import numpy as np
+var1 = np.array([[2, 4, 6, 8],
+                 [3, 5, 7, 9]])
+var2 = np.array([[1, 1, 1, 1],
+                 [2, 4, 6, 8]])
+mul_res = var1 * var2
+print(mul_res)
+
+
+📌 Output
+
+[[ 2  4  6  8]
+ [ 6 20 42 72]]
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────────╮
+│				🌟  4. Division (/) 🌟 					  │
+╰────────────────────────────────────────╯
+
+
+📝 Example
+
+import numpy as np
+var1 = np.array([[2, 4, 6, 8],
+                 [3, 5, 7, 9]])
+var2 = np.array([[1, 1, 1, 1],
+                 [2, 4, 6, 8]])
+div_res = var1 / var2
+print(div_res)
+
+
+📌 Output:
+
+[[2.         4.         6.         8.        ]
+ [1.5        1.25       1.16666667 1.125     ]]
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────────╮
+│			🌟5.  Modulus (Remainder) (%) 🌟 			  │
+╰────────────────────────────────────────╯
+
+
+📝 Example
+
+
+import numpy as np
+var1 = np.array([[2, 4, 6, 8],
+                 [3, 5, 7, 9]])
+var2 = np.array([[1, 1, 1, 1],
+                 [2, 4, 6, 8]])
+mod_res = var1 % var2
+print(mod_res)
+
+
+📌 Output
+
+[[0 0 0 0]
+ [1 1 1 1]]
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────────╮
+│			🌟 6. Exponential (Power) (^)🌟 			 	  │
+╰────────────────────────────────────────╯
+
+
+📝 Example
+
+
+import numpy as np
+var1 = np.array([[2, 4, 6, 8],
+                 [3, 5, 7, 9]])
+var2 = np.array([[1, 1, 1, 1],
+                 [2, 4, 6, 8]])
+exp_res = var1 ** var2
+print(exp_res)
+
+
+
+📌 Output
+
+[[       2        4        6        		8]
+ [       9      625   117649  43046721]]
+
+
+
+
+
+
+
+
+╭────────────────────────────────────────╮
+│				🌟7. Reciprocal (1/a) 🌟 				  │
+╰────────────────────────────────────────╯
+
+
+import numpy as np
+arr1 = np.array([
+                    [1, 2],
+                    [3, 4]
+])
+arr2 = np.array([
+                    [10, 20],
+                    [30, 40]
+])
+
+exp = 1 / arr1
+print("Reciprocal - Without Function")
+print(exp)
+print("using Function")
+print(np.reciprocal(arr1, arr2))
+
+
+
+📌 Output
+
+Reciprocal - Without Function
+[[1.         0.5       ]
+ [0.33333333 0.25      ]]
+
+using Function
+[[1 0]
+ [0 0]]

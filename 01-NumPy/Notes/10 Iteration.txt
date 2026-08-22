@@ -1,0 +1,837 @@
+╔════════════════════════════════════╗
+║  				  💻ITERATION⚡     				║
+╚════════════════════════════════════╝
+
+
+
+╭──────────────────────────────╮
+│ 			🌟 What is Iteration? 🌟 		│
+╰──────────────────────────────╯
+
+Iteration is the process of visiting or accessing each element of a NumPy array one by one.
+
+In simple words,
+
+Iteration means traversing through all the elements of an array one at a time.
+
+
+
+
+
+
+╭──────────────────────────────╮
+│       🌟 Why Do We Need Iteration? 🌟 		│
+╰──────────────────────────────╯
+
+Iteration is useful when you want to:
+
+✅ Access each element individually.
+✅ Perform an operation on every element.
+✅ Display all elements one by one.
+✅ Apply conditions or calculations to each element.
+
+
+
+📚 Syntax
+
+for variable in array:
+    # Code
+
+
+
+
+══════════════════════════════════════
+			📘 USING FOR LOOP 📘
+══════════════════════════════════════
+
+
+╭──────────────────────────────╮
+│       		🌟 Iterating a 1-D Array 🌟 		│
+╰──────────────────────────────╯
+
+📝 Example:
+
+
+🎯Method 1: Iteration Using elements ----------
+
+import numpy as np
+arr_1D = np.array([2, 3, 4, 5])
+print(arr_1D)
+for i in arr_1D:
+    print(i)
+ 
+
+
+🎯 Method 2: Iteration Using Index ----------
+
+import numpy as np
+arr_1D = np.array([2, 3, 4, 5])
+print(arr_1D)
+for i in range(len(arr_1D)):
+    print(arr_1D[i])
+
+
+
+
+📌 Output
+10
+20
+30
+40
+
+Explanation:
+
+The loop visits each element one by one and prints it.
+
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│       		🌟 Iterating a 2-D Array 🌟 		│
+╰──────────────────────────────╯
+
+
+
+		Access Every Row of a 2-D Array 
+🔸------------------------------------------------------------------🔸
+
+📝 Example:
+
+import numpy as np
+arr_2D = np.array(
+    [
+        [2, 3, 4, 5],
+        [7, 9, 11, 13]
+    ]
+)
+print(arr_2D)
+print("Dimension:", arr_2D.ndim, "| Shape:", arr_2D.shape)
+for i in arr_2D:
+    print(i)
+
+
+
+📌 Output
+
+[[ 2  3  4  5]
+ [ 7  9 11 13]]
+Dimension: 2 | Shape: (2, 4)
+
+[2 3 4 5]		→ Row 1
+[ 7  9 11 13]	→ Row 2
+
+
+⚠️ Explanation:
+
+In a 2-D array, the first for loop iterates row by row, not element by element.
+
+
+
+
+
+
+
+
+
+	Access Every Element of a 2-D Array 
+🔸------------------------------------------------------------------🔸
+
+
+📝 Example:
+
+import numpy as np
+arr_2D = np.array(
+    [
+        [2, 3, 4, 5],
+        [7, 9, 11, 13]
+    ]
+)
+print(arr_2D)
+print("Dimension:", arr_2D.ndim, "| Shape:", arr_2D.shape)
+for i in arr_2D:
+    for j in i:
+        print(j)
+
+
+
+📌 Output
+
+[[ 2  3  4  5]
+ [ 7  9 11 13]]
+Dimension: 2 | Shape: (2, 4)
+
+2
+3
+4
+5
+7
+9
+11
+13
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│       		🌟 Iterating a 3-D Array 🌟 		│
+╰──────────────────────────────╯
+
+
+
+	Access Every Row of a 3-D Array 
+🔸------------------------------------------------------------------🔸
+
+📝 Example:
+
+import numpy as np
+arr_2D = np.array(
+    [
+        [
+            [2, 3, 4, 5],
+            [7, 9, 11, 13]
+        ],
+        [
+            [12, 13, 14, 15],
+            [7, 9, 11, 13]
+        ],
+    ]
+    
+        
+)
+print(arr_2D)
+print("Dimension:", arr_2D.ndim, "| Shape:", arr_2D.shape)
+for i in arr_2D:
+    print(i)
+
+
+
+📌 Output
+
+[[[ 2  3  4  5]
+  [ 7  9 11 13]]
+
+ [[12 13 14 15]
+  [ 7  9 11 13]]]
+
+Dimension: 3 | Shape: (2, 2, 4)
+
+[[ 2  3  4  5]      → Row 1
+ [ 7  9 11 13]]	→ Row 2
+[[12 13 14 15]	→ Row 3
+ [ 7  9 11 13]]	→ Row 4
+
+
+
+
+
+
+
+
+
+	     Access Every Element of a 3-D Array 
+🔸------------------------------------------------------------------🔸
+
+
+📝 Example:
+
+# 3D Array (Element by Element)
+import numpy as np
+arr_3D = np.array(
+    [
+        [
+            [2, 3, 4, 5],
+            [7, 9, 11, 13]
+        ],
+        [
+            [12, 13, 14, 15],
+            [7, 9, 11, 13]
+        ],
+    ]       
+)
+print(arr_3D)
+print("Dimension:", arr_3D.ndim, "| Shape:", arr_3D.shape)
+for i in arr_3D:
+    for j in i:
+        for k in j:
+            print(k)
+
+
+
+
+📌 Output
+
+[[[ 2  3  4  5]
+  [ 7  9 11 13]]
+
+ [[12 13 14 15]
+  [ 7  9 11 13]]]
+Dimension: 3 | Shape: (2, 2, 4)
+2
+3
+4
+5
+7
+9
+11
+13
+12
+13
+14
+15
+7
+9
+11
+13
+
+
+
+
+
+
+
+🎯 Trick to Remember Iteration
+═════════════════════
+
+The number of for loops required to access each individual element is equal to the number of dimensions (ndim) of the array.
+
+Formula ---------
+
+No. of Dimensions (ndim) = No. of for Loops
+
+
+
+🚀 Super Easy Memory Trick
+
+1D Array  → 1 for loop
+
+2D Array  → 2 for loops
+
+3D Array  → 3 for loops
+
+4D Array  → 4 for loops
+
+
+
+
+
+
+
+
+
+
+
+
+
+══════════════════════════════════════
+		📘 USING NDITER METHOD 📘
+══════════════════════════════════════
+
+
+
+╭──────────────────────────────╮
+│       	  🌟 NDITER METHOD 🌟 		      │
+╰──────────────────────────────╯
+
+
+
+📌 Recommended Way: Use numpy.nditer()
+
+When working with multi-dimensional arrays, NumPy provides the nditer() function.
+
+It automatically iterates through every element, regardless of the array's dimensions.
+
+
+
+
+📍 Why use nditer()?
+
+No need to write multiple nested loops.
+Works with arrays of any dimension.
+Cleaner and more readable code.
+
+
+
+
+
+
+	Access Every Element of a 1-D Array using nditer() method
+🔸--------------------------------------------------------------------------------------------------🔸
+
+📝 Example:
+
+import numpy as np
+arr_1D = np.array([2, 3, 4, 5])
+print(arr_1D)
+print("Dimension:", arr_1D.ndim, "| Shape:", arr_1D.shape)
+for i in np.nditer(arr_1D):
+    print(i)
+
+
+
+📌 Output
+
+[2 3 4 5]
+Dimension: 1 | Shape: (4,)
+2
+3
+4
+5
+
+
+
+
+
+
+
+
+		Access Every Element of a 2-D Array using nditer() method
+🔸--------------------------------------------------------------------------------------------------🔸
+
+
+📝 Example:
+
+import numpy as np
+arr_2D = np.array(
+    [
+        [2, 3, 4, 5],
+        [7, 9, 11, 13]
+    ]
+)
+print(arr_2D)
+print("Dimension:", arr_2D.ndim, "| Shape:", arr_2D.shape)
+
+for i in np.nditer(arr_2D):
+    print(i)
+
+
+
+
+📌 Output
+
+[[ 2  3  4  5]
+ [ 7  9 11 13]]
+Dimension: 2 | Shape: (2, 4)
+2
+3
+4
+5
+7
+9
+11
+13
+
+
+
+
+
+
+
+	Access Every Element of a 3-D Array using nditer() method
+🔸--------------------------------------------------------------------------------------------------🔸
+
+
+📝 Example:
+
+import numpy as np
+arr_3D = np.array(
+    [
+        [
+            [2, 3, 4, 5],
+            [7, 9, 11, 13]
+        ],
+        [
+            [12, 13, 14, 15],
+            [7, 9, 11, 13]
+        ],
+    ]
+)
+print(arr_3D)
+print("Dimension:", arr_3D.ndim, "| Shape:", arr_3D.shape)
+for i in np.nditer(arr_3D):
+    print(i)
+
+
+
+
+📌 Output
+
+[[[ 2  3  4  5]
+  [ 7  9 11 13]]
+
+ [[12 13 14 15]
+  [ 7  9 11 13]]]
+Dimension: 3 | Shape: (2, 2, 4)
+2
+3
+4
+5
+7
+9
+11
+13
+12
+13
+14
+15
+7
+9
+11
+13
+
+
+
+
+
+
+🎯 Difference Between Indexing, Slicing, and Iteration
+
+Operation				Purpose
+
+Indexing				Access a single element
+Slicing				Access multiple elements (a range)
+Iteration				Access every element one by one
+
+
+
+
+
+
+
+
+
+
+
+
+
+✨ Iterating with Data Type Conversion (flags & op_dtypes)
+══════════════════════════════════════
+
+
+📌 flags=['buffered']
+
+Purpose: Creates a temporary buffer so NumPy can safely convert the data type while iterating.
+
+Why use it?
+
+Required when using op_dtypes.
+Prevents data type conversion errors.
+
+
+
+
+📌 op_dtypes=['S']
+
+Purpose: Converts each element to the specified data type during iteration.
+
+Here, "S" means Byte String.
+
+Example Output:
+
+10  →  b'10'
+20  →  b'20'
+30  →  b'30'
+
+
+
+
+
+
+🎯 Convert the data type during iteration using buffered and op_dtypes methods
+
+	=================
+		Integer  →  String
+	=================
+
+📝 Example:
+
+import numpy as np
+arr_2D = np.array(
+    [
+        [2, 3, 4, 5],
+        [7, 9, 11, 13]
+    ]
+)
+print(arr_2D)
+print("Dimension:", arr_2D.ndim, "| Shape:", arr_2D.shape)
+
+for i in np.nditer(arr_2D, flags=['buffered'], op_dtypes=["S"]):
+    print(i)
+
+
+📌 Output
+
+[[ 2  3  4  5]
+ [ 7  9 11 13]]
+Dimension: 2 | Shape: (2, 4)
+b'2'
+b'3'
+b'4'
+b'5'
+b'7'
+b'9'
+b'11'
+b'13'
+
+
+💡 Explanation
+
+The prefix b stands for Byte.
+
+🔹When you use:
+
+op_dtypes=['S'] →	NumPy converts each integer into a byte string while iterating.
+
+
+Original Value	   Converted Value
+10					b'10'
+20					b'20'
+30					b'30'
+
+Note: Only the values returned by nditer() are converted. The original array remains unchanged.
+
+
+
+
+
+
+
+
+
+	=================
+		Integer  →  Float
+	=================
+
+
+📝 Example:
+
+import numpy as np
+arr_2D = np.array(
+    [
+        [2, 3, 4, 5],
+        [7, 9, 11, 13]
+    ]
+)
+print(arr_2D)
+print("Dimension:", arr_2D.ndim, "| Shape:", arr_2D.shape)
+
+for i in np.nditer(arr_2D, flags=['buffered'], op_dtypes=["float"]):
+    print(i)
+
+
+📌 Output
+
+[[ 2  3  4  5]
+ [ 7  9 11 13]]
+Dimension: 2 | Shape: (2, 4)
+2.0
+3.0
+4.0
+5.0
+7.0
+9.0
+11.0
+13.0
+
+
+
+Original Value	   Converted Value
+10				10.2
+20				20.0
+30				30.0
+
+Note: Only the values returned by nditer() are converted. The original array remains unchanged.
+
+
+
+
+
+
+
+
+
+
+
+══════════════════════════════════════
+	   📘 USING  NDENUMERATE  METHOD 📘
+══════════════════════════════════════
+
+		✨ Return Index and Element Using ndenumerate()
+🚀══════════════════════════════════════════🚀
+
+
+📌 What is ndenumerate()?
+
+The numpy.ndenumerate() function is used to iterate through a NumPy array and return both the index (position) and the corresponding element at the same time.
+
+
+In simple words,
+
+ndenumerate() returns the index along with the value of each element during iteration.
+
+
+
+
+
+
+
+❓ Why Do We Use ndenumerate()?
+
+We use ndenumerate() when we need:
+
+✅ The index (position) of each element.
+✅ The value of each element.
+✅ Both index and value together while iterating.
+
+
+
+
+
+
+
+
+📝 Syntax
+
+for index, value in np.ndenumerate(array):
+    print(index, value)
+
+
+
+==========
+     1-D Array
+===========
+
+📝 Example
+
+import numpy as np
+arr_1D = np.array([2, 3, 4, 5])
+print(arr_1D)
+print("Dimension:", arr_1D.ndim, "| Shape:", arr_1D.shape)
+for index, num in np.ndenumerate(arr_1D):
+    print(index, num)
+
+
+📌 Output
+
+[2 3 4 5]
+Dimension: 1 | Shape: (4,)
+(0,) 2
+(1,) 3
+(2,) 4
+(3,) 5
+
+
+
+
+
+
+
+
+
+
+
+==========
+     2-D Array
+===========
+
+📝 Example
+
+import numpy as np
+arr_2D = np.array([
+    [2, 3, 4],
+    [12, 23, 45]
+])
+print(arr_2D)
+print("Dimension:", arr_2D.ndim, "| Shape:", arr_2D.shape)
+for index, num in np.ndenumerate(arr_2D):
+    print(index, num)
+
+
+
+📌 Output
+
+[[ 2  3  4]
+ [12 23 45]]
+Dimension: 2 | Shape: (2, 3)
+(0, 0) 2
+(0, 1) 3
+(0, 2) 4
+(1, 0) 12
+(1, 1) 23
+(1, 2) 45
+
+
+
+
+
+
+
+
+
+
+
+==========
+     3-D Array
+===========
+
+📝 Example
+
+import numpy as np
+arr_3D = np.array(
+    [
+        [
+            [2, 3, 4, 5],
+            [7, 9, 11, 13]
+        ],
+        [
+            [12, 13, 14, 15],
+            [7, 9, 11, 13]
+        ],
+    ]
+)
+print(arr_3D)
+print("Dimension:", arr_3D.ndim, "| Shape:", arr_3D.shape)
+
+for index, num in np.ndenumerate(arr_3D):
+    print(index, num)
+
+
+
+
+📌 Output
+
+[[[ 2  3  4  5]
+  [ 7  9 11 13]]
+
+ [[12 13 14 15]
+  [ 7  9 11 13]]]
+
+Dimension: 3 | Shape: (2, 2, 4)
+
+(0, 0, 0) 2
+(0, 0, 1) 3
+(0, 0, 2) 4
+(0, 0, 3) 5
+(0, 1, 0) 7
+(0, 1, 1) 9
+(0, 1, 2) 11
+(0, 1, 3) 13
+(1, 0, 0) 12
+(1, 0, 1) 13
+(1, 0, 2) 14
+(1, 0, 3) 15
+(1, 1, 0) 7
+(1, 1, 1) 9
+(1, 1, 2) 11
+(1, 1, 3) 13
+

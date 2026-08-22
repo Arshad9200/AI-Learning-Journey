@@ -1,0 +1,154 @@
+
+╔════════════════════════════════════╗
+║ 					💻 PANDAS ⚡      			 ║
+╚════════════════════════════════════╝
+
+
+
+
+╭──────────────────────────────╮
+│ 			🌟 What is Pandas?🌟 			    │
+╰──────────────────────────────╯
+
+Pandas is one of the most popular Python libraries used for data manipulation, data analysis, and data cleaning.
+
+It provides powerful and easy-to-use data structures that help work with structured data such as:
+
+📄 CSV Files
+📊 Excel Files
+🗄️ SQL Databases
+🌐 JSON Data
+📋 Tables
+
+It is built on top of NumPy, making data operations fast and efficient.
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 		🌟 Why Do We Use Pandas? 🌟 		│
+╰──────────────────────────────╯
+
+
+
+Pandas makes it easy to:
+
+🔹 Read data from different file formats
+
+🔹 Clean missing or incorrect data
+
+🔹  Filter and sort records
+
+🔹  Analyze large datasets
+
+🔹  Perform calculations
+
+🔹  Merge multiple datasets
+
+🔹  Generate summaries and reports
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 			🌟 Features of Pandas 🌟		 │
+╰──────────────────────────────╯
+
+🔹 Fast and Efficient
+
+🔹 Easy Data Cleaning
+
+🔹 Powerful Data Analysis
+
+🔹 Supports Multiple File Formats
+
+🔹 Handles Missing Values
+
+🔹 Time Series Analysis
+
+🔹 Grouping and Aggregation
+
+🔹 Data Visualization Support (with Matplotlib)
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	🌟 How to Installing & Import Pandas 🌟	 │
+╰──────────────────────────────╯
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+     		   How to Install Pandas
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+pip install pandas
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+        How to Import Pandas
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+import pandas as pd
+
+
+→ pd is simply an alias (short name) for Pandas.
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+       		How to Check Versions
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+import pandas as pd
+
+print(pd.__version__)
+
+
+📌Output: 
+
+2.1.4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────────────╮
+│ 		🌟 KEY DATA STRUCTURE IN PANDAS🌟	     │
+╰──────────────────────────────────────╯
+
+1. SERIES DATA STRUCTURE
+
+2. DATA FRAME DATA STRUCTURE
+
+
+
+

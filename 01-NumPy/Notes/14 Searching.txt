@@ -1,0 +1,531 @@
+╔════════════════════════════════════╗
+║  				  💻SEARCHING⚡     				║
+╚════════════════════════════════════╝
+
+
+📌 What is Searching?
+
+Searching is the process of finding the index (position) of one or more elements in a NumPy array.
+
+In simple words,
+
+Searching helps us find where a particular value is located in the array.
+
+
+
+
+❓ Why Do We Need Searching?
+
+─────────────────────────
+
+Searching is useful when you want to:
+
+✅ Find the position of a specific value.
+✅ Find all occurrences of a value.
+✅ Apply conditions (greater than, less than, equal to, etc.).
+✅ Filter data based on conditions.
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	      🌟 WHERE FUNCTION 🌟 		  	│
+╰──────────────────────────────╯
+
+📌 Definition
+
+The np.where() function is used to find the index (position) of elements that satisfy a given condition.
+
+
+📚 Syntax	:	np.where(condition)
+
+
+
+
+
+
+✅══════════════════════════════✅
+       		SEARCH IN 1-D NUMPY ARRAY
+✅══════════════════════════════✅
+
+
+
+
+📝 Example 1: Search a Specific Value (Find the index of 4 in numpy array)
+
+
+import numpy as np
+arr = np.array([1, 2, 3, 4, 4, 7, 4, 2, 1, 3])
+
+result = np.where(arr == 4)
+print("4 is available at index :", result)
+
+
+📌 Output
+
+4 is available at index : (array([3, 4, 6], dtype=int64),)
+
+
+
+
+💡 Explanation
+Index :   0 1  2  3  4  5  6  7  8  9
+Array : [1, 2, 3, 4, 4, 7, 4, 2, 1, 3]]
+            		↑   ↑      ↑
+
+The value 4 is present at:
+
+Index 3
+Index 4
+Index 6
+
+So the output is		→	(array([3, 4, 6]),)
+
+
+
+
+
+
+
+
+
+
+
+
+📝 Example 2: Find Even Number Index
+
+import numpy as np
+arr = np.array([1, 2, 3, 4, 4, 7, 4, 2, 1, 3])
+
+even = np.where(arr % 2 == 0)
+print("Index of even number:", even)
+
+
+
+📌 Output
+Index of even number: (array([1, 3, 4, 6, 7], dtype=int64),)
+
+
+💡 Explanation
+
+Even numbers are:
+
+2  → Index 1
+4  → Index 3
+4  → Index 4
+4  → Index 6
+2  → Index 7
+
+
+
+
+
+
+
+
+📝 Example 3: Find Odd Number Index
+
+
+import numpy as np
+arr = np.array([1, 2, 3, 4, 4, 7, 4, 2, 1, 3])
+
+odd = np.where(arr % 2 != 0)
+print("Index of odd number:", odd)
+
+
+
+📌 Output
+
+Index of odd number: (array([0, 2, 5, 8, 9], dtype=int64),)
+
+
+
+
+
+
+
+
+
+
+📝 Example 4: Find Greater than 3 Numbers Index
+
+
+import numpy as np
+arr = np.array([1, 2, 3, 4, 4, 7, 4, 2, 1, 3])
+
+greater_than_2 = np.where(arr > 3)
+print("Index of greater than 2 :", greater_than_2)
+
+
+📌 Output
+
+Index of greater than 2 : (array([3, 4, 5, 6], dtype=int64),)
+
+
+
+
+
+
+
+
+✅══════════════════════════════✅
+       		SEARCH IN 2-D NUMPY ARRAY
+✅══════════════════════════════✅
+
+
+
+
+
+📝 Example 1: Search in a 2-D Array
+
+
+import numpy as np
+arr2d = np.array(
+    [
+        [1, 2, 3, 4],
+        [4, 7, 4, 2]
+    ]
+)
+print(arr2d)
+print("Dimension:",arr2d.ndim)
+result = np.where(arr2d == 2)
+print("4 is available at index :", result)
+
+
+
+📌 Output
+
+[[1 2 3 4]
+ [4 7 4 2]]
+Dimension: 2
+4 is available at index : (array([0, 1], dtype=int64), array([1, 3], dtype=int64))
+
+
+
+
+💡Explanation
+
+
+        		Column
+                0        1       2      3
+       	     ┌────────────┐
+Row 0  │1  	2  	3	4       │
+Row 1  │4	7   	4	2       │
+             └────────────┘
+
+The value 2 is found at:
+
+Row 0, Column 1
+Row 1, Column 3
+
+
+It return the row values and columns values  [row, row]  &  [column, column] in pair instead of [row, column]
+
+
+
+
+
+
+
+
+📌 Access the Row and Column Arrays Separately ===========
+
+
+Example
+
+
+import numpy as np
+
+arr2d = np.array([
+    [1, 2, 3, 4],
+    [4, 7, 4, 2]
+])
+
+rows, cols = np.where(arr2d == 4)
+print(rows)
+print(cols)
+
+
+Output
+
+[0 1 1]
+[3 0 2]
+
+
+💡 Explanation
+
+
+🔹Step 1: Understand the Array
+
+
+			      Column
+       		     0        1         2        3
+      		┌───┬───┬───┬───┐
+Row 0 	│ 1 	   │ 2      │ 3      │ 4     │
+      		├───┼───┼───┼───┤
+Row 1 	│ 4      │  7    │     4  │     2   │
+      		└───┴───┴───┴───┘
+
+
+
+The value 4 appears at:
+
+Row 0, Column 3
+Row 1, Column 0
+Row 1, Column 2
+
+
+🔹Step 2: What np.where() Returns
+
+result = np.where(arr2d == 4)
+print(result)
+
+Output:
+
+(array([0, 1, 1]), array([3, 0, 2]))
+
+
+
+This is actually:
+
+result = (
+    array([0, 1, 1]),   # Row indices
+    array([3, 0, 2])    # Column indices
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	      🌟 SEARCH-SORTED ARRAY🌟 		│
+╰──────────────────────────────╯
+
+
+📌 What is searchsorted()?
+
+The searchsorted() function is used to find the index / position where a new element should be inserted in a sorted array so that the array remains sorted.
+
+
+📌 Real Example (Step by Step)
+
+Suppose we have a sorted array:
+
+[1, 2, 3, 5]
+
+Step 1: We want to insert 4 into the array.
+
+Step 2: np.searchsorted() checks the correct position where 4 should be inserted.
+
+Step 3: It returns 3, which is the index where 4 should be placed.
+
+Step 4: Insert 4 at index 3.
+
+[1, 2, 3, 4, 5]
+
+✅ The array remains sorted.
+
+Note: np.searchsorted() only returns the index (position). It does not insert the value into the array.
+
+
+
+
+
+📚 Syntax	→	np.searchsorted(array, value)
+
+
+
+📝 Example 1: Find the Insertion Position
+
+import numpy as np
+arr = np.array([10, 20, 30, 40, 50])
+result = np.searchsorted(arr, 25)
+print(result)
+
+
+📌 Output
+2
+
+
+
+💡 Explanation
+
+Index :   0   1   2   3   4
+Array : [10, 20, 30, 40, 50]
+               	       ↑
+             	Insert 25
+
+If we insert 25 at index 2, the array becomes:
+
+[10, 20, 25, 30, 40, 50]
+
+The array remains sorted.
+
+
+
+
+
+
+📝 Example 2: Using searchsorted() on an Unsorted Array
+
+
+np.searchsorted() is designed to work with sorted arrays.
+
+If Array was not sorted than It check the less number in array from given number and return the next index of the less number 
+
+
+📌Example:
+
+import numpy as np
+arr = np.array([4, 2, 13, 5])
+print(arr)
+result = np.searchsorted(arr, 3)
+print("4 should insert at:", result, "index")
+
+
+📌 Output
+
+4 should insert at: 2 index
+
+
+
+ 💡Explanation
+
+It checks the less number from given number 3, it find 2 (index=1), than it return the next index of the less number means It return 2 (index=2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+✨ Handling Duplicate Values -------------
+
+
+
+Suppose the array contains duplicate values.
+
+
+Example;
+
+import numpy as np
+arr = np.array([10, 20, 20, 20, 30])
+
+
+
+-------------------------------------------
+📌 side="left" (Default)
+-------------------------------------------
+
+print(np.searchsorted(arr, 20, side="left"))
+
+
+📌 Output
+1
+
+
+
+🔖 Important:
+
+If we did not pass side="left" than by default it traverse from the left. So for left traversing, side is not given.
+
+
+
+
+
+💡 Explanation
+
+Returns the first possible position of 20.
+
+Index : 0   1   2   3   4
+Array :10  20  20  20  30
+               ↑
+
+
+
+
+-------------------------------------------
+   📌 side="right"
+-------------------------------------------
+
+
+print(np.searchsorted(arr, 20, side="right"))
+
+
+📌 Output
+4
+
+
+💡 Explanation
+
+Returns the position after the last occurrence of 20.
+
+Index : 4   3    2     1    0
+Array :10  20  20  20  30
+                  ↑
+
+If inserted at index 4:
+
+[10, 20, 20, 20, 20, 30]
+
+The array remains sorted.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+✨ Search Multiple Values  -------------
+
+Example:
+
+import numpy as np
+
+arr = np.array([10, 20, 30, 40, 50])
+
+result2 = np.searchsorted(arr, [15, 25, 35])
+print("[15, 25, 35] should insert at:", result2, "index")
+
+
+
+
+📌 Output
+
+[15, 25, 35] should insert at: [1 2] index
+
+
+💡 Explanation
+
+Value	Insert Position
+15			1
+25			2
+35			3

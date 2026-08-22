@@ -1,0 +1,1672 @@
+╭────────────────────────────╮
+│ 			🌟 DATA FRAME🌟	    	   │
+╰────────────────────────────╯
+
+
+
+
+▓▒░ 💻 What is a DataFrame?   ░▒▓
+
+
+A DataFrame is a two-dimensional (2D), labeled data structure in Pandas.
+
+It looks similar to an Excel spreadsheet or a SQL table, containing:
+
+A DataFrame can contain different data types in different columns.
+
+
+📊 Rows
+📋 Columns
+🏷️ Row indexes
+🏷️ Column names
+🔢 Values
+
+
+
+📌 Simple Example
+
+       Name    		   Age   		 City
+
+0      Ali     		    22    		Delhi
+1      Sara    		    24    		Mumbai
+2      John    		    21    		Lucknow
+
+
+Here:
+
+🔹Name, Age, City 	→	 Columns
+🔹0, 1, 2 				→ 	  Row Index
+🔹Each row represents one record
+🔹Each column represents one attribute
+
+
+
+
+
+
+
+▓▒░ 💻  Structure of  Data Frame  ░▒▓
+
+
+
+
+
+Consider this DataFrame:
+
+📌Example
+
+import pandas as pd
+
+df = pd.DataFrame({"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [25, 24, 25], "Salary": [24000, 28000, 18000]})
+
+print(df)
+print(type(df))
+
+
+📍Output
+
+       Name  Age  Salary
+
+0    Arshad   25   24000
+1     Aatif      24   28000
+2    Abhijeet   25   18000
+
+<class 'pandas.core.frame.DataFrame'>
+
+
+
+
+
+The structure is:
+
+             Columns
+           ↓          ↓       ↓
+       Name    Age     Marks
+        ↓       ↓       ↓
+Index   Values
+  ↓
+  0      Ali     22      85
+  1      Sara    24      90
+  2      John    21      78
+
+
+
+
+
+
+
+▓▒░ 💻  Data Frame Components    ░▒▓
+
+
+📌 DataFrame Components
+
+
+A DataFrame mainly consists of:
+
+-----------------
+ 1️⃣ Index
+------------
+
+Identifies each row.
+	0
+	1
+	2
+
+
+
+-----------------
+  2️⃣ Columns
+------------------
+
+Represent different attributes.
+	Name
+	Age
+	Marks
+
+
+
+
+-----------------
+     3️⃣ Data
+-----------------
+
+The actual values stored in the DataFrame.
+
+Ali    22    85
+Sara   24    90
+John   21    78
+
+
+
+
+
+
+
+
+
+
+
+🚀 Creating a DataFrame ---------------
+
+There are several ways to create a DataFrame.
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		1️⃣ DataFrame from Dictionary
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+This is one of the most common methods.
+
+import pandas as pd
+
+data = {
+    "Name": ["Ali", "Sara", "John"],
+    "Age": [22, 24, 21],
+    "Marks": [85, 90, 78]
+}
+
+df = pd.DataFrame(data)
+
+print(df)
+
+
+
+📍Output
+   Name  Age  Marks
+0   Ali       22     85
+1  Sara     24     90
+2  John     21     78
+
+
+📌 Important
+
+🔹Dictionary keys become column names.
+
+🔹Dictionary values become column data.
+
+"Name"  → Column
+"Age"   → Column
+"Marks" → Column
+
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		2️⃣ DataFrame from List
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+You can create a DataFrame using a list of lists.
+
+import pandas as pd
+
+data = [
+    ["Ali", 22, 85],
+    ["Sara", 24, 90],
+    ["John", 21, 78]
+]
+
+df = pd.DataFrame(
+    data,
+    columns=["Name", "Age", "Marks"]
+)
+
+print(df)
+
+📍Output:
+
+   Name  	Age  	Marks
+0   Ali   	  22     	   85
+1  Sara   	   24    	    90
+2  John   	    21    	     78
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	3️⃣ DataFrame from List of Dictionaries
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+
+
+import pandas as pd
+
+data = [
+    {"Name": "Ali", "Age": 22},
+    {"Name": "Sara", "Age": 24},
+    {"Name": "John", "Age": 21}
+]
+
+df = pd.DataFrame(data)
+
+print(df)
+
+
+📍Output:
+
+   Name  Age
+0   Ali   22
+1  Sara   24
+2  John   21
+
+💡This method is particularly useful when data comes from JSON or APIs.
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		4️⃣ DataFrame from NumPy Array
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+
+import numpy as np
+import pandas as pd
+
+arr = np.array([
+    [10, 20],
+    [30, 40],
+    [50, 60]
+])
+
+df = pd.DataFrame(
+    arr,
+    columns=["A", "B"]
+)
+
+print(df)
+
+
+📍Output:
+
+    A   B
+0  10  20
+1  30  40
+2  50  60
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		5️⃣ DataFrame from Multiple Series
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+
+A DataFrame can also be created from multiple Series.
+
+import pandas as pd
+
+name = pd.Series(["Ali", "Sara", "John"])
+age = pd.Series([22, 24, 21])
+
+df = pd.DataFrame({
+    "Name": name,
+    "Age": age
+})
+
+print(df)
+
+
+📍Output:
+
+   Name  Age
+0   Ali      22
+1  Sara     24
+2  John     21
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		🏷️ CUSTOM INDEX
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+
+
+By default, Pandas creates:
+
+0
+1
+2
+
+You can provide your own index.
+
+
+
+📌Example:
+
+import pandas as pd
+
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [25, 24, 25], "Salary": [24000, 28000, 18000]}
+
+df = pd.DataFrame(data, index=["Student1", "Student2", "Student3"])
+
+print(df)
+print(type(df))
+
+
+
+
+
+📍Output:
+
+                  Name  Age  Salary
+
+Student1    Arshad   25   24000
+Student2     Aatif      24   28000
+Student3   Abhijeet    25   18000
+
+<class 'pandas.core.frame.DataFrame'>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+⏱️ 12:06:00
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		🔍 VIEWING A DATAFRAME
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+▓▒░ 💻 PRINT METHOD (print())   ░▒▓
+
+
+Displays the complete DataFrame.
+
+Example:
+
+print(df)
+
+
+
+
+
+▓▒░ 💻 HEAD METHOD (head())   ░▒▓
+
+
+Shows the first 5 rows by default.
+
+print(df.head())
+
+You can specify the number of rows:
+
+print(df.head(3))
+
+
+
+
+
+
+▓▒░ 💻 TAIL METHOD ( tail() )  ░▒▓
+
+
+Shows the last 5 rows.
+
+print(df.tail())
+
+Example:
+
+print(df.tail(2))
+
+Shows the last 2 rows.
+
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		🔍 DATAFRAME PROPERTIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+▓▒░ 💻 SHAPE  ░▒▓
+
+
+print(df.shape)
+
+Output:
+(3, 3)
+
+Meaning:
+
+3 Rows
+3 Columns
+
+
+
+
+
+▓▒░ 💻 SIZE  ░▒▓
+
+print(df.size)
+
+Output:
+
+9
+
+Because:
+
+Rows × Columns
+3 × 3 = 9
+
+
+
+
+▓▒░ 💻 NDIM  ░▒▓
+
+print(df.ndim)
+
+Output:
+
+2
+
+📌Note: A DataFrame is a 2D data structure.
+
+
+
+
+
+
+▓▒░ 💻 COLUMNS  ░▒▓
+
+print(df.columns)
+
+Output:
+
+Index(['Name', 'Age', 'Marks'], dtype='object')
+
+
+
+
+
+▓▒░ 💻 INDEX  ░▒▓
+
+print(df.index)
+
+Output:
+
+RangeIndex(start=0, stop=3, step=1)
+
+
+
+
+
+
+
+▓▒░ 💻 DTYPES  ░▒▓
+
+print(df.dtypes)
+
+Example:
+
+Name     object
+Age       int64
+Marks     int64
+dtype: object
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		🔍 SELECTING A COLUMN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+
+
+
+▓▒░ 💻 SELECTING SINGLE COLUMNS  ░▒▓
+
+
+You can select a single column using its name.
+
+Example:
+
+import pandas as pd
+
+df = pd.DataFrame({"Name": ["Arshad", "Abhijeet", "Aatif", "Ashu"], "Age": [26, 24, 23, 35], "Married": [False, False, False, False]})
+
+print(df["Name"])
+
+
+
+Output:
+
+0      Arshad
+1    Abhijeet
+2       Aatif
+3        Ashu
+Name: Name, dtype: object
+
+📍Notice that the result is a Series.
+
+
+
+💡Important Concept
+
+DataFrame
+   ↓
+Select one column
+   ↓
+Series
+
+
+
+
+
+
+
+▓▒░ 💻 SELECTING MULTIPLE COLUMNS  ░▒▓
+
+
+Use a list of column names inside double square brackets.
+
+Example:
+
+import pandas as pd
+
+df = pd.DataFrame({"Name": ["Arshad", "Abhijeet", "Aatif", "Ashu"], "Age": [26, 24, 23, 35], "Married": [False, False, False, False]})
+
+print(df[["Name", "Age"]])
+
+
+
+
+📌Output:
+
+       Name    Age
+0    Arshad     26
+1  Abhijeet     24
+2     Aatif        23
+3      Ashu       35
+
+👉🏻The result is still a DataFrame.
+
+
+
+💡Remember
+
+🔸Single Column → df["Name"]     →    ➡️ Series
+
+🔸Multiple Columns  →  df[["Name", "Marks"]] → ➡️ DataFrame
+
+
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		🔍 SELECTING ROWS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+
+▓▒░ 💻 ILOC METHOD  ░▒▓
+
+
+
+--------------------------------------------
+✅Selecting Single Rows✅
+--------------------------------------------
+
+iloc selects data based on integer position.
+iloc uses row/column position numbers, starting from 0.
+
+
+Example:
+
+import pandas as pd
+
+df = pd.DataFrame({"Name": ["Arshad", "Abhijeet", "Aatif", "Ashu"], "Age": [26, 24, 23, 35], "Married": [False, False, False, False]})
+
+print(df.iloc[2])
+
+
+📌Output
+
+This selects the third row.
+
+Output:
+
+Name       Aatif
+Age           23
+Married    False
+Name: 2, dtype: object
+
+
+
+
+
+
+
+
+
+------------------------------------------------------
+   ✅Selecting Multiple Rows✅
+-------------------------------------------------------
+
+
+Example:
+
+import pandas as pd
+
+df = pd.DataFrame({"Name": ["Arshad", "Abhijeet", "Aatif", "Ashu"], "Age": [26, 24, 23, 35], "Married": [False, False, False, False]})
+
+# Selecting multiple rows
+print(df.iloc[1:3])
+
+
+
+
+📌Output:
+
+       Name  Age  Married
+1  Abhijeet   24    False
+2     Aatif      23    False
+
+
+
+
+
+
+
+
+
+
+▓▒░ 💻 LOC METHOD  ░▒▓
+
+
+loc selects data based on labels or indexes or custom index.
+loc uses the actual row/column labels.
+
+
+-----------------------------------------------
+🏷️ Selecting Data Using loc
+-----------------------------------------------
+
+loc is used for labels (index)
+
+
+
+💡 Selecting rows by default index number ---------------
+
+
+Example:
+
+import pandas as pd
+data = {"Name": ["Arshad", "Abhijeet", "Aatif", "Ashu"], "Age": [26, 24, 23, 35], "Married": [False, False, False, False]}
+
+df = pd.DataFrame(data)
+
+print(df.loc[1])
+
+
+
+📌 Output:
+
+Name       Abhijeet
+Age              24
+Married       False
+Name: 1, dtype: object
+
+
+
+
+
+
+
+
+
+
+💡 Selecting rows by Custom index  ---------------
+
+
+Example:
+
+data = {"Name": ["Arshad", "Abhijeet", "Aatif", "Ashu"], "Age": [26, 24, 23, 35], "Married": [False, False, False, False]}
+
+df = pd.DataFrame(data, index = ["frnd1", "frnd2", "frnd3", "frnd4"])
+
+print(df.loc["frnd2"])
+
+
+📌Output:
+
+Name       Abhijeet
+Age              24
+Married       False
+Name: frnd2, dtype: object
+
+
+
+
+
+
+
+💡 Selecting Multiple rows by Custom index/default index  ---------------
+
+
+Example:
+
+import pandas as pd
+
+data = [
+    {"Name": "Arshad", "Salary": 24000, "Dept": "SaaS", "Exp": 1.4},
+    {"Name": "Ashu", "Salary": 18000, "Dept": "AWS", "Exp": 1.2},
+    {"Name": "Abhijeet", "Salary": 18000, "Dept": "Cloud", "Exp": 1.3},
+    {"Name": "Aatif", "Salary": 29000, "Dept": "AI/ML", "Exp": 2}
+]
+
+df = pd.DataFrame(data, index = ["A", "B", "C", "D"])
+
+
+print("Third & Fourth Rows:\n", df.loc[["C", "D"]]) 		# fetch multiple rows based on custom Index
+
+
+📌Output:
+
+Third & Fourth Rows:
+        Name  Salary   Dept  Exp
+C  Abhijeet   18000  Cloud  1.3
+D     Aatif   29000  AI/ML  2.0
+
+
+
+
+
+
+
+
+
+
+⭐ Remember
+
+iloc → i = integer → Data POSITION
+loc  → label → Custom Index / LABEL
+
+For example:
+
+df.iloc[1, 2]
+
+means 2nd row, 3rd column.
+
+
+
+df.loc["B", "Salary"]
+
+means row "B", column "Salary".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		🔍 SELECTING ROWS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+
+▓▒░ 💻ADDING COLUMNS  ░▒▓
+
+
+
+-----------------------------------------------------
+✅➕ Adding a New Column✅
+-----------------------------------------------------
+
+⌛Example:
+
+import pandas as pd
+data = {"Name": ["Arshad", "Abhijeet", "Aatif", "Ashu"], "Age": [26, 24, 23, 35], "Married": [False, False, False, False]}
+
+df = pd.DataFrame(data)
+
+df["City"] = ["Siwan", "Gorakhpur", "Gonda", "Highway"]
+
+print(df)
+
+
+
+Output:
+
+       Name  Age  Married       City
+0    Arshad   26    False      Siwan
+1   Abhijeet   24    False      Gorakhpur
+2     Aatif      23      False      Gonda
+3      Ashu    35      False       Highway
+
+
+
+Note: City columns are added with its respective values.
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------
+✅✏️ Updating a Column✅
+-----------------------------------------------------
+
+
+Example:
+
+import pandas as pd
+data = {"Name": ["Arshad", "Abhijeet", "Aatif", "Ashu"], "Age": [26, 24, 23, 35], "Married": [False, False, False, False]}
+
+df = pd.DataFrame(data)
+
+df["Married"] = [True, False, True, True]
+
+print(df)
+
+
+
+
+📌Output:
+
+       Name  Age  Married
+0    Arshad   26     True
+1  Abhijeet   24    False
+2     Aatif   23     True
+3      Ashu   35     True
+
+
+
+💡Important: The existing values will be replaced with new value.
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------
+✅❌Deleting Column (drop() method )✅
+-----------------------------------------------------------------------
+
+
+👉🏻Example:
+
+import pandas as pd
+
+data = {"Name": ["Arshad", "Abhijeet", "Aatif", "Ashu"], "Age": [26, 24, 23, 35], "Married": [False, False, False, False]}
+
+df = pd.DataFrame(data)
+
+df = df.drop("Married", axis=1)
+
+print(df)
+
+
+
+👉🏻Output:
+
+       Name  Age
+0    Arshad   26
+1  Abhijeet   24
+2     Aatif   23
+3      Ashu   35
+
+
+
+💡Important
+
+axis=1 means It will traverse columns wise (Horizontally) and find the "Married" column and delete it
+
+
+
+
+axis=1 → Column
+axis=0 → Row
+
+
+
+
+
+
+-----------------------------------------------------
+       ✅❌Deleting Rows ✅
+-----------------------------------------------------
+
+
+💡DELETE THE ROWS BY DEFAULT INDEX 💡
+
+
+
+Example:
+
+import pandas as pd
+
+data = {"Name": ["Arshad", "Abhijeet", "Aatif", "Ashu"], "Age": [26, 24, 23, 35], "Married": [False, False, False, False]}
+
+df = pd.DataFrame(data)
+
+df = df.drop(1, axis=0)
+
+print(df)
+
+
+
+
+📌Output:
+
+     Name  	Age  	Married
+
+0  Arshad   	 26    	  False
+2   Aatif   		 23    	  False
+3    Ashu   	 35    	  False
+
+
+
+💡Important:
+
+This removes the row with index 1 (Abhijeet).
+
+
+
+
+
+
+
+
+
+
+
+
+💡DELETE THE ROWS BY CUSTOM INDEX 💡
+
+
+
+Example:
+
+import pandas as pd
+
+data = {
+    "Name": ["Arshad", "Aatif", "Abhijeet", "Ashu"],
+    "Salary": [24000, 29000, 18000, 18000],
+    "Dept": ["Saas", "AI/ML", "Cloud", "AWS"]
+}
+
+df = pd.DataFrame(data, index=["A", "B", "C", "D"])
+
+print(df)
+
+# Delete Dept Column - by custom index
+
+df = df.drop("C", axis=0)
+
+print(df)
+
+
+
+📌Output:
+
+Original Array
+
+       Name  Salary   Dept
+A    Arshad   24000   Saas
+B     Aatif   29000  AI/ML
+C  Abhijeet   18000  Cloud
+D      Ashu   18000    AWS
+
+
+After Drop
+
+     Name  Salary   Dept
+A  Arshad   24000   Saas
+B   Aatif   29000  AI/ML
+D    Ashu   18000    AWS
+
+
+
+💡Important:
+
+This removes the row with custom index "C" (Abhijeet).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------
+	✅🔎 Filtering Data✅
+-----------------------------------------------------
+
+
+
+📍Single Condition -------------------
+
+
+Filtering is one of the most important operations in Pandas.
+
+Suppose:
+
+import pandas as pd
+
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, 24, 25], "Marks": [92, 91, 89]}
+
+df = pd.DataFrame(data)
+
+print(df[df["Age"] > 24])
+
+
+
+
+📌Output:
+
+       	   Name  Age  Marks
+0    	Arshad     26     92
+2  	Abhijeet   25     89
+
+
+
+
+
+💡 How it works
+
+
+df["Marks"] > 80
+
+creates a Boolean Series:
+
+True
+False
+True
+
+Pandas then returns only the rows where the condition is True.
+
+
+
+
+
+
+
+
+
+
+
+📍Multiple Condition -------------------
+
+
+💫Using AND (&)  Operator
+------------------------------------------
+
+Example:
+
+import pandas as pd
+
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, 24, 25], "Marks": [92, 91, 99]}
+
+df = pd.DataFrame(data)
+
+print(df[(df["Age"] > 24) & (df["Marks"] > 90)])
+
+
+📌 Output:
+
+       Name  Age  Marks
+0    Arshad   26     92
+2  Abhijeet   25     99
+
+
+
+
+
+
+💫Using OR (|)  Operator
+------------------------------------------
+
+Example:
+
+import pandas as pd
+
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, 24, 25], "Marks": [92, 91, 99]}
+
+df = pd.DataFrame(data)
+
+print(df[(df["Age"] < 25) | (df["Marks"] > 95)])
+
+
+
+📌 Output:
+
+       Name  Age  Marks
+1     Aatif   24     91
+2  Abhijeet   25     99
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       📊 BASIC STATISTICAL OPERATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+
+-----------------------------------------------------
+       ✅➕SUM METHOD ✅
+-----------------------------------------------------
+
+📌Example:
+
+import pandas as pd
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, 24, 25], "Marks": [92, 91, 99]}
+df = pd.DataFrame(df)
+
+print("Sum:", df["Marks"].sum())
+
+
+📌Output:
+Sum: 325
+
+
+
+
+
+-----------------------------------------------------
+       ✅MEAN METHOD ✅
+-----------------------------------------------------
+
+📌Example:
+
+import pandas as pd
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, 24, 25], "Marks": [92, 91, 99]}
+df = pd.DataFrame(df)
+
+print("Mean:", df["Marks"].mean())
+
+
+
+📌Output:
+Mean: 81.25
+
+
+
+
+-----------------------------------------------------
+       ✅MAX/MIN METHOD ✅
+-----------------------------------------------------
+
+📌Example:
+
+import pandas as pd
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, 24, 25], "Marks": [92, 91, 99]}
+df = pd.DataFrame(df)
+
+print("Max:", df["Marks"].max())
+print("Min:", df["Marks"].min())
+
+
+📌Output:
+Max: 98
+Min: 66
+
+
+
+
+
+-----------------------------------------------------
+    ✅MEDIAN METHOD ✅
+-----------------------------------------------------
+
+📌Example:
+
+import pandas as pd
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, 24, 25], "Marks": [92, 91, 99]}
+df = pd.DataFrame(df)
+
+print("Median:", df["Marks"].median())
+
+
+📌Output:
+Median: 80.5
+
+
+
+
+
+
+-----------------------------------------------------
+       ✅COUNT METHOD ✅
+-----------------------------------------------------
+
+📌Example:
+
+import pandas as pd
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, 24, 25], "Marks": [92, 91, 99]}
+df = pd.DataFrame(df)
+
+print("Count:", df["Marks"].count())
+
+
+📌Output:
+Count: 4
+
+
+
+
+
+
+
+
+-----------------------------------------------------
+  ✅DESCRIBE METHOD ✅
+-----------------------------------------------------
+
+It return all the basic calculation of the data.
+describe() provides a statistical summary of numerical columns.
+
+
+📌Example:
+
+import pandas as pd
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, 24, 25], "Marks": [92, 91, 99]}
+df = pd.DataFrame(df)
+
+print("Describe:\n",df["Marks"].describe())
+
+
+
+📌Output:
+
+Describe:
+ count     4.000000
+mean     81.250000
+std      14.818344
+min      66.000000
+25%      70.500000
+50%      80.500000
+75%      91.250000
+max      98.000000
+Name: Marks, dtype: float64
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       		   🔤 SORTING DATA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+
+------------------------------------------------------------------------
+  ✅SORT BY COLUMN (sort_values())✅
+------------------------------------------------------------------------
+
+
+📍Ascending Order ----------
+
+
+By Default, It sort the data in ascending order
+
+📌Example:
+
+import pandas as pd
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, 24, 25], "Marks": [92, 91, 99]}
+df = pd.DataFrame(data)
+
+print(df.sort_values("Marks"))
+
+
+
+📌Output:
+
+          Name  Age  Marks
+1       Aatif       24     91
+0       Arshad   26     92
+2  	Abhijeet   25     99
+
+
+
+
+
+
+
+
+📍Descending Order ----------
+
+
+📌Example:
+
+import pandas as pd
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, 24, 25], "Marks": [92, 91, 99]}
+df = pd.DataFrame(data)
+
+print(df.sort_values("Marks", ascending=False))
+
+
+
+📌Output:
+
+       Name  Age  Marks
+2  Abhijeet   25     99
+0    Arshad   26     92
+1     Aatif   24     91
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       		   🧹 MISSING VALUES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+DataFrames often contain missing values.
+isnull() methods return the True value where data is missing/not a number.
+
+
+------------------------------------------------------------------------
+✅CHECK MISSING VALUE (isnull())✅
+------------------------------------------------------------------------
+
+
+
+📍 Example:
+
+import pandas as pd
+import numpy as np
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, np.nan, 25], "Marks": [92, 91, 99]}
+df = pd.DataFrame(data)
+
+print(df.isnull())
+
+
+
+
+📌Output:
+
+    Name    Age  Marks
+0  False  False  False
+1  False   True  False
+2  False  False  False
+
+
+
+
+
+
+------------------------------------------------------------------------
+	✅COUNT MISSING VALUE✅
+------------------------------------------------------------------------
+
+📌Example:
+
+import pandas as pd
+import numpy as np
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, np.nan, 25], "Marks": [92, 91, 99]}
+df = pd.DataFrame(data)
+
+print(df.isnull().sum())
+
+
+📌Output:
+
+Name     0
+Age      1
+Marks    0
+dtype: int64
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------
+		🗑️REMOVING  MISSING VALUE✅
+--------------------------------------------------------------------------------------------------------------
+
+This removes rows containing missing values.
+
+📌Example:
+
+import pandas as pd
+import numpy as np
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, np.nan, 25], "Marks": [92, 91, 99]}
+df = pd.DataFrame(data)
+
+df = df.dropna()
+print(df)
+
+
+
+📌Output:
+
+       Name   Age  Marks
+0    Arshad  26.0     92
+2  Abhijeet  25.0     99
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------
+	🔧INSERTING 0 IN PLACE OF MISSING VALUE✅
+--------------------------------------------------------------------------------------------------------------
+
+
+
+👉INSERT 0 AT SINGLE COLUMN👈
+
+
+📌 Example:
+
+import pandas as pd
+import numpy as np
+data = {"Name": ["Arshad", "Aatif", "Abhijeet"], "Age": [26, np.nan, np.nan], "Marks": [92, 91, 99]}
+df = pd.DataFrame(data)
+
+df["Age"] = df["Age"].fillna(0)
+print(df)
+
+
+
+
+📌 Output
+
+       Name   	Age  	Marks
+0    Arshad  	26.0            92
+1     Aatif   	0.0    	  91
+2  Abhijeet   	0.0    	  99
+
+
+💡 In Age column, Now the missing mark is replaced with 0.
+
+
+
+
+
+
+
+
+👉INSERT 0 AT MULTIPLE COLUMNS👈
+
+
+📌 Example:
+
+
+import pandas as pd
+import numpy as np
+
+data = {
+    "Name": ["Arshad", "Atif", "Abhijeet", "Ashu"],
+    "Salary": [24000, 29000, np.nan, 18000],
+    "Dept": ["Saas", "AI/ML", "Cloud", np.nan]
+}
+
+df = pd.DataFrame(data, index=["A", "B", "C", "D"])
+print(df)
+
+df[["Salary", "Dept"]] = df[["Salary", "Dept"]].fillna(0)
+
+print("Insert 0 at columns containg Null Values\n", df)
+
+
+
+📌 Output
+
+Before Insert 0 -------------
+
+       Name   Salary   Dept
+A    Arshad  24000.0   Saas
+B      Atif  29000.0  AI/ML
+C  Abhijeet      NaN  Cloud
+D      Ashu  18000.0    NaN
+
+
+
+After Insert 0 at null position ----------
+
+
+Insert 0 at columns containg Null Values
+        Name   Salary   Dept
+A    Arshad  24000.0   Saas
+B      Atif  29000.0  AI/ML
+C  Abhijeet      0.0  Cloud
+D      Ashu  18000.0      0

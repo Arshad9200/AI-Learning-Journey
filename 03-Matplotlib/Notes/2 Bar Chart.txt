@@ -1,0 +1,99 @@
+╭────────────────────────────────────╮
+│ 				🌟📊BAR CHART🌟	    		 	│
+╰────────────────────────────────────╯
+
+
+A Bar Chart is used to represent and compare values across different categories using rectangular bars.
+
+💫For example, it can be used to compare:
+
+🔸Sales of different products
+🔸Number of employees in each departments
+🔸Marks in different subjects
+🔸Revenue of different companies
+
+
+
+Category Comparison
+
+A bar chart represents different categories using rectangular bars.
+
+
+
+
+--------------------------------
+🔹 Basic Syntax🔹
+--------------------------------
+
+plt.bar(x, height)
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+     			♎SIMPLE BAR CHART
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+Example:
+
+import matplotlib.pyplot as plt
+
+month = ["Jan", "Feb", "Mar", "Apr","May"]
+sales = [200, 300, 500, 600, 800]
+
+plt.bar(month, sales)
+
+plt.title("Monthly Sales Data")
+
+plt.xlabel("Months")
+
+plt.ylabel("Sales")
+
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+     		♎ADVANCED BAR CHART
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+
+Example:
+
+
+import matplotlib.pyplot as plt
+month = ["Jan", "Feb", "Mar", "Apr","May"]
+
+sales2025 = [500, 500, 500, 800, 900]
+sales2026 = [250, 350, 550, 650, 850]
+
+plt.bar(month, sales2025, label="2025 Sales Data")
+plt.bar(month, sales2026, label="2026 Sales Data")
+
+plt.title("Monthly Sales Data")
+
+plt.xlabel("Months")
+
+plt.ylabel("Sales")
+
+plt.legend()     	# use to show the each line label
+
+plt.show()
+
+
+
+

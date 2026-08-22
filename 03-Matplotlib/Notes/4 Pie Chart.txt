@@ -1,0 +1,187 @@
+╭────────────────────────────────────╮
+│ 				🌟🥧PIE CHART🌟 	 		 	│
+╰────────────────────────────────────╯
+
+
+A Pie Chart is used to represent how different categories contribute to a whole data.
+
+Each category is shown as a slice of a circle.
+
+
+
+
+🔸Category Distribution
+
+A pie chart shows how individual categories make up a complete whole.
+
+Category A
+Category B
+Category C
+Category D
+
+
+--------------------------------
+🔹 Basic Syntax🔹
+--------------------------------
+
+plt.pie(values)
+
+
+
+
+----------------------------------
+Easy memory trick:
+----------------------------------
+
+🥧 Pie Chart = Parts of a Whole
+
+
+
+
+
+-------------------------------------------------
+🧠 Important Components
+-------------------------------------------------
+
+
+plt.pie()
+   │
+   ├── values       → Size of each slice
+   ├── labels        → Category names
+   ├── autopct      → Display percentage
+   └── startangle  → Starting angle
+
+
+
+--------------------------------------------------
+⭐ When to Use a Pie Chart?
+--------------------------------------------------
+
+Use a pie chart when you want to show:  Part-to-whole relationships
+
+For example:
+
+Total = 100%
+
+Category A → 40%
+Category B → 30%
+Category C → 20%
+Category D → 10%
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━◥
+  	 🧠LABELS🧠
+◣━━━━━━━━━━━━━━━━━◢
+
+Label is used to display the category names:
+
+
+
+👉 Example:
+
+labels = ["A", "B", "C", "D"]
+
+plt.pie(values, labels=labels)
+
+plt.show()
+
+
+
+Here:
+
+labels → Names of the categories
+values → Size of each slice
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+  	 🧠PERCENTAGE (autopct)🧠
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+autopct displays the percentage of each slice.
+
+plt.pie(
+    values,
+    labels=labels,
+    autopct="%1.1f%%"
+)
+
+For example:
+
+A → 40.0%
+B → 30.0%
+C → 20.0%
+D → 10.0%
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+  	 🧠START ANGLE (startangle)🧠
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+Controls the starting position of the first slice.
+
+It means by default startangle is 0 and if we pass startangle=90, starting category ("Jan") is start at 90 degree position like from top position
+
+Example;
+
+🔸startangle=0  →  start from right side
+
+🔸startangle=90  →  start from top side
+
+🔸startangle=180  →  start from left side
+
+🔸startangle=270  →  start from bottom side
+
+
+startangle=90
+
+The pie chart starts drawing from 90°.
+
+
+
+
+
+
+
+👉🏻 Example:
+
+
+import matplotlib.pyplot as plt
+
+month = ["Jan", "Feb", "Mar", "Apr","May"]
+
+sales = [500, 500, 500, 800, 900]
+
+plt.pie(sales, labels=month, autopct="%1.1f%%", startangle=90)
+
+plt.title("Sales Data")
+
+plt.show()
+
+
+
+
+⏱️23:00:00
+
+
+
+
+

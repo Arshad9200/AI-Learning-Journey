@@ -1,0 +1,69 @@
+MATPLOTLIB
+
+
+
+
+╭────────────────────────────────────╮
+│ 		🌟📊DATA VISUALIZATION🌟	    	  	│
+╰────────────────────────────────────╯
+
+It is a graphical representation of data to identity patterns, trends & insights.
+
+
+
+
+
+╭────────────────────────────────────╮
+│ 		🌟📊WHAT IS MATPLOTLIB🌟	    	  	│
+╰────────────────────────────────────╯
+
+Matplotlib is a python library which is used to create graphs & visualization from data.
+
+Matplotlib is also used to create static, animated & interactive plots.
+
+It is commonly used with NumPy, Pandas & Data Science
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+        HOW TO INSTALL  MATPLOTLIB
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+pip install matplotlib  →  For terminal 
+
+
+!pip install matplotlib  →  For Jupiter Notebook
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+        HOW TO IMPORT MATPLOTLIB
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+The most commonly used module is pyplot.
+
+
+import matplotlib.pyplot as plt
+
+
+
+💡Here:
+
+🔸matplotlib → Python Visualization Library
+
+🔸pyplot       → It is module used to create graphs
+
+🔸plt 	      → short name (alias) for pyplot
+
+
+
+
+
+
+

@@ -1,0 +1,890 @@
+╔════════════════════════════════════╗
+║  		               💻SHUFFLE FUNCTION⚡     		        ║
+╚════════════════════════════════════╝
+
+
+📌 What is Shuffle Function ?
+
+shuffle() is a NumPy function that randomly rearranges (shuffles) the elements of an array in place.
+
+
+
+📌 Syntax
+
+numpy.random.shuffle(array)
+
+
+
+
+🎯 Returns
+
+❌ Returns None
+✅ The original array is modified directly (in-place).
+
+
+Note: we can not store the shuffle value in variable because it directly apply in original array
+
+
+
+
+╭────────────────────────────────────╮
+│ 				🌟 Shuffle a 1-D Array🌟 			│
+╰────────────────────────────────────╯
+
+
+✨ Example 1: 
+
+
+import numpy as np
+arr = np.array([1, 2, 3, 4, 5])
+print("Before Shuffle:", arr)
+np.random.shuffle(arr)
+print("After Shuffle :", arr)
+
+
+📌 Possible Output
+
+Before Shuffle: [1 2 3 4 5]
+After Shuffle : [3 5 1 4 2]
+
+
+
+
+
+
+
+╭────────────────────────────────────╮
+│ 				🌟 Shuffle a 2-D Array🌟 			│
+╰────────────────────────────────────╯
+
+
+
+🎲 Example 2: 
+
+import numpy as np
+
+arr = np.array([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+])
+
+print("Before Shuffle:")
+print(arr)
+
+np.random.shuffle(arr)
+
+print("\nAfter Shuffle:")
+print(arr)
+
+
+📌 Possible Output
+
+Before Shuffle:
+[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+
+After Shuffle:
+[[7 8 9]
+ [1 2 3]
+ [4 5 6]]
+
+
+💡 Explanation
+
+In a 2-D array, shuffle() only shuffles the rows, not the individual elements inside each row.
+
+
+
+✅ Rows change position & element remain same.
+
+❌ Elements inside each row remain in the same order.
+
+
+
+
+
+
+
+
+
+
+
+
+
+╔════════════════════════════════════╗
+║  		               💻UNIQUE FUNCTION⚡     		║
+╚════════════════════════════════════╝
+
+💡NumPy unique() Function
+
+The unique() function is used to find all unique (distinct) elements in a NumPy array.
+
+It removes duplicate values and returns the sorted unique elements.
+
+
+
+📌 Syntax
+
+numpy.unique(array)
+
+
+
+
+
+🎯 Returns
+
+✅ A new NumPy array containing only unique values.
+✅ The returned array is sorted in ascending order.
+
+
+
+
+╭────────────────────────────────────╮
+│ 			🌟 Find Unique Elements🌟 			        │
+╰────────────────────────────────────╯
+
+✨ Example 1: 
+
+
+import numpy as np
+arr = np.array([2, 4, 2, 6, 8, 4, 6, 10])
+print("Original Array:", arr)
+result = np.unique(arr)
+print("Unique Elements:", result)
+
+
+
+📌 Output
+
+Original Array: [ 2  4  2  6  8  4  6 10]
+Unique Elements: [ 2  4  6  8 10]
+
+
+
+💡 Explanation
+
+🔹2, 4, and 6 appear multiple times.
+🔹unique() removes the duplicates.
+🔹The returned array is sorted automatically.
+
+
+
+
+
+
+
+
+╭────────────────────────────────────╮
+│ 	    🌟 Unique Elements in a String Array🌟 			│
+╰────────────────────────────────────╯
+
+✨ Example 2: 
+
+import numpy as np
+
+fruits = np.array([
+    "Apple",
+    "Mango",
+    "Apple",
+    "Banana",
+    "Mango"
+])
+
+result = np.unique(fruits)
+
+print(result)
+
+
+📌 Output
+
+['Apple' 'Banana' 'Mango']
+
+
+
+
+
+
+
+╭────────────────────────────────────╮
+│ 	    🌟 Unique Values from a 2-D Array🌟 			│
+╰────────────────────────────────────╯
+
+✨ Example 3: 
+
+import numpy as np
+
+arr = np.array([
+    [1, 2, 2],
+    [3, 1, 4]
+])
+
+print("Original Array:")
+print(arr)
+
+result = np.unique(arr)
+
+print("\nUnique Elements:")
+print(result)
+
+
+📌 Output
+Original Array:
+[[1 2 2]
+ [3 1 4]]
+
+Unique Elements:
+[1 2 3 4]
+
+
+💡 Explanation
+
+unique() first flattens the array into a 1-D array, then removes duplicates and returns the sorted unique values in 1D array.
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────────────╮
+│ 🌟 Get Unique Values and Their Counts of each numbers🌟   │
+╰──────────────────────────────────────╯
+
+
+✨ Example 4: 
+
+import numpy as np
+
+arr = np.array([10, 20, 10, 30, 20, 20])
+
+unique_values, counts = np.unique(arr, return_counts=True)
+
+print("Unique Values:", unique_values)
+print("Counts:", counts)
+
+
+📌 Output
+
+Unique Values: [10 20 30]
+Counts: [2 3 1]
+
+
+
+💡 Explanation
+
+Value	Count
+10		   2
+20		   3
+30	           1
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────╮
+│    🌟 Get Unique Values and Their First Index🌟 		│
+╰────────────────────────────────────╯
+
+
+✨ Example 5: 
+
+import numpy as np
+
+arr = np.array([5, 8, 5, 3, 8, 1])
+
+unique_values, indices = np.unique(arr, return_index=True)
+
+print("Unique Values:", unique_values)
+print("First Indices:", indices)
+
+
+📌 Output
+
+Unique Values: [1 3 5 8]
+First Indices: [5 3 0 1]
+
+
+
+💡 Explanation
+
+The indices show where each unique/common value first appears in the original array.
+It return the first occurrence of all values
+
+Value	First Index
+1		      5
+3		      3
+5		      0
+8		      1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╔════════════════════════════════════╗
+║  		               💻RESIZE FUNCTION⚡     		║
+╚════════════════════════════════════╝
+
+
+📏 NumPy resize() Function
+
+The resize() function is used to change the size (shape) of an array.
+np.resize() creates a new array, so the original array is not modified.
+
+
+
+If the new size is:
+
+	📈 Larger than the original array, NumPy repeats the existing elements to fill the remaining positions.
+	📉 Smaller than the original array, NumPy removes the extra elements.
+
+
+
+
+📌 Syntax
+
+numpy.resize(array, new_shape)
+
+
+
+
+🎯 Returns
+
+✅ A new resized array.
+✅ The original array remains unchanged.
+
+
+
+
+
+
+╭────────────────────────────────────╮
+│ 	    🌟 Increase the Size of a 1-D Array🌟 			│
+╰────────────────────────────────────╯
+
+✨ Example 1: 
+
+import numpy as np
+
+arr = np.array([10, 20, 30, 40])
+
+print("Original Array:", arr)
+
+result = np.resize(arr, 8)
+
+print("Resized Array:", result)
+
+
+
+📌 Output
+
+Original Array: [10 20 30 40]
+Resized Array: [10 20 30 40 10 20 30 40]
+
+
+
+💡 Explanation
+
+The original array has 4 elements, but the new size is 8.
+
+NumPy repeats the existing elements from index 0 until the array reaches the required size.
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────╮
+│ 	    🌟 Decrease the Size of a 1-D Array🌟 			│
+╰────────────────────────────────────╯
+
+
+✨ Example 2: 
+
+import numpy as np
+
+arr = np.array([10, 20, 30, 40, 50, 60])
+
+print("Original Array:", arr)
+
+result = np.resize(arr, 3)
+
+print("Resized Array:", result)
+
+
+📌 Output
+
+Original Array: [10 20 30 40 50 60]
+Resized Array: [10 20 30]
+
+
+
+💡 Explanation
+
+Since the new size is smaller, NumPy keeps only the first 3 elements from index 0.
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────────╮
+│ 	    🌟 Resize a 1-D Array to a 2-D Array🌟 			│
+╰────────────────────────────────────╯
+
+------------------------------------------------------
+ Convert 1D Array into 2D Array
+------------------------------------------------------
+
+✨ Example: 
+
+
+import numpy as np
+
+arr = np.array([1, 2, 3, 4])
+
+print("Original Array:")
+print(arr)
+
+result = np.resize(arr, (2, 3))
+
+print("\nResized Array:")
+print(result)
+
+
+📌 Output
+
+
+Original Array:
+[1 2 3 4]
+
+Resized Array:
+[[1 2 3]
+ [4 1 2]]
+
+
+
+💡 Explanation
+
+🔹The new shape requires 6 elements, but the original array has only 4.
+
+🔹NumPy repeats the elements from the beginning (index 0) to fill the remaining positions.
+
+🔹Resize method can create any dimension array with any number of element. 
+
+🔹Suppose the elements of given array are 6 and if we have to resize it in (3x3) array than Resize method easily resize it and It reuse the same number multiple times to fulfill the requirement of the numbers
+
+Example: 
+given array = [1, 2, 3, 4, 5]
+
+resized array become (3x3) =  [1, 2, 4]
+					      [2, 4, 5]
+					      [1, 5, 4]
+
+
+
+
+
+
+
+------------------------------------------------------
+ Convert 3D Array into 1D Array
+------------------------------------------------------
+
+📍Example:
+
+import numpy as np
+arr3d = np.array([
+    [
+        [1, 4, 2],
+        [2, 3, 4]
+    ],
+    [
+        [2, 5, 7],
+        [6, 8, 1]
+    ]
+])
+print(arr3d)
+print("Dimension:", arr3d.ndim, "| Shape:", arr3d.shape)
+
+resized_arr3d = np.resize(arr, (8,))
+
+print(resized_arr3d)
+print("Resized Dimension:", resized_arr3d.ndim, "| Resize Shape:", resized_arr3d.shape)
+
+
+
+📍Output:
+
+👉🏻Original array:
+
+[[[1 4 2]
+  [2 3 4]]
+
+ [[2 5 7]
+  [6 8 1]]]
+Dimension: 3 | Shape: (2, 2, 3)
+
+
+👉🏻Resized Array
+
+[1 4 2 6 3 9 1 4]
+Resized Dimension: 1 | Resize Shape: (8,)
+
+
+
+
+
+
+
+
+
+
+
+╔════════════════════════════════════╗
+║  		  💻FLATTEN   FUNCTION⚡     			║
+╚════════════════════════════════════╝
+
+
+
+📦 NumPy flatten() & ravel() Functions
+
+Both flatten() and ravel() are used to convert a multi-dimensional array into a one-dimensional (1-D) array.
+
+
+The main difference is:
+
+📋 flatten() returns a copy of the array.
+🔗 ravel() returns a view of the original array whenever possible.
+
+
+
+
+📄 NumPy flatten() Function --------------
+
+The flatten() function converts a multi-dimensional array into a 1-D array by creating a copy of the original array.
+
+
+
+📌 Syntax
+
+array.flatten(order='C')
+
+
+
+
+
+📝 Parameters
+
+Parameter				Description
+
+order					Specifies the order of flattening. Default is 'C' (row-wise).
+
+
+
+Order Options
+-----------------------
+
+Order				Meaning
+
+'C'					Row-wise (default)
+'F'					Column-wise
+'A'					Preserve memory order
+'K'					Memory order if possible
+
+
+
+🎯 Returns
+
+✅ A new 1-D array (copy).
+✅ The original array remains unchanged.
+
+
+
+
+
+╭──────────────────────────────────────╮
+│ 🌟ROW WISE - Flatten a 2-D Array into 1-D Array🌟    	     │
+╰──────────────────────────────────────╯
+
+When We do not pass order than by default it arrange 2D array in 1D array row wise means takes row 1 than take row 2 than row 3 and all
+
+
+
+✨ Example 1: 
+
+import numpy as np
+
+arr = np.array([
+    [1, 2, 3],
+    [4, 5, 6]
+])
+
+print("Original Array:")
+print(arr)
+
+result = arr.flatten()
+
+print("\nFlattened Array:")
+print(result)
+
+
+📌 Output
+
+Original Array:
+[[1 2 3]
+ [4 5 6]]
+
+Flattened Array:
+[1 2 3 4 5 6]
+
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────────────╮
+│ 🌟COLUMN WISE - Flatten a 2-D Array into 1-D Array🌟    │
+╰──────────────────────────────────────╯
+
+When We pass the order (order='F') than by default it arrange 2D array in 1D array column wise means takes column 1 than take column 2 than column 3 and all
+
+
+
+✨ Example 3: 
+
+
+import numpy as np
+
+arr = np.array([
+    [1, 2],
+    [3, 4],
+    [5, 6]
+])
+
+result = arr.flatten(order='F')
+
+print(result)
+
+
+📌 Output
+
+[1 3 5 2 4 6]
+
+
+
+💡Explanation:
+
+1 3 5 → Column 1
+2 4 6 → Column 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╔════════════════════════════════════╗
+║  		  💻RAVEL  FUNCTION⚡     	║
+╚════════════════════════════════════╝
+
+
+
+🔗 NumPy ravel() Function
+
+The ravel() function also converts a multi-dimensional array into a 1-D array, but it returns a view of the original array whenever possible.
+
+
+📌 Syntax
+
+numpy.ravel(array, order='C')
+
+or
+
+array.ravel(order='C')
+
+
+
+
+📝 Parameters
+------------------------
+Parameter			Description
+
+array				Input NumPy array
+order				Flattening order (default is 'C')
+
+
+
+🎯 Returns
+
+✅ A 1-D array.
+✅ Usually returns a view of the original array.
+
+
+
+
+
+
+╭──────────────────────────────────────╮
+│     🌟ROW WISE - Convert to 1-D Using ravel()🌟    	 	    │
+╰──────────────────────────────────────╯
+
+✨ Example 1: 
+
+import numpy as np
+
+arr = np.array([
+    [10, 20, 30],
+    [40, 50, 60]
+])
+
+result = arr.ravel()
+
+print(result)
+
+
+
+📌 Output
+
+[10 20 30 40 50 60]
+
+
+
+
+
+
+
+╭──────────────────────────────────────╮
+│ 🌟COLUMN WISE - Ravel a 2-D Array into 1-D Array🌟    │
+╰──────────────────────────────────────╯
+
+When We pass the order (order='F') than by default it arrange 2D array in 1D array column wise means takes column 1 than take column 2 than column 3 and all
+
+
+
+✨ Example 2: 
+
+
+import numpy as np
+
+arr = np.array([
+    [1, 2],
+    [3, 4],
+    [5, 6]
+])
+
+result = arr.flatten(order='F')
+
+print(result)
+
+
+📌 Output
+
+[1 3 5 2 4 6]
+
+
+
+💡Explanation:
+
+1 3 5 → Column 1
+2 4 6 → Column 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+⚠️ Important Points
+===============
+
+
+╭──────────────────────────────────────╮
+│ 					🌟FLATTEN()🌟  			     │
+╰──────────────────────────────────────╯
+
+✅ Converts to a 1-D array.
+
+✅ Returns a copy.
+
+✅ Original array is never modified.
+
+✅ Requires extra memory.
+
+
+
+
+
+╭──────────────────────────────────────╮
+│ 					🌟RAVEL🌟  			             │
+╰──────────────────────────────────────╯
+
+
+✅ Converts to a 1-D array.
+
+✅ Returns a view whenever possible.
+
+✅ Changes in the returned array may affect the original array.
+
+✅ More memory efficient.
+
+
+

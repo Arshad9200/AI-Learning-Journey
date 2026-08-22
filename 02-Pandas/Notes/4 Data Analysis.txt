@@ -1,0 +1,44 @@
+=========================
+	   DATA ANALYSIS
+=========================
+
+
+
+🧠 Real-World Example
+
+
+
+
+Imagine an employee dataset:
+
+
+
+import pandas as pd
+
+emp_data = {
+    "Name": ["Arshad", "Aatif", "Abhijeet", "Ashu"],
+    "Age": [26, 23, 24, 25],
+    "Salary": [24000, 28000, 18000, 16000],
+    "Department": ["Support", "AI Developer", "Networking", "Cloud"],
+    "Experience": [1.4, 2, 1.2, 1]
+}
+
+df = pd.DataFrame(emp_data)
+
+print(df)
+
+
+
+
+
+
+📌Output:
+
+       Name  	Age  	Salary    		Department  		Experience
+
+0    Arshad   	 26   		24000       	   Support         		    1.4
+1     Aatif   	 23   		28000    	  	  AI Developer             2.0
+2  Abhijeet   	 24   		18000   		  Networking         	    1.2
+3      Ashu   	 25   		16000         	 Cloud         		    1.0
+
+Now you can perform analysis.

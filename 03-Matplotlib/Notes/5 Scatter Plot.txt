@@ -1,0 +1,86 @@
+╭────────────────────────────────────╮
+│ 			🌟🥧SCATTER PLOT 🌟				│
+╰────────────────────────────────────╯
+
+
+A Scatter Plot is used to show the relationship between two numerical variables.
+
+It represents each observation as a point (dot) on the graph.
+
+
+
+--------------------
+🔹 Syntax
+--------------------
+
+plt.scatter(x, y)
+
+x → values for the X-axis
+y → values for the Y-axis
+
+Each (x, y) pair becomes one point
+
+
+
+
+
+📌 Example
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+hight = [np.random.randint(0, 100) for _ in range(10)]
+
+width = [np.random.randint(0, 100) for _ in range(10)]
+
+plt.scatter(hight, width)
+
+plt.title("Height vs Weight")
+plt.xlabel("Height")
+plt.ylabel("Weight")
+plt.show()
+
+
+
+Output:
+
+It create a dot graph which shows the relationship between hight & width (hight, width) → dot
+
+
+💡Important:
+
+hight / width= [np.random.randint(0, 100) for _ in range(10)]
+
+These both line create a 10 random number between 0 to 100
+
+
+
+
+
+
+
+🧠 How it works
+
+The values are paired by their position:
+
+height = [150, 160, 165, 170, 180]
+weight = [50,  55,  60,  65,  75]
+
+So Matplotlib creates:
+
+(150, 50)
+(160, 55)
+(165, 60)
+(170, 65)
+(180, 75)
+
+
+
+
+
+
+
+
+
+

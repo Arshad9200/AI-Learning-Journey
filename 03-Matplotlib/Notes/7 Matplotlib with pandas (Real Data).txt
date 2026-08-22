@@ -1,0 +1,184 @@
+╭────────────────────────────────────────────╮
+│ 		🌟🥧MATPLOTLIB WITH PANDAS-Real Data🌟		     │
+╰────────────────────────────────────────────╯
+
+
+
+
+When working with Pandas, you can create graphs directly from a DataFrame using Matplotlib.
+
+This is very useful in Data Analysis, because Pandas handles the data and Matplotlib handles the visualization.
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       🔹 1. Import Pandas and Matplotlib
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       		🔹 2. Create a DataFrame
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+data = {
+    "Month": ["Jan", "Feb", "Mar", "Apr", "May"],
+    "Sales": [100, 150, 120, 180, 200]
+}
+
+
+df = pd.DataFrame(data)
+
+
+print(df)
+
+
+💡Output:
+
+  Month  Sales
+0   Jan    100
+1   Feb    150
+2   Mar    120
+3   Apr    180
+4   May    200
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+     📈 3. Plot Pandas Data Using Matplotlib
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+You can select the DataFrame columns and pass them to Matplotlib:
+
+
+plt.plot(df["Month"], df["Sales"])
+
+plt.title("Monthly Sales")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+
+
+plt.show()
+
+
+
+
+📍Here:
+
+🔸df["Month"]
+
+provides the X-axis values.
+
+🔸df["Sales"]
+
+provides the Y-axis values.
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+      ⭐ 4. Pandas Has Its Own Plot Method
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+Pandas also provides a .plot() method.
+
+df.plot(x="Month", y="Sales")
+
+plt.title("Monthly Sales")
+
+plt.show()
+
+
+
+
+
+💡Important
+
+This internally uses Matplotlib.
+
+So:
+
+Pandas DataFrame
+       ↓
+   df.plot()
+       ↓
+   Matplotlib
+       ↓
+    Graph
+
+
+
+
+
+
+
+👉🏻Example:
+
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    "Months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    "Sales": [2000, 2200, 1300, 3400, 5100, 6700, 4500, 1200, 5400, 2300, 9100, 7700]
+}
+
+df = pd.DataFrame(data)
+
+print(df)
+
+
+# Create Bar chart with dataframe data
+
+plt.figure(figsize=(10, 3))
+
+plt.title("Monthy Sales")
+
+plt.bar(df["Months"], df["Sales"])
+
+plt.show()
+
+
+
+
+
+
+👉🏻Output:
+
+  Months  Sales
+0     Jan   2000
+1     Feb   2200
+2     Mar   1300
+3     Apr   3400
+4     May   5100
+5     Jun   6700
+6     Jul   4500
+7     Aug   1200
+8     Sep   5400
+9     Oct   2300
+10    Nov   9100
+11    Dec   7700
+
+
+It also create a Bar chart using this Months & Sales data
+
+
+
+
+
+
+

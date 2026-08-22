@@ -1,0 +1,312 @@
+╭────────────────────────────────────────────╮
+│ 			🌟💾 SAVE CHARTS IN MATPLOTLIB🌟	             │
+╰────────────────────────────────────────────╯
+
+
+After creating a chart, you can save it as an image file using:
+
+plt.savefig()
+
+
+
+
+----------------------------
+🔹 Basic Syntax
+----------------------------
+
+plt.savefig("filename.png")
+
+
+
+
+
+👉🏻Example:
+
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y = [10, 20, 30, 40, 50]
+
+plt.plot(x, y)
+
+plt.title("Sales Report")
+
+plt.savefig("sales.png")
+
+plt.show()
+
+
+
+👉🏻Output:
+
+This saves the chart as:  sales.png
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       📁 Save to a Specific Location
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+You can provide the complete path:
+
+plt.savefig(r"C:\Users\DELL\Desktop\sales.png")
+
+
+
+💡Why r?
+
+On Windows, paths contain \.
+
+like: C:\Users\DELL\Desktop
+
+Using r creates a raw string, so Python doesn't treat \ as an escape character.
+
+r"C:\Users\DELL\Desktop\sales.png"
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       		🖼️ Different File Formats
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+
+Matplotlib can save charts in different formats.
+
+🔸plt.savefig("chart.png")
+
+🔸plt.savefig("chart.jpg")
+
+🔸plt.savefig("chart.pdf")
+
+🔸plt.savefig("chart.svg")
+
+
+
+
+
+📍Common formats:
+
+Format					Use
+
+   .png					General use, high quality
+   .jpg					Smaller image files
+   .pdf					Documents/reports
+   .svg					Scalable graphics
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       	   ⭐ Save With High Resolution
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+💡For better image quality:
+
+plt.savefig("sales.png", dpi=300)
+
+dpi means dots per inch.
+
+Higher DPI → better image quality.
+
+
+
+👉🏻For example:
+
+plt.savefig("sales.png", dpi=300)
+
+is commonly useful when you need a high-quality image.
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       	   🧹 Remove Extra White Space
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+You can use:
+
+plt.savefig("sales.png", bbox_inches="tight")
+
+Or combine both:
+
+plt.savefig(
+    "sales.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       	 ⚠️ Important: Save Before show()
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+💡Prefer:
+
+plt.plot(x, y)
+
+plt.savefig("sales.png")
+
+plt.show()
+
+
+
+
+⚠️Rather than:
+
+plt.plot(x, y)
+
+plt.show()
+
+plt.savefig("sales.png")
+
+
+
+
+📍Why?
+
+plt.show() displays the figure, and depending on the environment/backend, the figure may be cleared or closed afterward. So save the chart before displaying it.
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+       	 	📂Check the Directory
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢
+
+
+This method is used to find the directory where charts / image are saved.
+
+Generally It is used when we save data without providing complete path jut like 
+
+📍plt.savefig("Pie_Chart.jpg")
+
+
+
+
+👉Example:
+
+import os
+
+print(os.getcwd())
+
+
+
+👉Output:
+C:\Users\DELL
+
+
+
+
+
+
+
+
+
+
+
+👉Real Example:👉
+
+
+import pandas as pd
+import os
+import matplotlib.pyplot as plt
+
+
+data = {
+    "Months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    "Sales": [2000, 2200, 1300, 3400, 5100, 6700, 4500, 1200, 5400, 2300, 9100, 7700]
+}
+
+df = pd.DataFrame(data)
+print(df)
+print("Data Types:",type(df))
+
+plt.figure(figsize=(10, 3))
+plt.title("Monthy Sales")
+
+
+
+# Bar Chart
+# plt.bar(df["Months"], df["Sales"])
+
+
+# Pie Chart
+# plt.pie(df["Sales"], labels=df["Months"], autopct="%1.2f%%")
+
+
+# Line graph
+plt.plot(df["Sales"], df["Months"])
+
+plt.savefig(
+		r"C:\Users\DELL\OneDrive\Desktop\AI Journey\Matplotlib\Matplotliv savefig methods\Pie_Chart.jpg", 
+                dpi=300,
+                bbox_inches="tight"
+)
+
+
+plt.show()
+
+
+
+
+
+
+
+👉Output:
+
+
+  Months  Sales
+0     Jan   2000
+1     Feb   2200
+2     Mar   1300
+3     Apr   3400
+4     May   5100
+5     Jun   6700
+6     Jul   4500
+7     Aug   1200
+8     Sep   5400
+9     Oct   2300
+10    Nov   9100
+11    Dec   7700
+
+
+💫It saved the jpg/png/pdf in the given directory
+

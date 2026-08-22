@@ -1,0 +1,185 @@
+╔════════════════════════════════════╗
+║  		      💻SORTING / SORT ARRAY⚡     		║
+╚════════════════════════════════════╝
+
+
+📌 What is Sorting?
+
+Sorting is the process of arranging the elements of an array in a specific order, such as:
+
+✅ Ascending Order (Small → Large)
+✅ Descending Order (Large → Small)
+
+In NumPy, we use the sort() function to sort array elements.
+
+
+
+
+
+❓ Why Do We Need Sorting?
+
+─────────────────────
+
+Sorting makes data easier to:
+
+✅ Search
+✅ Analyze
+✅ Compare
+✅ Display in a meaningful order
+
+
+
+
+╭──────────────────────────────╮
+│ 	      🌟 SORT FUNCTION 🌟 		  	│
+╰──────────────────────────────╯
+
+
+📌 Definition
+
+The np.sort() function is used to sort the elements of a NumPy array.
+
+By default, sort() sorts the elements in ascending order.
+
+
+
+⚠️ Important
+
+np.sort() does not modify the original array.
+
+
+
+
+📚 Syntax
+	
+Ascending → np.sort(array)	(Default)
+Descending → np.sort(array, axis=-1)
+
+
+
+
+===============
+	1-D ARRAY
+===============
+
+
+📝 Example 1: Sort a 1-D Array (Original Array Remains Unchanged)
+
+
+import numpy as np
+arr = np.array([40, 20, 50, 30, 10])
+result = np.sort(arr)
+print(result)
+
+
+📌 Output
+
+Original Array: [40 20 50 30 10]
+Sorted array: [10 20 30 40 50]
+
+
+💡 Explanation
+
+The elements are arranged from smallest to largest.
+
+
+
+
+
+📝 Example 2: Sort a String Array
+
+arr_str = np.array(['a', 'r', 's', 'h', 'a', 'd'])
+str_result = np.sort(arr_str)
+print("Sorted String:", str_result)
+
+
+📌 Output
+
+Sorted String: ['a' 'a' 'd' 'h' 'r' 's']
+
+
+
+
+
+
+
+
+
+
+
+
+
+===============
+	2-D ARRAY
+===============
+
+
+
+📝 Example 3: Row-wise Sorting (Default)
+
+import numpy as np
+arr = np.array([
+    [30, 10, 20],
+    [60, 40, 50]
+])
+
+print(np.sort(arr))
+
+
+📌 Output
+
+[[10 20 30]
+ [40 50 60]]
+
+
+💡 Explanation
+
+Each row is sorted separately.
+
+Row 1 : [30 10 20] → [10 20 30]
+
+Row 2 : [60 40 50] → [40 50 60]
+
+
+
+
+
+
+
+
+
+📝 Example : Column-wise Sorting
+
+import numpy as np
+
+arr = np.array([
+    [30, 10, 20],
+    [60, 40, 50]
+])
+
+print(np.sort(arr, axis=0))
+
+
+📌 Output
+
+[[30 10 20]
+ [60 40 50]]
+
+
+
+💡 Explanation
+
+Each column is sorted separately.
+
+Column 1 : [30 60] → [30 60]
+
+Column 2 : [10 40] → [10 40]
+
+Column 3 : [20 50] → [20 50]
+
+Since the columns were already sorted, the output remains the same.
+
+
+
+
+

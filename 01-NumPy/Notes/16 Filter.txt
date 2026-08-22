@@ -1,0 +1,145 @@
+╔════════════════════════════════════╗
+║  		               💻FILTER ARRAY	⚡     		        ║
+╚════════════════════════════════════╝
+
+
+📌 What is Filtering an Array?
+
+Filtering an array means selecting only those elements from an array that satisfy a specific condition.
+
+In NumPy, we filter arrays by creating a Boolean Array (True/False array) and using it as an index.
+
+
+
+🧠 Basic Concept
+
+Original Array
+      ↓
+Apply Condition
+      ↓
+Boolean Array (True/False)
+      ↓
+Filtered Array
+
+
+
+📌 Syntax
+
+array[condition]
+
+If condition is True → element is selected
+If condition is False → element is removed
+
+
+
+🔖Example
+
+import numpy as np
+age = np.array([45, 29, 12, 72, 31])
+
+filter_arr = age > 25
+print("Condition Check:",check_for_vote)
+
+eligible_age = age[filter_arr]
+print("Eligible Age:",eligible_age)
+
+
+
+📌 Output
+
+Condition Check: [ True  True False  True  True]
+Eligible Age: [45 29 72 31]
+
+
+
+
+
+
+
+🔔 Recommended
+
+╭────────────────────────────────────╮
+│ 🌟 Filtering Directly Without Creating Boolean Array 🌟 	│
+╰────────────────────────────────────╯
+
+We can also write the condition directly inside the array index.
+
+
+Example:
+
+import numpy as np
+age = np.array([45, 29, 12, 72, 31])
+filter_arr = age[age > 25]
+print("Eligible Age:",filter_arr)
+
+
+📌 Output
+
+Eligible Age: [45 29 72 31]
+
+
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────────╮
+│ 	🌟 Multiple Conditions in Filtering 🌟 		│
+╰──────────────────────────────╯
+
+🔗 Multiple Conditions in Filtering ------------
+
+
+
+---------------------------------------------------------------
+✅ Example : Using AND Condition
+---------------------------------------------------------------
+
+
+Find numbers greater than 20 and less than 50.
+
+import numpy as np
+
+arr = np.array([10, 20, 30, 40, 50, 60])
+
+result = arr[(arr > 20) & (arr < 50)]
+
+print(result)
+
+
+📌 Output
+
+[30 40]
+
+
+
+
+
+---------------------------------------------------------------
+✅ Example : Using OR Condition
+---------------------------------------------------------------
+
+Find numbers less than 20 or greater than 50.
+
+import numpy as np
+
+arr = np.array([10, 20, 30, 40, 50, 60])
+
+result = arr[(arr < 20) | (arr > 50)]
+
+print(result)
+
+
+📌 Output
+
+[10 60]
+
+
+
+
+

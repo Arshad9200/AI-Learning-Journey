@@ -1,0 +1,101 @@
+
+╔════════════════════════════════════╗
+║ 		  	   💻AXIS IN NUMPY⚡     		     	        ║
+╚════════════════════════════════════╝
+
+
+
+
+📌 What is an Axis?
+
+An axis represents the direction (dimension) in which the data is arranged inside a NumPy array.
+
+Simple Definition:
+
+An axis is the direction of data, not a row or a column.
+
+
+
+
+🎯 Axis in Different Dimensions
+
+╭─────────────────────╮
+│         🌟 🟢 1-D Array🌟   		  │
+╰─────────────────────╯
+
+arr = np.array([10, 20, 30, 40])
+
+
+10  20  30  40
+──────────────►
+     Axis 0
+
+
+Only one direction exists.
+
+Axis 0 represents the length of the array.
+
+
+
+
+
+
+
+
+╭─────────────────────╮
+│         🌟 🟢 2-D Array🌟   		 │
+╰─────────────────────╯
+
+arr = np.array([
+    [10, 20, 30],
+    [40, 50, 60]
+])
+
+
+        Axis 1 (Columns)
+             →
+      10   20   30
+      40   50   60
+    ↑
+  Axis 0 (Rows)
+
+🔹Axis 0 → Direction of Rows (Top ↕ Bottom)
+🔹Axis 1 → Direction of Columns (Left ↔ Right)
+
+
+
+
+
+
+
+
+
+
+
+╭─────────────────────╮
+│         🌟 🟢 3-D Array🌟   		 │
+╰─────────────────────╯
+
+
+Axis 0 → Depth (Blocks)
+
+Axis 1 → Rows
+
+Axis 2 → Columns
+
+
+
+
+
+🎯 Easy Trick to Remember
+
+
+🔸1-D Array → 1 Axis
+
+🔸2-D Array → 2 Axes
+
+🔸3-D Array → 3 Axes
+
+
+
+Number of Dimensions = Number of Axes
