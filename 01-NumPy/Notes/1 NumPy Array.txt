@@ -50,7 +50,7 @@ Without NumPy, numerical operation in python use standard lists, which is slower
 
 
 ╭──────────────────────────╮
-│			🌟ARRAY🌟 		      │
+│			🌟ARRAY🌟 	  │
 ╰──────────────────────────╯
 
 
@@ -65,7 +65,7 @@ num = [3, 5, 11, 89]
 
 
 ╭──────────────────────────╮
-│	   🌟NUMPY ARRAY🌟 		      │
+│	   🌟NUMPY ARRAY🌟 	  │
 ╰──────────────────────────╯
 
 
@@ -328,7 +328,7 @@ Output: [1, 2, 3, 4]        (comma separated)
 
 
       📘 Difference Between Python List and NumPy Array
-🔸══════════════════════════════════🔸
+🔸══════════════════════════════════════════════════════════════════🔸
 
 
 	1. Data Storage

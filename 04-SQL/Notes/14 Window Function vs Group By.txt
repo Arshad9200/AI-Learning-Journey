@@ -1,0 +1,88 @@
+╔══════════════════════════════════════════╗
+║   🔷 📊 GROUP BY vs WINDOW FUNCTION 🔷  ║
+╚══════════════════════════════════════════╝
+
+Both are used to perform calculations on data, but they work differently.
+
+
+
+🔹 GROUP BY
+
+GROUP BY combines multiple rows into a single row for each group.
+
+For example, to find the average salary of each department:
+
+SELECT department, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department;
+
+Output:
+
+department	avg_salary
+	IT		    60000
+	HR		    52500
+
+👉 Individual employee rows are collapsed into department-level rows.
+
+
+
+
+
+
+
+
+
+
+🔹 WINDOW FUNCTION
+
+A window function performs a calculation across related rows but does not remove the individual rows.
+
+SELECT
+    name,
+    department,
+    salary,
+    AVG(salary) OVER(PARTITION BY department) AS avg_salary
+FROM employees;
+
+
+
+Output:
+
+name	department	salary	avg_salary
+
+Arshad		IT		50000	    60000
+Aatif		IT		70000	    60000
+Rahul		HR		45000	    52500
+Zaid		HR		60000	    52500
+
+
+
+
+👉 All employee rows are retained, while the department average is added to each row like 
+
+🔸IT dept average is 60000 so 60000 return in both IT dept rows.
+🔸HR dept average is 52500 so 52500 return in both HR dept rows.
+
+
+
+
+----------------------------------
+⚖️ Main Difference
+----------------------------------
+
+GROUP BY				        WINDOW FUNCTION
+
+Combines rows					Keeps rows
+Reduces number of rows			Usually keeps same number of rows
+Produces summary				Produces calculation alongside detail
+Uses GROUP BY				    Uses OVER()
+
+
+
+
+
+
+🧠 Easy Way to Remember
+
+GROUP BY = Group and Reduce
+WINDOW FUNCTION = Calculate and Keep

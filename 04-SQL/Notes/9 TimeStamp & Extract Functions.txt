@@ -1,0 +1,266 @@
+╭────────────────────────────────╮
+│       🌟📥 TIMESTAMPS🌟       │
+╰────────────────────────────────╯
+
+The TIMESTAMP data type is used for values that contain both date and time parts.
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+	    1️⃣ TIME
+◣━━━━━━━━━━━━━━━━━━━◢ 
+
+It contains only time , format HH:MI:SS
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+	    2️⃣ DATE
+◣━━━━━━━━━━━━━━━━━━━◢ 
+
+It contains only date , format YYYY-MM-DD
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+	    3️⃣ YEAR
+◣━━━━━━━━━━━━━━━━━━━◢ 
+
+It contains only year , format YYYY or YY
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+	 4️⃣ TIMESTAMP
+◣━━━━━━━━━━━━━━━━━━━◢ 
+
+It contains date  and time, format YYYY-MM-DD HH:MI:SS
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+    5️⃣ TIMESTAMPTZ
+◣━━━━━━━━━━━━━━━━━━━◢ 
+
+It contains date , time and time zone
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+════════════════════════════
+	🕰️ TIMESTAMP FUNCTIONS
+════════════════════════════
+
+Below are the TIMESTAMP functions and operators in SQL
+
+
+
+📍THESE ARE POSTGRESQL COMMANDS:
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔸 SHOW TIMEZONE				←   PostgreSQL
+🔹 SELECT @@session.time_zone; 	←   MySQL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Note: 
+
+In MySQL It returns "System" it means MySQL is not using a separately configured timezone. It is using the timezone of the operating system where the MySQL server is running.
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		    🔸SELECT NOW()
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Output:
+2026-08-29 21:13:55
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔸 SELECT  TIMEOFDAY()       		   ←   PostgreSQL
+🔹 SELECT CURRENT_TIMESTAMP() ←   MySQL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+
+📍Note:
+
+TIMEOFDAY() is a PostgreSQL function and is not supported by MySQL. In MySQL, use NOW() or CURRENT_TIMESTAMP() to get the current date and time.
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		🔸SELECT  CURRENT_TIME
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ 
+Output:
+
+CURRENT_TIME
+21:19:03
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		🔸 SELECT  CURRENT_DATE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Output:
+
+CURRENT_DATE
+2026-08-29
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────╮
+│      	🌟📥 EXTRACT🌟          │
+╰────────────────────────────────╯
+
+The EXTRACT() function extracts a part from a given date value.
+
+
+
+
+Syntax:
+
+🕰️Extract Month -------------
+
+SELECT EXTRACT(MONTH FROM date_field) 
+FROM Table;
+
+👉Output:
+It return the month of the given time
+
+
+
+
+🕰️Extract Year -------------
+
+SELECT EXTRACT(YEAR FROM date_field) 
+FROM Table;
+
+👉Output:
+It return the year of the given time
+
+
+
+
+🕰️Extract Day -------------
+
+SELECT EXTRACT(DAY FROM date_field) 
+FROM Table;
+
+👉Output:
+It return the day of the given time
+
+
+
+
+🕰️Extract Quarter -------------
+
+SELECT EXTRACT(QUARTER FROM date_field) 
+FROM Table;
+
+👉Output:
+It return the quarter of the given time
+
+
+
+
+
+
+
+
+
+
+⌛MULTIPLE EXTRACT FUNCTIONS⌛
+---------------------------------
+
+🔸YEAR
+
+🔸 QUARTER
+
+🔸 MONTH
+
+🔸WEEK
+
+🔸DAY
+
+🔸 HOUR
+
+🔸 MINUTE
+
+🔸 DOW → Day of Week
+
+🔸 DOY  →  Day of Year
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

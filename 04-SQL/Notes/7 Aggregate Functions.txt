@@ -1,0 +1,200 @@
+╭────────────────────────────────╮
+│  🌟📥 AGGREGATE  FUNCTIONS🌟  │
+╰────────────────────────────────╯
+
+Aggregate function performs a calculation on multiple values and returns a single value.
+
+Aggregate function are often used with GROUP BY & SELECT statement
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+	   1️⃣ COUNT()
+◣━━━━━━━━━━━━━━━━━━━◢
+
+It returns number of values.
+
+📍Syntax:
+
+SELECT COUNT(column_name) FROM table_name;
+
+
+👉Example:
+
+SELECT COUNT(name) as total_people FROM trip_expenses;
+
+
+🔖Output:
+total_people
+
+5
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+	   2️⃣ SUM()
+◣━━━━━━━━━━━━━━━━━━━◢
+
+It returns sum of all values.
+
+📍Syntax:
+
+SELECT SUM(column_name) FROM table_name;
+
+
+👉Example:
+
+SELECT SUM(budget) as total_expense FROM trip_expenses;
+
+
+🔖Output:
+
+total_expense
+
+36500
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+	   3️⃣ AVG()
+◣━━━━━━━━━━━━━━━━━━━◢
+
+It returns average of the values.
+
+
+📍Syntax:
+
+SELECT AVG(column_name) FROM table_name;
+
+
+👉Example:
+
+SELECT AVG(budget) as avg_budget FROM trip_expenses;
+
+
+🔖Output:
+
+avg_budget
+
+7300.0000
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+	   4️⃣ MAX()
+◣━━━━━━━━━━━━━━━━━━━◢
+
+It returns the maximum value.
+
+
+📍Syntax:
+
+SELECT MAX(column_name) FROM table_name;
+
+
+👉Example:
+
+SELECT MAX(budget) as max_budget FROM trip_expenses;
+
+
+🔖Output:
+
+max_budget
+
+12000
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+	   5️⃣ MIN()
+◣━━━━━━━━━━━━━━━━━━━◢
+
+It returns the minimum value.
+
+
+📍Syntax:
+
+SELECT MIN(column_name) FROM table_name;
+
+
+👉Example:
+
+SELECT MIN(budget) as min_budget FROM trip_expenses;
+
+
+🔖Output:
+
+min_budget
+
+5000
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+	   6️⃣ ROUND()
+◣━━━━━━━━━━━━━━━━━━━◢
+
+It rounds a number to a specified number of decimal places.
+
+
+📍Syntax:
+
+SELECT ROUND(AVG(budget), 2) as round_of_budget FROM trip_expenses;
+
+
+🔦Explanation:
+
+ROUND(column_name, num)
+
+🔸column_name  → On which column we want to apply round of
+🔸num   →   	         After decimal num digits are allowed
+
+Like: 
+ROUND(AVG(budget), 2)  → 7300.00
+
+
+
+
+👉Example:
+
+SELECT ROUND(AVG(budget), 2) as round_of_budget FROM trip_expenses;
+
+
+
+🔖Output:
+
+round_of_budget
+
+7300.00
+
+
+

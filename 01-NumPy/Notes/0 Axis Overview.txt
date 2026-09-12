@@ -1,8 +1,7 @@
 
 ╔════════════════════════════════════╗
-║ 		  	   💻AXIS IN NUMPY⚡     		     	        ║
+║ 		  	   💻AXIS IN NUMPY⚡      ║
 ╚════════════════════════════════════╝
-
 
 
 
@@ -20,7 +19,7 @@ An axis is the direction of data, not a row or a column.
 🎯 Axis in Different Dimensions
 
 ╭─────────────────────╮
-│         🌟 🟢 1-D Array🌟   		  │
+│  🌟 🟢 1-D Array🌟 
 ╰─────────────────────╯
 
 arr = np.array([10, 20, 30, 40])
@@ -43,7 +42,7 @@ Axis 0 represents the length of the array.
 
 
 ╭─────────────────────╮
-│         🌟 🟢 2-D Array🌟   		 │
+│  🌟 🟢 2-D Array🌟 │
 ╰─────────────────────╯
 
 arr = np.array([
@@ -73,7 +72,7 @@ arr = np.array([
 
 
 ╭─────────────────────╮
-│         🌟 🟢 3-D Array🌟   		 │
+│  🌟 🟢 3-D Array🌟 │
 ╰─────────────────────╯
 
 

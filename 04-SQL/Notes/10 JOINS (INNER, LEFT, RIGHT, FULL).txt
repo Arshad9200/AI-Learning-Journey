@@ -1,0 +1,360 @@
+╭────────────────────────────────╮
+│       🌟📥 JOINS 🌟        	
+╰────────────────────────────────╯
+
+A JOIN is used to combine data from two or more tables based on a related column.
+
+
+💡 Example
+
+
+Table →  manali_trip
+
+id		name		age		stream		city
+
+111		Arshad		25		CSE			Hyderabad
+112		Aatif		23		CSE-AI		Gorakhpur
+113		Abhijeet	24		CSE-DC		NOIDA
+114		Ashu		25		CSE-ML		NOIDA
+115		Om			25		CSE-Cloud	Delhi
+116		Vishwajeet	26		CSE-Cyber	Gorakhpur
+117		Raazway		24		CSE			Chennai
+
+
+
+Table →  payment_data
+
+id		payment_mode			amount
+
+111		Google Pay				6000
+112		PhonePe					6500
+113		Google Pay				7000
+114		Cash					4500
+116		PhonePe					3900
+118		Cash					5000
+
+
+
+Both tables are related through id.
+
+
+
+🧠 LEF/RIGHT TABLE IDENTIFICATION TRICK
+
+			FROM tableA
+  			      ↓
+		tableA is LEFT TABLE ⭐
+
+
+			JOIN tableB
+   			   ↓
+		tableB is RIGHT TABLE ⭐
+
+
+🔑 Golden Rule
+
+Before JOIN → LEFT TABLE
+
+After JOIN → RIGHT TABLE
+
+
+
+
+TYPES OF JOINS
+----------------
+
+1. INNER JOIN
+
+2. LEFT JOIN
+
+3. RIGHT JOIN
+
+4. FULL JOIN
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+	1️⃣ INNER JOIN
+◣━━━━━━━━━━━━━━━━━━━◢ 
+
+It returns records that have matching values in both tables.
+
+It means Inner Join returns common data/values.
+
+
+
+🔖Syntax:
+
+SELECT column_name(s)
+FROM tableA
+INNER JOIN tableB
+ON tableA.column_name = tableB.column_name;
+
+
+👉Example;
+
+SELECT m.id, m.name, m.city, p.amount, p.payment_mode
+FROM manali_trip as m
+INNER JOIN payment_data as p
+ON m.id = p.id;
+
+
+
+
+📍Output:
+
+id		name		city		amount		payment_mode
+
+111		Arshad		Hyderabad	6000		Google Pay
+112		Aatif		Gorakhpur	6500		PhonePe
+113		Abhijeet	NOIDA		7000		Google Pay
+114		Ashu		NOIDA		4500		Cash
+116		Vishwajeet	Gorakhpur	3900		PhonePe
+
+
+
+
+
+💡 Explanation:
+
+INNER JOIN returns only the rows where the id exists in both tables.
+
+manali_trip → id = 117 ❌
+payment_data → id = 118 ❌
+
+Since 117 and 118 are not common, those rows are not returned.
+
+👉 INNER JOIN = Only common/matching data from both tables.
+
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+	2️⃣ LEFT JOIN
+◣━━━━━━━━━━━━━━━━━━━◢ 
+
+It returns all the records from the left table and the matched (common) records from the right table.
+
+
+
+
+
+🔖Syntax:
+
+SELECT column_name(s)
+FROM tableA
+LEFT JOIN tableB
+ON tableA.column_name = tableB.column_name;
+
+
+
+
+👉Example;
+
+SELECT m.id, m.name, m.city, p.amount
+FROM manali_trip as m
+LEFT JOIN payment_data as p
+ON m.id = p.id;
+
+
+📍Output:
+
+
+id		name		city			amount
+
+111		Arshad		Hyderabad	6000
+112		Aatif		Gorakhpur	6500
+113		Abhijeet	NOIDA		7000
+114		Ashu		NOIDA		4500
+115		Om			Delhi	
+116		Vishwajeet	Gorakhpur	3900
+117		Raazway		Chennai	
+
+
+
+
+💡 Explanation:
+
+LEFT JOIN returns all the rows of LEF table and common data.
+
+manali_trip → id = 117 ✅
+payment_data → id = 118 ❌
+
+
+
+Since 117 is available in LEFT table.
+
+👉 LEFT JOIN = Only common & Left table data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━◥
+	3️⃣ RIGHT JOIN
+◣━━━━━━━━━━━━━━━━━━━◢ 
+
+It returns all the records from the right table and the matched (common) records from the left table.
+
+
+
+🔖Syntax:
+
+SELECT column_name(s)
+FROM tableA
+RIGHT JOIN tableB
+ON tableA.column_name = tableB.column_name;
+
+
+👉Example;
+
+SELECT m.name, p.id, p.amount, p.payment_mode
+FROM manali_trip as m
+RIGHT JOIN payment_data as p
+ON m.id = p.id;
+
+
+📍Output:
+
+
+name		id		amount			payment_mode
+
+Arshad		111		  6000			Google Pay
+Aatif		112		  6500			PhonePe
+Abhijeet	113		  7000			Google Pay
+Ashu		114		  4500			Cash
+Vishwajeet	116		  3900			PhonePe
+			118		  5000			Cash
+
+
+
+💡 Explanation:
+
+RIGHT JOIN returns all the rows of Right table and common data.
+
+payment_data → id = 118 ✅
+manali_trip → id = 117 ❌
+
+
+Since 118 is available in Right table.
+
+👉 RIGHT JOIN = Only common & Right table data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+◤━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◥
+	4️⃣ FULL JOIN / FULL OUTER JOIN
+◣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◢ 
+
+It returns all records when there is match in either LEFT or RIGHT table.
+
+
+
+🔖Syntax:
+
+SELECT column_name(s)
+FROM tableA
+FULL OUTER JOIN tableB
+ON tableA.column_name = tableB.column_name;
+
+
+
+
+
+
+⚠️ISSUE:
+
+MySQL does not directly support FULL OUTER JOIN.
+
+So this query will give a syntax error:
+
+
+
+
+
+
+
+✅ How to do FULL OUTER JOIN in MySQL
+
+Use LEFT JOIN + RIGHT JOIN with UNION:
+
+
+
+
+
+
+
+👉Example;
+
+SELECT * 
+FROM manali_trip AS m
+LEFT JOIN payment_data AS p
+ON m.id = p.id
+
+UNION
+
+SELECT * 
+FROM manali_trip AS m
+RIGHT JOIN payment_data AS p
+ON m.id = p.id;
+
+
+📍Output:
+
+
+id	name		age		stream		city			id		amount	    payment_mode
+
+111	Arshad		25		CSE			Hyderabad		111		Google Pay	6000
+112	Aatif		23		CSE-AI		Gorakhpur		112		PhonePe		6500
+113	Abhijeet	24		CSE-DC		NOIDA			113		Google Pay	7000
+114	Ashu		25		CSE-ML		NOIDA			114		Cash		4500
+115	Om			25		CSE-Cloud	Delhi			
+116	Vishwajeet	26		CSE-Cyber	Gorakhpur		116		PhonePe		3900
+117	Raazway		24		CSE	Chennai			
+													118		Cash		5000
+
+
+
+💡 Explanation:
+
+FULL JOIN returns all the rows of Right table , LEF TABLE and common data.
+
+manali_trip 	→ id = 117 ✅
+payment_data  →  id = 116 ✅
+payment_data  →  id = 118 ✅
+
+
+
+👉 FULL JOIN = LEFT JOIN + RIGHT JOIN with UNION 
+

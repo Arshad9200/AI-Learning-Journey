@@ -1,0 +1,206 @@
+╭───────────────────────────────────────╮
+│🌟📥HOW TO IMPORT EXCEL/CSV FILE🌟    │
+╰───────────────────────────────────────╯
+
+
+
+
+════════════════════════════
+	 1️⃣ 🖱️ IMPORT  Manually
+═════════════════════════════
+
+Using MySQL Workbench:
+
+
+STEP 1: Create & Use DATABSE
+──────────────────────
+
+CREATE DATABASE emp_db;
+
+USE emp_db;
+
+
+
+
+STEP 2: IMPORT THE DATA  
+──────────────────────
+
+
+If Excel :
+
+Excel (.xlsx)
+      ↓
+Save As CSV
+      ↓
+Import CSV into MySQL
+
+
+
+📍HOW TO IMPORT DATA IN CSV FORMAT 📍
+
+
+Database (MySQL Workbench)
+   ↓
+Right-click Table 
+   ↓
+Select Table Data Import Wizard
+   ↓
+Select CSV file from the local computer
+   ↓
+Configure columns
+   ↓
+Import
+
+
+
+📌 Excel file: MySQL Workbench's wizard is generally used with CSV. So convert excel file in csv than import:
+
+
+
+
+STEP 3: VIEW IMPORTED DATA
+──────────────────────
+
+
+Syntax:
+
+SELECT * FROM database_name.table_name
+
+
+Example;
+
+SELECT * FROM emp_db.employee_dataset;
+
+
+
+
+
+
+
+
+
+
+
+
+════════════════════════════════
+🚀 2️⃣ 💻 IMPORT USING SQL QUERY 🚀
+═════════════════════════════════
+
+
+We can use the LOAD DATA INFILE statement to import a CSV file directly through SQL.
+
+
+
+STEP 1: CREATE DATABASE & USE DATABASE
+───────────────────────────────────
+
+
+CREATE DATABASE emp_DB;
+
+# Use Database
+USE emp_DB;
+
+
+
+
+
+
+STEP 2: CREATE TABLE WITH SAME COLUMN NAME OF THE EXCEL/CSV FILE
+────────────────────────────────────────────────────────
+
+CREATE TABLE emp_dataset
+(
+Name VARCHAR(50) NOT NULL,
+Age INT NOT NULL,
+Experience DOUBLE,
+Domain VARCHAR(50),
+City VARCHAR(50) 
+)
+
+
+
+
+
+
+STEP 3: LOAD THE EXCEL/CSV FILE IN THE TABLE
+────────────────────────────────────
+
+Syntax:
+
+LOAD DATA INFILE 'file_path'
+INTO TABLE table_name
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+📌 Note: We prefer CSV with the LOAD DATA INFILE query because MySQL can directly read its plain-text, row-and-column structure, unlike Excel .xlsx files.
+
+
+
+
+💡Example:
+
+
+LOAD DATA LOCAL INFILE 'C:/Users/DELL/OneDrive/Desktop/AI-Learning-Journey/04-SQL/Sample Dataset for Practise/Employ_data.csv'
+INTO TABLE emp_dataset
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+
+
+
+
+
+
+🔍 Explanation of Each Part 🔍
+
+
+👉 Tells MySQL that we want to load data from a file.
+
+LOCAL tells MySQL to read the file from the client computer, such as your Windows PC running MySQL Workbench.
+
+LOAD DATA INFILE
+
+
+
+
+👉 Location of the CSV file.
+
+'C:/Users/DELL/Desktop/students.csv'
+
+
+
+
+👉 Specifies the table where the data should be inserted.
+
+INTO TABLE students
+
+
+
+
+👉 Tells MySQL that columns are separated by a comma.
+
+FIELDS TERMINATED BY ','
+
+Example:
+1,Arshad,25
+Here , separates the three columns.
+
+
+
+
+👉 Tells MySQL that each new line represents a new record/row.
+
+LINES TERMINATED BY '\n'
+
+
+
+
+👉 Skips the first row because it contains column names:
+
+IGNORE 1 ROWS (Column name) like : id,name,age
+
+
+

@@ -1,0 +1,211 @@
+╭────────────────────────────────╮
+│     🌟📥 CASE STATEMENT 🌟    │
+╰────────────────────────────────╯
+
+
+The CASE expression goes through conditions and returns a value when the first condition is met (like if-else statement). If no conditions are True, than It returns the value in the ELSE clause.
+
+
+If there is no ELSE part and no conditions are True than It returns Null
+
+
+
+
+🔹━━━━ 🔸 CASE STATEMENT SYNTAX 🔹━━━━ 🔸
+
+SELECT column_name(s)
+CASE
+	WHEN condition1 THEN result1
+	WHEN condition2 THEN result2
+	WHEN conditionN THEN resultN
+	ELSE other_result
+END
+FROM table_name;
+
+
+
+
+
+
+🔑 How CASE works
+
+
+CASE
+   ↓
+Check 1 → TRUE? → Return result → STOP
+   ↓ FALSE
+Check 2 → TRUE? → Return result → STOP
+   ↓ FALSE
+Check 3 → TRUE? → Return result → STOP
+   ↓ FALSE
+ELSE → Return result
+
+Main point: CASE always works TOP → BOTTOM and stops at the first TRUE condition.
+
+
+
+
+
+
+ 👉Example:
+
+SELECT id, name,
+CASE
+	WHEN id = 500 THEN 'Very Expensive'
+	WHEN id = 100 THEN 'Affordable'
+    WHEN id > 100 AND id < 500 THEN 'Costly'
+    ELSE 'Not Affordable'
+END AS 'product_status'
+FROM table1;
+
+
+
+💡Output:
+
+id		name		product_status
+
+100		Agni		Affordable
+200		Agni		Costly
+500		Dharti		Very Expensive
+700		Dharti		Not Affordable
+200		Vayu		Costly
+300		Vayu		Costly
+500		Vayu		Very Expensive
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────╮
+│    🌟📥 CASE EXPRESSION 🌟    │
+╰────────────────────────────────╯
+
+
+🔹━━━━ 🔸 CASE EXPRESSION  SYNTAX 🔹━━━━ 🔸
+
+SELECT column_name(s)
+CASE Expression
+	WHEN value1 THEN result1
+	WHEN value2 THEN result2
+	WHEN valueN THEN resultN
+	ELSE other_result
+END
+FROM table_name;
+
+
+
+
+👉 Example:
+
+SELECT id, name,
+CASE id
+	WHEN 100 THEN "Affordable"
+    WHEN 200 THEN "Costly"
+	WHEN 300 THEN "Very Expensive"
+    ELSE "Not Affordable"
+END AS status
+FROM table1;
+
+
+
+
+💡Output:
+
+id		name		status
+
+100		Agni		Affordable
+200		Agni		Costly
+500		Dharti		Not Affordable
+700		Dharti		Not Affordable
+200		Vayu		Costly
+300		Vayu		Very Expensive
+500		Vayu		Not Affordable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 🔸 
+	   CASE STATEMENT  vs  CASE EXPRESSION
+🔹━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 🔸 
+
+1️⃣ CASE Statement
+
+You use it when you want to decide what action to perform.
+
+It is mainly used inside stored procedures, functions, or triggers.
+
+Think:
+
+"Based on the condition, what should I do?"
+
+
+📍Example:
+
+CASE
+    WHEN salary > 50000 THEN
+        SET bonus = 5000;
+    ELSE
+        SET bonus = 2000;
+END CASE;
+
+
+
+
+
+
+2️⃣ CASE Expression
+
+You use it when you want to choose a value to display.
+It is used when we have to apply condition like if-else
+
+Think:
+
+"Based on the condition, what should I show?"
+
+
+Example:
+
+CASE
+     WHEN salary > 50000 THEN 'High'
+     ELSE 'Low'
+END AS salary_status
+
+
+
+
+
+
+
+🧠 Super easy way to remember
+
+
+CASE EXPRESSION	→ "WHAT VALUE should I give?"
+
+CASE STATEMENT	→ "WHAT ACTION should I take?"

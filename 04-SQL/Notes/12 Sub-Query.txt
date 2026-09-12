@@ -1,0 +1,190 @@
+
+╭────────────────────────────────╮
+│       	🌟📥 SUB-QUERY 🌟      │
+╰────────────────────────────────╯
+
+A Sub-Query / Inner Query  / Nested Query allows us to create complex query on the output of another query
+
+A subquery is a query written inside another SQL query.
+
+The inner query is called the subquery, and the outer query uses its result.
+
+Sub-Query involves two SELECT Statements.
+
+
+
+
+👉 Syntax:
+
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator
+	(SELECT column_name FROM table_name WHERE condition) ;
+
+
+
+table →  table1
+-------------------------------------------------------------------------------------
+
+cust_id	amount	   mode		   payment_date
+
+   1			60	      cash		   2020-09-24
+   2			30	      credit card	2020-11-24
+   8			110	   cash		   2020-03-20
+   10			70	      mobile payment	2020-04-12
+   11		   80	      cash		   2020-02-24
+-------------------------------------------------------------------------------------
+
+
+
+
+# Problem Statement: Find all the amounts which is greater than Average
+
+
+# Without Sub-Query
+-------------------------------------
+
+🔖 Find the Average Amount
+
+SELECT AVG(amount) FROM table1;
+
+
+Output: 70.000
+
+
+
+🔖  Find the Amount which is greater than Average
+
+SELECT * FROM table1
+WHERE amount > 70;
+
+
+💡 Output:
+
+cust_id	amount	   mode		payment_date
+
+   8			110	    cash		2020-03-20
+   11		   80	       cash		2020-02-24
+
+
+
+
+⚠️ ISSUES: 
+When we add new data/delete data than Average will change than manually we have to modify the query.
+
+
+
+
+
+
+
+
+---------------------------------------------
+💡 USING SUB-QUERY
+---------------------------------------------
+
+SELECT * FROM table1
+WHERE amount > (
+	SELECT AVG(amount) FROM table1
+    );
+
+
+💡 Output:
+
+cust_id	amount	   mode		payment_date
+
+   8			110	    cash		2020-03-20
+   11		   80	       cash		2020-02-24
+
+
+
+📍ADVANTAGE:
+
+When we add/remove data than , It dynamically calculate the AVERAGE at every time.
+
+We don't have to change the average value every time.
+
+
+
+
+
+
+
+
+
+
+
+
+🚀━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🚀
+      		SUB-QUERY USING COMPARISON OPERATOR
+🚀━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🚀
+
+Comparision Operators: <, > , =, !=, <=, >=
+
+
+🔖Example:
+
+SELECT * FROM table1
+WHERE amount > (
+	SELECT AVG(amount) FROM table1
+    );
+
+
+💡 Output:
+
+cust_id	amount	   mode		payment_date
+
+   8			110	    cash		2020-03-20
+   11		   80	       cash		2020-02-24
+
+
+
+
+
+
+
+
+
+
+
+
+🚀━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🚀
+      		SUB-QUERY USING LOGICAL OPERATOR
+🚀━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🚀
+
+Logical operators such as AND, OR, and NOT can be used with conditions involving a subquery.
+
+
+🧠 Basic Structure
+
+SELECT *
+FROM table_name
+WHERE condition
+  AND/OR/NOT (subquery);
+
+
+
+
+💡 Example:
+
+SELECT *
+FROM table1 AS t1
+WHERE EXISTS
+(
+    SELECT 1
+    FROM table1 AS t2
+    WHERE t2.cust_id = t1.cust_id
+      AND t2.amount < 100
+);
+
+
+
+💡 Output:
+
+cust_id	amount	   mode		      payment_date
+
+   1			60	    cash		         2020-09-24
+   2			30	    credit card	   2020-11-24
+   10			70	    mobile payment   2020-04-12
+   11		   80	    cash		         2020-02-24
+

@@ -1,0 +1,245 @@
+╭─────────────────────────────────────────────╮
+│  🌟📥 COMMON TABLE EXPRESSION (CTE) 🌟     │
+╰─────────────────────────────────────────────╯
+
+
+• CTE is a temporary result/table that we create at the beginning of a query and use in the main query.
+
+• It is written using WITH
+
+• We can define CTEs by adding a WITH clause directly before SELECT, INSERT, UPDATE, DELETE or MERGE statement.
+
+•  The WITH clause can create one or more CTEs separated by comma.
+
+
+
+
+🧠 Easy way to remember
+
+CTE = Create a temporary result first → then use that result in the main query.
+
+
+
+
+WITH Keyword
+  ↓
+Create temporary result
+  ↓
+Use it in SELECT / INSERT / UPDATE / DELETE
+
+
+
+📌 Important: 
+CTE exists only while that query is running. It is not a permanent table.
+
+
+
+
+
+
+👉 Syntax:
+
+WITH cte_name AS (
+	SELECT columnA, columnB, columnC
+	FROM table1
+)
+SELECT columnA, columnC
+FROM cte_name
+
+
+
+
+
+Explanation:
+
+🔹 1️⃣ CTE Query
+
+This part creates the temporary result:
+
+WITH cte_name AS (
+	SELECT columnA, columnB, columnC
+	FROM table1
+)
+
+→ cte_name is the temporary result/table created by CTE
+
+
+
+
+🔹 2️⃣ Main Query
+
+This part uses the CTE result:
+
+SELECT *
+FROM cte_name;
+
+👉 Here, cte_name behaves like a temporary table.
+
+
+
+
+
+🧠 Remember this
+
+When CTEs main query execution finished than CTE (temporary table) will disappear. 
+
+When we try to access my_cte using SELECT than It returns error because CTE is not available.
+
+
+CTE
+ ↓
+ONE MAIN QUERY ONLY
+ ↓
+CTE disappears
+
+
+
+
+📍Example:
+
+
+WITH my_cte AS
+(
+	SELECT * 
+    FROM table1
+    WHERE id > 300
+)
+SELECT *
+FROM my_cte;
+
+
+
+Output:
+
+id		name
+
+500		Dharti
+700		Dharti
+500		Vayu
+
+
+
+
+
+
+╔══════════════════════════════════════╗
+║       🔹 SINGLE CTE 🔹          	  ║
+╚══════════════════════════════════════╝
+
+📍Example:
+
+
+WITH my_cte AS
+(
+	SELECT *,
+		AVG(id) OVER (PARTITION  BY name) AS avg,
+		SUM(id) OVER (PARTITION  BY name) AS sum,
+		COUNT(id) OVER (PARTITION  BY name) AS count,
+		MIN(id) OVER (PARTITION  BY name) AS min,
+		MAX(id) OVER (PARTITION  BY name) AS max,
+        	RANK() OVER (ORDER BY id) AS "rank",
+        	DENSE_RANK() OVER (ORDER BY id) AS "dense_rank"
+    FROM table1
+)
+SELECT * 
+FROM my_cte;
+
+
+
+
+👉Output:
+
+
+id	name	avg			sum		count		min	  max     rank   dense_rank
+
+100	Agni	150.0000	300		    2		100	  200		1		1
+200	Agni	150.0000	300		    2		100	  200		2		2
+200	Vayu	333.3333	1000		3		200	  500		2		2
+300	Vayu	333.3333	1000		3		200	  500		4		3
+500	Dharti	600.0000	1200		2		500	  700		5		4
+500	Vayu	333.3333	1000		3		200	  500		5		4
+700	Dharti	600.0000	1200		2		500	  700		7		5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╔══════════════════════════════════════╗
+║       🔹 MULTIPLE CTEs 🔹           ║
+╚══════════════════════════════════════╝
+
+
+📍 Syntax:
+
+
+WITH employee_cte AS
+(
+    SELECT *
+    FROM employee
+    WHERE salary > 50000
+),
+
+manager_cte AS
+(
+    SELECT *
+    FROM employee
+    WHERE experience > 5
+)
+
+SELECT *
+FROM employee_cte;
+
+
+
+
+
+
+
+ 👉 Example:
+
+WITH user_data AS
+(
+	SELECT *,
+		AVG(id) OVER (PARTITION  BY name) AS avg,
+		SUM(id) OVER (PARTITION  BY name) AS sum,
+		MIN(id) OVER (PARTITION  BY name) AS min,
+        	RANK() OVER (ORDER BY id) AS "rank",
+        	DENSE_RANK() OVER (ORDER BY id) AS "dense_rank"
+    	FROM table1
+),
+manager_data AS 
+(
+	SELECT * 
+    FROM table1
+    WHERE id > 300
+)
+SELECT ud.id, ud.name, ud.dense_rank, ud.rank, md.name AS filtered_name
+FROM user_data AS ud, manager_data AS md;
+
+
+
+
+🔖Output:
+
+id	name	dense_rank	rank	filtered_name
+
+100	Agni		1		   1		Vayu
+200	Vayu		2		   2		Dharti
+200	Vayu		2		   2		Dharti
+300	Vayu		3		   4		Vayu
+500	Vayu		4		   5		Dharti
+500	Vayu		4		   5		Dharti
+700	Dharti		5		   7		Vayu
+
+
+

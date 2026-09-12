@@ -1,0 +1,176 @@
+🛠️ MySQL Workbench: Starting Server & Executing Queries 🛠️
+
+
+💡If we are using MySQL Workbench 
+
+
+
+🔹 Step 1: Start / Restart MySQL80 Server
+
+
+If MySQL Workbench is unable to connect to the MySQL Server:
+
+Win + R
+   ↓
+services.msc
+   ↓
+Find → MySQL80
+   ↓
+Right Click → Start
+
+✅ MySQL Server Started
+
+
+
+
+
+
+🔹 Step 2: Open MySQL Workbench
+
+Open MySQL Workbench.
+
+Then select:
+
+📌 Local Instance MySQL80
+
+Enter your MySQL password if required.
+
+
+
+
+
+
+
+🔹 Step 3: Create / Open SQL File
+
+After connecting to MySQL:
+
+📄 Open a new SQL Editor
+        ↓
+✍️ Write SQL Queries
+        ↓
+⚡ Execute Queries
+
+Example:
+
+USE bluspringDB;
+
+SELECT * FROM IT_TEAM;
+
+
+
+
+
+
+
+
+
+Step 4: ⚡vs ⚡i
+
+(Recommended)
+⚡ is used when we have to execute only selected query
+	Execute ONE statement
+
+
+(Not Recommended)
+⚡i  execute all written queries
+	Execute the ENTIRE script
+
+→  Sometime it run the executed queries which cause error
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────╮
+│  🌟CREATE DATABASE🌟    │
+╰──────────────────────────╯
+
+Before creating tables and columns , we have to create a database.
+
+In database we can store multiple tables and in tables we can stores multiple columns and data.
+
+
+💡Syntax
+
+CREATE DATABASE database_name;
+
+
+📍Example:
+
+CREATE DATABASE bluspringDB;
+ 
+
+
+
+
+
+
+
+
+╭──────────────────────────╮
+│  🌟USE  DATABASE🌟      │
+╰──────────────────────────╯
+
+After creating database , we have to enter the command to which database we are going to use.
+
+
+💡Syntax
+
+USE DATABASE database_name;
+
+
+📍Example:
+
+USE DATABASE bluspringDB;
+
+
+
+
+
+
+
+
+╭──────────────────────────╮
+│	🌟CREATE TABLES🌟 	  │
+╰──────────────────────────╯
+
+The CREATE TABLE statement is used to create a new table in a database
+
+
+
+💡Syntax
+
+CREATE TABLE table_name 
+(
+	column_name1 datatype constraint,
+	column_name2 datatype constraint,
+	column_name3 datatype constraint,
+	column_name4 datatype constraint
+)
+
+
+
+
+
+📍Example:
+
+
+CREATE TABLE it_team
+(
+	"id" int PRIMARY KEY,
+	"Name" VARCHAR(50) NOT NULL,
+	"Experience" INT NOT NULL,
+	"Working Location" VARCHAR(100)
+)

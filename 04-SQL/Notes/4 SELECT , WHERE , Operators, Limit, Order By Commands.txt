@@ -1,0 +1,396 @@
+
+╭────────────────────────────────╮
+│	 🌟SELECT STATEMENT🌟       │
+╰────────────────────────────────╯
+
+The SELECT statement is used to select data from a database.
+
+
+Syntax
+
+
+▓▒░ 💻 SELECT SINGLE COLUMN  ░▒▓
+
+SELECT column_name FROM table_name;
+
+
+👉Example: 
+
+SELECT Name FROM cs42;
+
+
+👉Output:
+
+Name
+
+Arshad
+Aatif
+Abhijeet
+Ashu
+Om
+Vishwajeet
+
+
+
+
+
+
+
+▓▒░ 💻 SELECT MULTIPLE COLUMN  ░▒▓
+
+SELECT column_name1, column_name2, column_name3 FROM table_name;
+
+
+👉Example: 
+
+SELECT id, Name, Age FROM cs42;
+
+
+Output:
+
+id	Name		Age
+111	Arshad		25
+112	Aatif			23
+113	Abhijeet		24
+114	Ashu		25
+115	Om			25
+116	Vishwajeet	26
+
+
+
+
+
+
+
+
+▓▒░ 💻 SELECT ALL  COLUMNS  ░▒▓
+
+
+Syntax:
+
+SELECT * FROM table_name;
+
+
+👉Example: 
+
+SELECT * FROM cs42;
+
+
+
+👉Output:
+
+id	Name		Age    		  Stream				City
+
+111	Arshad		  25		  CSE			Siwan
+112	Aatif		  23		  CSE-AI		Gorakhpur
+113	Abhijeet	  24		  CSE-DC		Gonda
+114	Ashu		  25		  CSE-ML		Gorakhpur
+115	Om			  25		  CSE-Cloud		Basti	
+116	Vishwajeet	  26		  CSE-Cyber		Gorakhpur
+
+
+
+
+
+
+
+
+
+
+
+
+▓▒░ 💻 SELECT  WITH  DISTINCT (UNIQUE)    ░▒▓
+
+SELECT with DISTINCT method is basically use to find the only unique data of given column
+
+
+Syntax:
+
+SELECT DISTINCT column_name FROM table_name;
+
+
+👉Example: 
+
+SELECT DISTINCT Age FROM cs42;
+
+
+
+Output:
+Age
+25
+23
+24
+26
+
+
+Explanation:
+It return only the unique fields/data of Age columns
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────╮
+│		🌟WHERE CLAUSE🌟        │
+╰────────────────────────────────╯
+
+The WHERE Clause is used to filter records.
+
+It is used to extract only those records that full-filled a specified condition.
+
+
+
+📍Syntax:
+
+SELECT column_name FROM table_name
+WHERE conditions;
+
+
+
+👉Example:
+
+SELECT * FROM cs42
+WHERE Age=25;
+
+
+
+👉Output:
+
+id	Name	Age	 Stream
+111	Arshad	25	CSE	
+114	Ashu	25	CSE-ML	
+115	Om		25	CSE-Cloud	
+
+
+
+💡Explanation:
+
+It return all the records which age is 25 	
+
+
+
+
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+        OPERATORS IN SQL
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦	
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		1. ARITHMATIC OPERATOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Arithmetic Operations on numeric values
+
+Example:
+
+🔸Addition (+)
+🔸Subtraction (-)
+🔸Multiplication (*)
+🔸Division (/)
+🔸Modulus (%)
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		2. COMPARISON OPERATOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Compare two different data of SQL table
+
+Example:
+
+🔸Equal (=)
+🔸Not Equal (!=)
+🔸Greater Than (>)
+🔸Greater Than Equal (>=)
+🔸Modulus (%)
+
+
+
+
+👉Practical Example:
+
+SELECT * FROM cs42
+WHERE Age>24 AND Stream="CSE";
+
+
+💫Output:
+id	 Name	Age	 Stream
+111	Arshad	25	CSE
+
+
+
+👉 Explanation:
+
+It return only that records which age is greater than 24
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		3. LOGICAL OPERATOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Perform the Boolean Operations
+It return data when value is True
+
+Example:
+
+🔸All
+🔸IN
+🔸BETWEEN
+🔸LIKE
+🔸AND
+🔸OR
+🔸NOT
+🔸ANY
+
+
+
+
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		4. BITWISE OPERATOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Perform the Bit Operations on the integer values
+
+Example:
+
+🔸Bitwise AND (&)
+🔸Bitwise OR (|)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────╮
+│		🌟LIMIT CLAUSE🌟        │
+╰────────────────────────────────╯
+
+
+The LIMIT Clause is used to set an upper limit on the number of tuples returned by SQL.
+
+
+👉Syntax:
+
+SELECT column_name FROM table_name
+LIMIT 5:
+
+
+
+👉Example:
+
+SELECT * FROM cs42
+WHERE Age>24 
+LIMIT 3;
+
+
+
+💫Output:
+
+It will return 3 rows of the data
+
+id	Name	Age	Stream
+111	Arshad	25	CSE
+114	Ashu	25	CSE-ML
+115	Om		25	CSE-Cloud
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────╮
+│		🌟ORDER BY CLAUSE🌟     │
+╰────────────────────────────────╯
+
+
+The ORDER BY Clause is used to sort the result-set in ascending order (ASC) or Descending Order (Desc).
+
+
+👉Syntax:
+
+SELECT column_name FROM table_name
+ORDER BY column_name ASC;
+
+
+
+
+Example:
+
+SELECT * FROM cs42
+WHERE Age > 20 
+ORDER BY Age ASC;
+
+
+
+💫Output:
+
+It will return rows in Ascending/Descending Order 
+
+id	Name		Age	 	Stream
+
+112	Aatif		23		CSE-AI
+113	Abhijeet	24		CSE-DC
+111	Arshad		25		CSE
+114	Ashu		25		CSE-ML
+115	Om			25		CSE-Cloud
+116	Vishwaj		26		CSE-Cyber
+
+
+
+
+
+
+
+
+
+
+
+
+

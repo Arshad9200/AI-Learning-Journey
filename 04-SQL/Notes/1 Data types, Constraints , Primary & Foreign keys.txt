@@ -1,0 +1,221 @@
+DATA TYPES, PRIMARY & FOREIGN KEYS & CONSTRAINTS
+
+
+
+╭──────────────────────────╮
+│		  🌟DATA TYPES🌟  │
+╰──────────────────────────╯
+
+Data Type of a column defines what kind of value the column can store in the table
+
+Data Types defines while creating the tables in database
+
+
+
+====================================================
+ 🔹Data Types mainly classified into three categories 🔹
+====================================================
+
+
+-----------------
+ 1. String
+-----------------
+
+
+🔸 CHAR → Fixed-length
+
+It contains numbers, letters & special characters.
+It always allocates the defined length.
+
+Example:
+CHAR(5)
+If we store "AB" (2 characters), the remaining 3 characters are padded with spaces.
+
+
+
+
+🔸VARCHAR → Variable-length
+
+It contains numbers, letters & special characters.
+It stores only the actual data length, plus a small amount of length metadata.
+
+Example:
+VARCHAR(5)
+If we store "AB" (2 characters), it stores 2 characters only, not 5.
+
+
+
+
+
+
+
+----------------------
+ 2. Numeric
+----------------------
+
+🔸int
+Used for the integer values
+
+
+🔸float
+used for decimal point number
+
+
+🔸bool
+used for specify Boolean values like True & False
+
+
+
+
+
+
+
+
+
+-----------------------------
+ 3. Date & Time
+-----------------------------
+
+🔸date
+used to store date format
+
+🔸time
+date & time combination, format is YYYY-MM-DD
+
+
+
+
+
+
+
+
+
+
+
+
+╭─────────────────────────────────────────╮
+│    🌟PRIMARY KEYS & FOREIGN KEYS🌟 	 │
+╰─────────────────────────────────────────╯
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+        Primary Keys (PK)
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+A Primary key is a unique column we set in a table to easily identify and locate data in queries.
+
+A table can have only one Primary Key which should be Unique and Not Null.
+
+Example:
+id column
+
+
+
+
+
+
+
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+        Foreign Keys (FK)
+✦ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ✦
+
+A Foreign Key is a column used to link two or more tables together
+
+A table can have any number of foreign keys, It can contains duplicate & Null values
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭─────────────────────────────╮
+│	🌟CONSTRAINTS (RULES)🌟  │
+╰─────────────────────────────╯
+
+Constraints are used to specify rules for data in table.
+
+This ensures the accuracy & reliability of the data in the table
+
+Constraints can be specified when the table is created with the CREATE TABLE statement.
+
+After the table created, constraints can be specified with ALTER TABLE
+
+
+
+SYNTAX
+----------------
+
+CREATE TABLE table_name (
+	column1 datatype constraint,
+	column2 datatype constraint,
+	column3 datatype constraint
+) 
+
+
+
+
+
+💡COMMONLY USED CONSTRAINTS IN SQL 💡
+
+
+▓▒░ 💻 NOT NULL  ░▒▓
+
+It ensures that a column can not have NULL VALUES
+
+
+
+▓▒░ 💻 UNIQUE  ░▒▓
+
+It ensures that all values in a column should unique
+
+
+
+
+▓▒░ 💻 PRIMARY KEY (PK) ░▒▓
+
+Combination of NOT NULL & UNIQUE
+
+
+
+
+▓▒░ 💻 FOREIGN KEY (FK) ░▒▓
+
+It is used to link multiple tables together
+It prevents that actions which can destroy the links between the tables
+
+
+
+▓▒░ 💻 CHECK  ░▒▓
+
+It ensures that the values of the column satisfies a special conditions.
+
+
+
+
+▓▒░ 💻 DEFAULT  ░▒▓
+
+It is used to set default values for a column if no values are specified.
+
+
+
+
+▓▒░ 💻 CREATE INDEX  ░▒▓
+
+It is used to create & retrieve data from the database very quickly
+
+
+
+
+
+
+
+

@@ -1,0 +1,825 @@
+▓▒░ 🧩 SUB-QUERY PRACTICE ░▒▓
+
+USE subquerydb;
+
+
+
+
+▓▒░ 🗃️ CREATE TABLE ░▒▓
+
+CREATE TABLE employee_data
+(
+id INT PRIMARY KEY,
+name VARCHAR(50),
+dept VARCHAR(50),
+salary INT,
+city VARCHAR(50),
+experience INT,
+manager_id INT
+);
+
+
+
+
+
+
+
+▓▒░ 📥 INSERT DATA ░▒▓
+
+INSERT INTO employee_data
+(id, name, dept, salary, city, experience, manager_id)
+VALUES
+(101, 'Arshad', 'IT', 60000, 'Hyderabad', 2, 105),
+(102, 'Aatif', 'HR', 45000, 'Gorakhpur', 3, 106),
+(103, 'Abhijeet', 'IT', 75000, 'Noida', 5, 105),
+(104, 'Ashu', 'Finance', 55000, 'Noida', 4, 107),
+(105, 'Sujal', 'IT', 90000, 'Hyderabad', 8, 108),
+(106, 'Ansh', 'HR', 70000, 'Delhi', 7, 108),
+(107, 'Tauqir', 'Finance', 80000, 'Delhi', 6, 108),
+(108, 'Sayed', 'Management', 120000, 'Hyderabad', 12, 108),
+(109, 'Om', 'IT', 50000, 'Mumbai', 1, 105),
+(110, 'Vishwajeet', 'HR', 55000, 'Gorakhpur', 2, 106);
+
+
+
+
+
+
+
+
+▓▒░ 👀 VIEW DATA ░▒▓
+
+SELECT * FROM employee_data;
+
+📌 OUTPUT
+
+id | name       | dept       | salary | city       | experience | manager_id
+101| Arshad     | IT         | 60000  | Hyderabad  | 2          | 105
+102| Aatif      | HR         | 45000  | Gorakhpur  | 3          | 106
+103| Abhijeet   | IT         | 75000  | Noida      | 5          | 105
+104| Ashu       | Finance    | 55000  | Noida      | 4          | 107
+105| Sujal      | IT         | 90000  | Hyderabad  | 8          | 108
+106| Ansh       | HR         | 70000  | Delhi      | 7          | 108
+107| Tauqir     | Finance    | 80000  | Delhi      | 6          | 108
+108| Sayed      | Management | 120000 | Hyderabad  | 12         | 108
+109| Om         | IT         | 50000  | Mumbai     | 1          | 105
+110| Vishwajeet | HR         | 55000  | Gorakhpur  | 2          | 106
+
+
+
+
+
+
+
+
+
+
+╔════════════════════════════════╗
+║ 	01. 📊 AVG() + SUB-QUERY     ║
+╚════════════════════════════════╝
+
+🎯 Problem:
+
+Find employee(s) whose salary is greater than the average
+salary of all employees.
+
+
+💡 Find Average:
+
+SELECT AVG(salary)
+FROM employee_data;
+
+
+
+-- Output: 70000
+
+
+
+
+
+💻 Sub-Query:
+
+SELECT *
+FROM employee_data
+WHERE salary > (
+SELECT AVG(salary)
+FROM employee_data
+);
+
+📌 OUTPUT
+
+id | name     | dept       | salary | city      | experience | manager_id
+103| Abhijeet | IT         | 75000  | Noida     | 5          | 105
+105| Sujal    | IT         | 90000  | Hyderabad | 8          | 108
+107| Tauqir   | Finance    | 80000  | Delhi     | 6          | 108
+108| Sayed    | Management | 120000 | Hyderabad | 12         | 108
+
+
+
+🧠 Logic:
+
+AVG salary = 70000
+↓
+salary > 70000
+↓
+Return matching employees
+
+
+
+
+
+
+╔════════════════════════════════╗
+║ 	02. 🔝 MAX() + SUB-QUERY     ║
+╚════════════════════════════════╝
+
+
+🎯 Problem:
+
+Find employee(s) who have the highest salary.
+
+
+💻 Query:
+
+SELECT *
+FROM employee_data
+WHERE salary = (
+SELECT MAX(salary)
+FROM employee_data
+);
+
+
+📌 OUTPUT
+
+id | name  | dept       | salary | city      | experience | manager_id
+108| Sayed | Management | 120000 | Hyderabad | 12         | 108
+
+
+
+🧠 Logic:
+
+
+MAX(salary) = 120000
+↓
+Find employee having salary = 120000
+
+
+
+
+
+
+
+
+
+
+
+
+╔════════════════════════════════╗
+║ 	03. 🔻 MIN() + SUB-QUERY     ║
+╚════════════════════════════════╝
+
+
+🎯 Problem:
+
+Find employee(s) who have the lowest salary.
+
+
+
+💻 Query:
+
+SELECT *
+FROM employee_data
+WHERE salary = (
+SELECT MIN(salary)
+FROM employee_data
+);
+
+
+
+
+📌 OUTPUT
+
+id | name  | dept | salary | city      | experience | manager_id
+102| Aatif | HR   | 45000  | Gorakhpur | 3          | 106
+
+
+
+
+🧠 Logic:
+
+
+MIN(salary) = 45000
+↓
+Find employee having salary = 45000
+
+
+
+
+
+
+
+
+
+
+
+╔════════════════════════════════╗
+║  04. 🔎 IN OPERATOR + SUB-QUERY║
+╚════════════════════════════════╝
+
+
+🎯 Problem:
+
+Find all employees who work in the same department as Arshad.
+
+
+
+💡 Find Arshad's department:
+
+SELECT dept
+FROM employee_data
+WHERE name = 'Arshad';
+
+
+
+-- Output: IT
+
+
+
+
+💻 Query:
+
+SELECT *
+FROM employee_data
+WHERE dept IN (
+SELECT dept
+FROM employee_data
+WHERE name = 'Arshad'
+);
+
+
+
+
+📌 OUTPUT
+
+id | name     | dept | salary | city      | experience | manager_id
+101| Arshad   | IT   | 60000  | Hyderabad | 2          | 105
+103| Abhijeet | IT   | 75000  | Noida     | 5          | 105
+105| Sujal    | IT   | 90000  | Hyderabad | 8          | 108
+109| Om       | IT   | 50000  | Mumbai    | 1          | 105
+
+
+
+
+🧠 Logic:
+
+Arshad → IT
+↓
+Find all employees → IT
+
+
+
+
+
+
+
+
+
+
+
+
+
+╔════════════════════════════════╗
+║ 05.📍 IN OPERATOR + SUB-QUERY  ║
+╚════════════════════════════════╝
+
+
+
+🎯 Problem:
+
+
+Find all employees who work in the same city as Abhijeet.
+
+
+
+💡 Find Abhijeet's city:
+
+SELECT city
+FROM employee_data
+WHERE name = 'Abhijeet';
+
+
+-- Output: Noida
+
+
+
+
+
+💻 Sub - Query:
+
+SELECT *
+FROM employee_data
+WHERE city IN (
+SELECT city
+FROM employee_data
+WHERE name = 'Abhijeet'
+);
+
+
+
+
+📌 OUTPUT
+
+id | name     | dept    | salary | city | experience | manager_id
+103| Abhijeet | IT      | 75000  | Noida| 5          | 105
+104| Ashu     | Finance | 55000  | Noida| 4          | 107
+
+
+
+
+🧠 Logic:
+
+Abhijeet → Noida
+↓
+Find all employees → Noida
+
+
+
+
+
+
+
+
+
+
+
+
+╔════════════════════════════════╗
+║  06. 📊 AVG() + CONDITION      ║
+╚════════════════════════════════╝
+
+
+🎯 Problem:
+
+Find employees whose salary is greater than the average salary
+of the IT department.
+
+
+
+💡 Find IT Average:
+
+SELECT AVG(salary)
+FROM employee_data
+WHERE dept = 'IT';
+
+-- Output: 68750
+
+
+
+
+
+💻 Sub - Query:
+
+SELECT *
+FROM employee_data
+WHERE salary > (
+SELECT AVG(salary)
+FROM employee_data
+WHERE dept = 'IT'
+);
+
+
+
+
+📌 OUTPUT
+
+id | name     | dept       | salary | city      | experience | manager_id
+103| Abhijeet | IT         | 75000  | Noida     | 5          | 105
+105| Sujal    | IT         | 90000  | Hyderabad | 8          | 108
+107| Tauqir   | Finance    | 80000  | Delhi     | 6          | 108
+108| Sayed    | Management | 120000 | Hyderabad | 12         | 108
+
+
+
+
+🧠 Logic:
+
+IT Average = 68750
+↓
+Find ALL employees
+whose salary > 68750
+
+
+
+
+
+
+
+
+
+
+╔════════════════════════════════╗
+║ 07. 🏆 EXPERIENCE + SUB-QUERY  ║
+╚════════════════════════════════╝
+
+
+
+🎯 Problem:
+
+Find employees who have more experience than Arshad.
+
+
+
+💡 Find Arshad's experience:
+
+SELECT experience
+FROM employee_data
+WHERE name = 'Arshad';
+
+-- Output: 2
+
+
+
+
+💻 Sub - Query:
+
+
+SELECT *
+FROM employee_data
+WHERE experience > (
+SELECT experience
+FROM employee_data
+WHERE name = 'Arshad'
+);
+
+
+
+
+📌 OUTPUT
+
+id | name       | dept       | salary | city      | experience | manager_id
+102| Aatif      | HR         | 45000  | Gorakhpur | 3          | 106
+103| Abhijeet   | IT         | 75000  | Noida     | 5          | 105
+104| Ashu       | Finance    | 55000  | Noida     | 4          | 107
+105| Sujal      | IT         | 90000  | Hyderabad | 8          | 108
+106| Ansh       | HR         | 70000  | Delhi     | 7          | 108
+107| Tauqir     | Finance    | 80000  | Delhi     | 6          | 108
+108| Sayed      | Management | 120000 | Hyderabad | 12         | 108
+
+
+
+
+🧠 Logic:
+
+
+Arshad experience = 2
+↓
+experience > 2
+
+
+
+
+
+
+
+
+
+
+
+
+╔═══════════════════════════════════════╗
+║ 08.🔍 CORRELATED SUB-QUERY + EXISTS   ║
+╚═══════════════════════════════════════╝
+
+
+
+🎯 Problem:
+
+Find employees whose department has at least one employee
+earning more than ₹80,000.
+
+
+💻 Sub - Query:
+
+SELECT *
+FROM employee_data AS e
+WHERE EXISTS (
+SELECT 1
+FROM employee_data AS e1
+WHERE e.dept = e1.dept
+AND e1.salary > 80000
+);
+
+
+
+
+📌 OUTPUT
+
+id | name       | dept       | salary | city      | experience | manager_id
+101| Arshad     | IT         | 60000  | Hyderabad | 2          | 105
+103| Abhijeet   | IT         | 75000  | Noida     | 5          | 105
+105| Sujal      | IT         | 90000  | Hyderabad | 8          | 108
+108| Sayed      | Management | 120000 | Hyderabad | 12         | 108
+109| Om         | IT         | 50000  | Mumbai    | 1          | 105
+
+
+
+
+🧠 Logic:
+
+Sujal → IT → 90000 ✅
+Sayed → Management → 120000 ✅
+↓
+IT + Management qualify
+↓
+ALL employees of those departments return
+
+
+
+
+💡 SELECT 1:
+
+1 = constant value
+1 does NOT mean first row.
+
+SELECT 1 → returns constant 1
+SELECT * → returns all columns
+
+EXISTS only checks whether at least one matching row exists.
+
+
+
+
+
+
+
+
+
+
+
+
+╔══════════════════════════════════════════╗
+║ 09. 📊 CORRELATED SUB-QUERY + AVG()      ║
+╚══════════════════════════════════════════╝
+
+
+
+🎯 Problem:
+
+Find employees whose salary is greater than the average salary
+of their own department.
+
+
+
+💻 Sub - Query:
+
+SELECT *
+FROM employee_data AS e
+WHERE e.salary > (
+SELECT AVG(e1.salary)
+FROM employee_data AS e1
+WHERE e1.dept = e.dept
+);
+
+
+
+💡 Department Averages:
+
+IT         → 68750
+HR         → 56666.67
+Finance    → 67500
+Management → 120000
+
+
+
+
+
+📌 OUTPUT
+
+id | name     | dept    | salary | city      | experience | manager_id
+103| Abhijeet | IT      | 75000  | Noida     | 5          | 105
+105| Sujal    | IT      | 90000  | Hyderabad | 8          | 108
+106| Ansh     | HR      | 70000  | Delhi     | 7          | 108
+107| Tauqir   | Finance | 80000  | Delhi     | 6          | 108
+
+
+
+
+🧠 Logic:
+
+Current employee
+↓
+Find their department
+↓
+Calculate department average
+↓
+Compare employee salary
+↓
+salary > average
+↓
+Return employee
+
+
+
+
+
+
+
+
+
+
+
+╔════════════════════════════════╗
+║ 	10. 🥈 SECOND-HIGHEST SALARY ║
+╚════════════════════════════════╝
+
+
+🎯 Problem:
+
+Find employee(s) who earn the second-highest salary.
+
+🚫 Don't use:
+
+❌ GROUP BY
+❌ ORDER BY
+
+
+
+
+💻 Query:
+
+SELECT *
+FROM employee_data AS e
+WHERE e.salary = (
+SELECT MAX(e1.salary)
+FROM employee_data AS e1
+WHERE e1.salary < (
+SELECT MAX(e2.salary)
+FROM employee_data AS e2
+)
+);
+
+
+
+
+🧩 Step 1:
+
+SELECT MAX(e2.salary)
+FROM employee_data AS e2;
+
+-- Output: 120000
+
+
+
+🧩 Step 2:
+
+SELECT MAX(e1.salary)
+FROM employee_data AS e1
+WHERE e1.salary < 120000;
+
+-- Output: 90000
+
+
+
+
+🧩 Step 3:
+
+Find employee(s) having salary = 90000.
+
+
+📌 OUTPUT
+
+id | name  | dept | salary | city      | experience | manager_id
+105| Sujal | IT   | 90000  | Hyderabad | 8          | 108
+
+
+
+
+🧠 Logic:
+
+Highest salary
+↓
+120000
+↓
+Remove highest salary
+↓
+Find MAX of remaining
+↓
+90000
+↓
+Second-highest salary
+
+
+
+
+
+
+
+▓▒░ 🧠 SUB-QUERY QUICK REVISION ░▒▓
+
+AVG()  → Average value
+MAX()  → Highest value
+MIN()  → Lowest value
+IN     → Match returned value(s)
+EXISTS → Check whether row exists
+
+
+
+
+
+
+
+
+
+
+▓▒░ 🔑 IMPORTANT CONCEPTS ░▒▓
+
+📌 Sub-Query
+Query written inside another query.
+
+
+📌 SELECT 1
+1 is a constant value.
+It does NOT mean first row.
+
+
+📌 SELECT *
+Returns all columns.
+
+
+📌 EXISTS
+Checks whether at least one matching row exists.
+
+
+📌 Correlated Sub-Query
+Inner query depends on the outer query.
+
+Example:
+
+e1.dept = e.dept
+
+
+📌 Second-Highest Salary
+
+MAX salary
+↓
+Remove MAX
+↓
+MAX of remaining salaries
+↓
+Second-highest salary
+
+
+
+
+
+
+
+
+
+▓▒░ ⭐ SUB-QUERY PATTERN ░▒▓
+
+SELECT *
+FROM table
+WHERE column OPERATOR (
+SELECT ...
+FROM table
+WHERE condition
+);
+
+
+
+
+
+
+
+
+
+
+▓▒░ 📌 CORRELATED SUB-QUERY PATTERN ░▒▓
+
+SELECT *
+FROM table AS e
+WHERE e.column > (
+SELECT FUNCTION(e1.column)
+FROM table AS e1
+WHERE e1.group_column = e.group_column
+);
+
+
+
+
+
+
+
+
+
+
+
+▓▒░ 🎯 QUICK MEMORY ░▒▓
+
+AVG()     → Average
+MAX()     → Highest
+MIN()     → Lowest
+IN        → Same/matching values
+EXISTS    → At least one row exists
+Correlated → Inner query uses outer query

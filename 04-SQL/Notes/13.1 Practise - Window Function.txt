@@ -1,0 +1,328 @@
+
+╭──────────────────────────────────────╮
+│  🌟📥 PRACTISE - WINDOW FUNCTION🌟  │
+╰──────────────────────────────────────╯
+
+
+━━━━━━━━━━━━━━━━
+ 🔸Create Database🔸
+━━━━━━━━━━━━━━━━
+
+CREATE DATABASE windowFunctionDB;
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━
+🔸Use Database🔸
+━━━━━━━━━━━━━━━━
+
+USE windowFunctionDB;
+
+
+
+
+
+━━━━━━━━━━━━━━━━
+🔸Create Table🔸
+━━━━━━━━━━━━━━━━
+
+CREATE TABLE table1
+(
+	id INT NOT NULL,
+    name VARCHAR(50)
+)
+
+
+
+
+
+━━━━━━━━━━━━━━━━
+🔸 View Table🔸
+━━━━━━━━━━━━━━━━
+
+SELECT * FROM table1;
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━
+🔸Insert Data in table🔸
+━━━━━━━━━━━━━━━━
+
+INSERT INTO table1
+(id, name)
+VALUES
+(100, "Agni"),
+(200, "Agni"),
+(500, "Dharti"),
+(700, "Dharti"),
+(200, "Vayu"),
+(300, "Vayu"),
+(500, "Vayu");
+
+
+
+
+
+
+━━━━━━━━━━━━━━━━
+🔸 View Table🔸
+━━━━━━━━━━━━━━━━
+
+SELECT * FROM table1;
+
+
+
+
+
+╔══════════════════════════════════════════╗
+║     🔷 WINDOW FUNCTION + AGGREGATE 🔷   ║
+╚══════════════════════════════════════════╝
+
+📍Example:
+
+
+SELECT id, name,
+    SUM(id) OVER (PARTITION BY name) AS "Total",
+    AVG(id) OVER (PARTITION BY name) AS "Average",
+    COUNT(name) OVER (PARTITION BY name) AS "Count",
+    MAX(id) OVER (PARTITION BY name) AS "Max",
+    MIN(id) OVER (PARTITION BY name) AS "Min"
+FROM table1;
+
+
+
+👉Output:
+
+id	name	Average	        Count	Sum		Max		Min
+
+100	Agni	150.0000	    2		300		200		100
+200	Agni	150.0000	    2		300		200		100
+500	Dharti	600.0000	    2		1200	700		500
+700	Dharti	600.0000	    2		1200	700		500
+200	Vayu	333.3333	    3		1000	500		200
+300	Vayu	333.3333	    3		1000	500		200
+500	Vayu	333.3333	    3		1000	500		200
+
+
+
+
+
+
+
+
+
+
+━━━ UNBOUNDED PRECEDING → UNBOUNDED FOLLOWING ━━━
+
+
+💡 Means:
+
+→ Include ALL rows in the window,
+  from the first row to the last row & apply Aggregate functions.
+
+
+
+📌 Syntax:
+
+ROWS BETWEEN UNBOUNDED PRECEDING
+     AND UNBOUNDED FOLLOWING
+
+ 
+
+
+
+📍Example:
+
+
+SELECT id, name,
+	SUM(id) OVER (ORDER BY id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS sum,
+    AVG(id) OVER (ORDER BY id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS avg,
+    MIN(id) OVER (ORDER BY id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS min,
+    MAX(id) OVER (ORDER BY id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS max,
+    SUM(id) OVER (ORDER BY id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS sum
+FROM table1;
+
+
+
+
+🔖Output:
+
+id	name	sum		avg		       Count	Min		Max		
+
+100	Agni	2500	357.1429		7	    100		700		
+200	Agni	2500	357.1429		7	    100		700	
+200	Vayu	2500	357.1429		7	    100		700	
+300	Vayu	2500	357.1429		7	    100		700	
+500	Dharti	2500	357.1429		7	    100		700	
+500	Vayu	2500	357.1429		7	    100		700	
+700	Dharti	2500	357.1429		7	    100		700	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╔══════════════════════════════════════════╗
+║    🔷 WINDOW FUNCTION + RANKING 🔷      ║
+╚══════════════════════════════════════════╝
+
+
+👉 Example:
+
+SELECT id, name,
+	ROW_NUMBER() OVER (ORDER BY id) AS "row_number",
+    RANK() OVER (ORDER BY id) AS "rank",
+    DENSE_RANK() OVER (ORDER BY id) AS "dense_rank",
+    PERCENT_RANK() OVER (ORDER BY id) AS "rank_percentage"
+FROM table1;
+
+
+
+
+📍 Output:
+
+id	name	row_number	rank		dense_rank	rank_percentage
+
+100	Agni		1		   1		 	 1		0
+200	Agni		2		   2			 2		0.16666666666666666
+200	Vayu		3		   2			 2		0.16666666666666666
+300	Vayu		4		   4			 3		0.5
+500	Dharti		5		   5			 4		0.6666666666666666
+500	Vayu		6		   5			 4		0.6666666666666666
+700	Dharti		7		   7			 5		1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╔══════════════════════════════════════════╗
+║    🔷 WINDOW FUNCTION + ANALYTIC 🔷     ║
+╚══════════════════════════════════════════╝
+
+
+
+👉Example:
+
+SELECT id, name,
+	FIRST_VALUE(id) OVER(ORDER BY id) AS "first_value",
+    LAST_VALUE(id) OVER(ORDER BY id) AS "last_value",
+    LEAD(id) OVER (ORDER BY id) AS "lead_value",
+    LAG(id) OVER (ORDER BY id) AS "prev_value"
+FROM table1;
+
+
+
+
+📍Output:
+
+id	name	first_value		last_value	lead_value	prev_value(lag)
+
+100	Agni		100			100			200			Null
+200	Agni		100			200			200			100
+200	Vayu		100			200			300			200
+300	Vayu		100			300			500			200
+500	Dharti		100			500			500			300
+500	Vayu		100			500			700			500
+700	Dharti		100			700			Null		500
+
+
+
+
+
+
+
+💡Issue: Why LAST_VALUE() doesn't give the actual last value which is 700
+
+
+
+
+
+
+
+🔹━━━━ 🔸 LAST_VALUE() WITH FULL WINDOW 🔸 ━━━━🔹
+
+💡Example:
+
+SELECT id, name,
+	FIRST_VALUE(id) OVER(ORDER BY id) AS "first_value",
+    LAST_VALUE(id) OVER(ORDER BY id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS "last_value",
+    LEAD(id) OVER (ORDER BY id) AS "lead_value",
+    LAG(id) OVER (ORDER BY id) AS "prev_value"
+FROM table1;
+
+
+Output:
+
+
+id	name	first_value	last_value	lead_value	prev_value(lag)
+
+100	Agni		100			700			200			Null
+200	Agni		100			700			200			100
+200	Vayu		100			700			300			200
+300	Vayu		100			700			500			200
+500	Dharti		100			700			500			300
+500	Vayu		100			700			700			500
+700	Dharti		100			700			Null		500
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 🔹━━━━ 🔸LEAD() & LAG() OFFSET 🔹━━━━ 🔸
+
+
+
+👉Example:
+
+SELECT id, name,
+    LEAD(id, 2) OVER (ORDER BY id) AS "lead_value",
+    LAG(id, 2) OVER (ORDER BY id) AS "prev_value"
+FROM table1;
+
+
+📍Output:
+
+id	name	lead_value	lag_value
+
+100	Agni		200			Null
+200	Agni		300			Null
+200	Vayu		500			100
+300	Vayu		500			200
+500	Dharti		700			200
+500	Vayu		300			Null
+700	Dharti		500			Null

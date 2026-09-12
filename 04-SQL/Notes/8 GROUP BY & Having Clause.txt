@@ -1,0 +1,175 @@
+╭────────────────────────────────╮
+│    			🌟📥 GROUP BY🌟  	    │
+╰────────────────────────────────╯
+
+The GROUP BY statement group rows that have the same values into summary rows.
+
+It often used with aggregate functions (COUNT, SUM, MAX, MIN, AVG) to group the result-set by one or more columns.
+
+
+
+🔖Syntax:
+
+SELECT column_name(s)
+FROM table_name
+GROUP BY column_name(s);
+
+
+
+📍Example:
+
+SELECT mode, SUM(budget) as total_amount
+FROM expenses_analysis
+GROUP BY mode
+ORDER BY total_amount DESC;
+
+
+
+
+👉Output:
+
+mode		  total_amount
+
+Cash				14500
+Google pay	12000
+Phonepe			10000
+
+
+
+
+▓▒░ 💡 GROUP BY - IMPORTANT NOTE ░▒▓
+
+
+We use GROUP BY to group rows based on columns that contain common/repeated values.
+
+For example, if we group by the mode column and it contains values like Cash, Cash, Card, etc., MySQL can create groups for each unique mode.
+
+However, if we group by the name column and every name is unique, each name will form its own separate group.
+
+📌 Note: GROUP BY can technically be used with any column, but it is most useful when the column contains repeated or categorical values, especially when combined with aggregate functions like COUNT(), SUM(), AVG(), MAX(), and MIN().
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────╮
+│    		🌟📥 HAVING CLAUSE🌟  	│
+╰────────────────────────────────╯
+
+
+The HAVING clause is used to apply a filter on the result of GROUP BY based on the specified condition.
+
+The WHERE clause places condition on the selected columns whereas the HAVING clause places conditions on groups created by the GROUP BY clause.
+
+
+
+In Simple word:
+
+🔸WHERE clause is used when we have to apply conditions with SELECT command
+
+🔸HAVING clause is used when we have to apply conditions  with GROUP BY
+
+
+
+
+
+📍Syntax:
+
+SELECT column_name(s)
+FROM table_name
+WHERE condition()
+GRUP BY column_name(s)
+HAVING condition;
+
+
+
+🔖Example:
+
+SELECT 
+	mode, 
+	COUNT(budget) AS total_transections, 
+    	SUM(budget) AS total_spendings
+FROM expenses_analysis
+GROUP BY mode
+HAVING COUNT(budget) > 2;
+
+
+
+👉Output:
+
+mode		total_transections		total_spendings
+Phonepe			   4					        19500
+
+
+
+
+
+
+🔖NOTE:
+
+✅ HAVING clause only use after GROUP BY statement
+
+❌ If we use HAVING clause before group by than It throw error
+
+
+
+
+
+
+
+1️⃣ SQL Query Writing Order
+
+
+SELECT
+    ↓
+FROM
+    ↓
+JOIN
+    ↓
+WHERE
+    ↓
+GROUP BY
+    ↓
+HAVING
+    ↓
+ORDER BY
+    ↓
+LIMIT
+
+
+
+
+
+
+
+
+2️⃣ SQL Logical Execution Order ⭐
+
+This is the order in which SQL logically processes the query:
+
+FROM
+  ↓
+JOIN
+  ↓
+WHERE
+  ↓
+GROUP BY
+  ↓
+HAVING
+  ↓
+SELECT
+  ↓
+ORDER BY
+  ↓
+LIMIT

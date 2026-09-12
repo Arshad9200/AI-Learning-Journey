@@ -1,0 +1,313 @@
+
+╭────────────────────────────────╮
+│	🌟INSERT VALUES IN TABLES🌟 │
+╰────────────────────────────────╯
+
+
+The INSER INTO statement is used to insert new records in the table
+
+
+💡Syntax
+
+INSERT INTO table_name 
+( column1, column2, column3, column4,......columnN )
+VALUES
+( value1, value2, value3, value4, .................valueN )
+
+
+
+
+
+
+
+
+📍 Example:
+
+INSERT INTO IT_TEAM
+(id, name, experience, working_location)
+VALUES
+(1, "Arshad", 1, "Hyderabad"),
+(2, "Aatif", 2, "Remote"),
+(3, "Abhijeet", 1, "Noida"),
+(4, "Ashu", 1, "Noida");
+
+
+
+👉Output: 
+
+Query Executed and these data are inserted into IT_TEAM tables
+
+table: IT_TEAM
+
+id      name      Experince        working_location
+
+1	Arshad	    	1			   Hyderabad
+2	Aatif		    2			   Remote
+3	Abhijeet	    1			    Noida
+4	Ashu	    	1			    Noida
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────╮
+│🌟VIEW/SELECT THE TABLE DATA🌟 │
+╰────────────────────────────────╯
+
+
+SELECT command is used to view the table along with its data.
+
+
+💡Syntax
+
+SELECT * FROM table_name;
+
+
+
+
+
+📍 Example:
+
+SELECT * FROM IT_TEAM;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────╮
+│	   🌟UPDATE VALUES🌟   		│
+╰────────────────────────────────╯
+
+The UPDATE command is used to update existing rows in a table
+
+
+
+💡Syntax:
+
+UPDATE table_name
+SET column1 = value1, 
+	column2 = value2
+WHERE id = value;
+
+
+
+📍Example:
+
+UPDATE IT_TEAM
+SET name = "Ashutosh",
+	experince = 2
+WHERE id = 4;
+
+
+
+
+
+
+
+
+╭────────────────────────────────╮
+│		🌟DELETE VALUES🌟   	│
+╰────────────────────────────────╯
+
+The DELETE statement is used to delete existing records in a table
+
+
+💡Syntax:
+
+DELETE FROM table_name WHERE condition ;
+
+
+
+📍Example:
+
+DELETE FROM IT_TEAM
+WHERE id=1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────╮
+│		🌟ALTER VALUES🌟   		│
+╰────────────────────────────────╯
+
+ALTER TABLE statement is used to add , delete or modify columns in an existing table.
+
+
+
+
+▓▒░ 💻 ADD COLUMN ░▒▓
+
+In Add Column syntax, we have to pass the constraints along with new column name. Otherwise It gives error
+
+
+💡Syntax:
+
+ALTER TABLE table_name
+ADD COLUMN column_name CONSTRAINTS;
+
+
+👉Example:
+
+ALTER TABLE cs41
+ADD COLUMN student_Age INT NOT NULL;
+
+
+👉Output:
+
+It Add a column in existing table and by default it insert 0 in this columns
+
+
+
+
+
+
+
+
+
+
+
+▓▒░ 💻 DROP COLUMN ░▒▓
+
+💡Syntax:
+
+ALTER TABLE table_name
+DROP COLUMN column_name;
+
+
+
+👉Example:
+
+ALTER TABLE cs41
+DROP COLUMN Age;
+
+
+
+👉Output:
+
+It drop age column in existing table.
+
+
+
+
+
+
+
+
+▓▒░ 💻 ALTER/MODIFY  COLUMN  DATA-TYPE ░▒▓
+
+
+💡Syntax:
+
+ALTER TABLE table_name
+MODIFY COLUMN column_name DATA_TYPE;
+
+
+
+👉Example:
+
+ALTER TABLE cs41
+MODIFY COLUMN student_Age INT NOT NULL;
+
+
+👉Output:
+student_Age column data-type become integer and not null constraints applied
+
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────╮
+│			🌟DROP TABLE🌟   	│
+╰────────────────────────────────╯
+
+The DROP TABLE command deletes a table in the database
+
+💡Syntax:
+
+DROP TABLE table_name;
+
+
+
+👉Example:
+
+# Drop Table
+DROP TABLE CS41;
+
+# View the table after Drop
+SELECT * FROM cs41;
+
+
+👉Output:
+When we view the data than It return error because cs41 table is deleted
+
+
+
+
+
+
+
+
+
+╭────────────────────────────────╮
+│		🌟TRUNCATE TABLE🌟   	│
+╰────────────────────────────────╯
+
+The TRUNCATE TABLE command deletes the data inside a table but not the table (table structure) itself.
+
+We can re-use that table again.
+
+
+💡Syntax:
+
+TRUNCATE TABLE table_name;
+
+
+
+👉Example:
+
+# Truncate Table
+TRUNCATE TABLE CS41;
+
+# View the table after Truncate
+SELECT * FROM cs41;
+
+
+
+
+👉Output:
+It delete all the data and rows but the structure (Schema) of the table remain same.
+We can re-use it

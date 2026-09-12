@@ -1,0 +1,319 @@
+╔════════════════════╗
+║    		 💻SQL⚡    ║
+╚════════════════════╝
+
+
+
+
+
+
+╭──────────────────────────╮
+│			🌟🗄️ SQL🌟 		     │
+╰──────────────────────────╯
+
+SQL (Structured Query Language) is a programming language used to communicate with and manage relational databases.
+
+
+
+With SQL, we can:
+
+🔹Create databases and tables
+🔹Insert data
+🔹Retrieve data
+🔹Update data
+🔹Delete data
+🔹Filter and sort data
+🔹Join data from multiple tables
+
+
+
+
+
+
+
+
+
+
+
+
+
+╭──────────────────────────╮
+│		🌟🗄️ DATABASE 🌟 		 │
+╰──────────────────────────╯
+
+
+
+A database is an organized collection of data that is stored electronically so that it can be easily accessed, managed, updated, and retrieved.
+
+
+
+🔹 Example
+
+An employee database might contain:
+
+ID		Name		Department		Salary
+
+101		Arshad			IT			50000
+102		Rahul			  HR			45000
+103		Aatif				IT			60000
+
+
+
+
+=================
+📚 Types of Databases
+=================
+
+
+
+Databases are mainly classified into the following types:
+
+
+
+
+🔷══════════════════════════════🔷
+ 1. 🏢 Relational Database (RDBMS)
+🔷══════════════════════════════🔷
+
+
+A relational database stores data in tables, consisting of rows and columns.
+
+It uses SQL (Structured Query Language) to manage data.
+
+
+Examples:
+
+🔸MySQL
+🔸PostgreSQL
+🔸Oracle
+🔸Microsoft SQL Server
+🔸SQLite
+
+
+
+👉 Uses SQL to manage data.
+
+
+
+
+
+
+
+
+🔷══════════════════════════════🔷
+  2️⃣ Non-Relational Database (NoSQL)
+🔷══════════════════════════════🔷
+
+
+A non-relational database does not require data to be stored in traditional tables with fixed rows and columns.
+
+It generally provides a flexible schema and is useful for large-scale, rapidly changing, or unstructured/semi-structured data.
+
+Examples:
+
+🔹MongoDB → Document
+
+🔹Redis → Key-Value
+
+🔹Cassandra → Wide-Column
+
+🔹Neo4j → Graph
+
+
+
+
+ TYPE OF Non-Relational Database (NoSQL)
+◈═══════════════════════════════════════◈
+
+
+▓▒░ 💻 📄 Document Database  ░▒▓
+
+
+Stores data as documents, usually in JSON-like format.
+
+Examples:
+
+🔹MongoDB
+🔹CouchDB
+
+
+👉Example:
+
+{
+  "name": "Arshad",
+  "age": 25,
+  "skills": ["Python", "SQL"]
+}
+
+
+
+
+
+
+
+
+
+▓▒░ 💻 📄 🔑 Key-Value Database  ░▒▓
+
+Stores data as key-value pairs.
+
+👉🔹Examples:
+
+🔹Redis
+🔹Amazon DynamoDB
+
+
+👉Example:
+
+"user_101" → "Arshad"
+
+
+
+
+
+
+
+
+
+
+
+
+
+🚀━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🚀
+ 			  EXCEL USE CASE
+🚀━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🚀
+
+
+🔸Small Amount of Data
+
+🔸One Time Analysis
+
+🔸Quick Chart / Graph
+
+🔸Untrained Person (Who do not know coding)
+
+
+
+
+
+
+
+
+
+🚀━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🚀
+ 		    DATABASE USE CASE
+🚀━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━🚀
+
+
+🔹Large amount of Data
+
+🔹Store real time data from application / websites
+
+🔹Easily combine with different Datasets
+
+🔹Automate Steps and re-use
+
+🔹Easy & Safe access
+
+🔹Data Integrity (only similar kind of data store)
+
+🔹Deep Search Capability
+
+🔹Multiple users can use same Database & perform operations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+✅═════════════════════════════════════✅
+🔗 How Do We Communicate with a Database?
+✅═════════════════════════════════════✅
+
+
+We communicate with a database using a Database Management System (DBMS) and a language such as SQL.
+
+
+
+
+The basic flow is:
+
+👨‍💻 User / Application
+        ↓
+     SQL Query
+        ↓
+       DBMS
+        ↓
+    🗄️ Database
+        ↓
+    Result / Response
+
+
+
+👉Example
+
+Suppose we have a MySQL database containing an employees table.
+
+We send an SQL query:
+
+SELECT * FROM employees;
+
+
+
+The flow is:
+
+
+Python / Application
+        ↓
+SELECT * FROM employees;
+        ↓
+      MySQL
+        ↓
+   employees table
+        ↓
+     Result
+
+
+
+
+
+----------------------------
+🐍 From Python
+----------------------------
+
+
+Python can communicate with a database using a database driver/library.
+
+
+👉For example:
+
+Python
+  ↓
+Database Driver
+  ↓
+MySQL / PostgreSQL
+  ↓
+Database
+
+
+
+
+
+
+		Common Python libraries:
+🔷══════════════════════════════🔷
+
+Database				Python Library
+
+• MySQL				mysql-connector-python, PyMySQL
+• PostgreSQL			psycopg
+• SQLite				sqlite3
+• Multiple databases		SQLAlchemy
